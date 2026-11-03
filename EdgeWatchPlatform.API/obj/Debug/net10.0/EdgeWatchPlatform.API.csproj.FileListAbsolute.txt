@@ -191,3 +191,10 @@ C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debu
 C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debug\net10.0\EdgeWatchPlatform.API.pdb
 C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debug\net10.0\EdgeWatchPlatform.API.genruntimeconfig.cache
 C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debug\net10.0\ref\EdgeWatchPlatform.API.dll
+C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\bin\Debug\net10.0\appsettings.Production.json
+C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\bin\Debug\net10.0\es\EdgeWatchPlatform.API.resources.dll
+C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debug\net10.0\EdgeWatchPlatform.API.Resources.Shared.Interfaces.ASP.Localization.SharedResource.resources
+C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debug\net10.0\EdgeWatchPlatform.API.Resources.Shared.Interfaces.ASP.Localization.SharedResource.es.resources
+C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debug\net10.0\EdgeWatchPlatform.API.csproj.GenerateResource.cache
+C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debug\net10.0\es\EdgeWatchPlatform.API.resources.cs
+C:\Users\USUARIO\RiderProjects\edgewatch-platform\EdgeWatchPlatform.API\obj\Debug\net10.0\es\EdgeWatchPlatform.API.resources.dll
