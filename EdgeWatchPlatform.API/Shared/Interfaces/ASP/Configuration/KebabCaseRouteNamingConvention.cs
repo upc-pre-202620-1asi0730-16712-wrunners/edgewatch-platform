@@ -24,11 +24,12 @@ public class KebabCaseRouteNamingConvention : IControllerModelConvention
 
     private static AttributeRouteModel? ReplaceControllerTemplate(SelectorModel selector, string name)
     {
-        return selector.AttributeRouteModel != null
-            ? new AttributeRouteModel
-            {
-                Template = selector.AttributeRouteModel.Template?.Replace("[controller]", name.ToKebabCase())
-            }
-            : null;
+        if (selector.AttributeRouteModel is null) return null;
+
+        // Copy keeps Name, Order and the other route settings; only the template changes.
+        return new AttributeRouteModel(selector.AttributeRouteModel)
+        {
+            Template = selector.AttributeRouteModel.Template?.Replace("[controller]", name.ToKebabCase())
+        };
     }
 }
