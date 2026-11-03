@@ -9,4 +9,14 @@
   <data name="NotFoundTitle" xml:space="preserve"><value>Recurso no encontrado</value></data>
   <data name="UnexpectedErrorTitle" xml:space="preserve"><value>Error inesperado</value></data>
   <data name="UnexpectedErrorDetail" xml:space="preserve"><value>Ocurrió un error inesperado al procesar la solicitud.</value></data>
+  <data name="RequiredOrganizationId" xml:space="preserve"><value>El id de la organización es obligatorio.</value></data>
+  <data name="InvalidOrganizationId" xml:space="preserve"><value>El id de la organización debe ser un entero positivo.</value></data>
+  <data name="RequiredCode" xml:space="preserve"><value>El código es obligatorio.</value></data>
+  <data name="InvalidCode" xml:space="preserve"><value>El código debe tener de 3 a 20 letras mayúsculas, dígitos o guiones.</value></data>
+  <data name="RequiredSerialNumber" xml:space="preserve"><value>El número de serie es obligatorio.</value></data>
+  <data name="RequiredSystemManufacturer" xml:space="preserve"><value>El fabricante del sistema es obligatorio.</value></data>
+  <data name="RequiredSystemModel" xml:space="preserve"><value>El modelo del sistema es obligatorio.</value></data>
+  <data name="RequiredFuelType" xml:space="preserve"><value>El tipo de combustible es obligatorio.</value></data>
+  <data name="InvalidFuelType" xml:space="preserve"><value>El tipo de combustible debe ser HYDROGEN, KEROSENE, NATURAL_GAS o PROPANE.</value></data>
+  <data name="DuplicateHvofSystemCode" xml:space="preserve"><value>Ya existe un sistema HVOF con este código en la organización.</value></data>
 </root>

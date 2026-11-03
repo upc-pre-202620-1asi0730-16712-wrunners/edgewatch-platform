@@ -9,4 +9,14 @@
   <data name="NotFoundTitle" xml:space="preserve"><value>Resource not found</value></data>
   <data name="UnexpectedErrorTitle" xml:space="preserve"><value>Unexpected error</value></data>
   <data name="UnexpectedErrorDetail" xml:space="preserve"><value>An unexpected error occurred while processing the request.</value></data>
+  <data name="RequiredOrganizationId" xml:space="preserve"><value>Organization id is required.</value></data>
+  <data name="InvalidOrganizationId" xml:space="preserve"><value>Organization id must be a positive integer.</value></data>
+  <data name="RequiredCode" xml:space="preserve"><value>Code is required.</value></data>
+  <data name="InvalidCode" xml:space="preserve"><value>Code must be 3 to 20 upper case letters, digits or hyphens.</value></data>
+  <data name="RequiredSerialNumber" xml:space="preserve"><value>Serial number is required.</value></data>
+  <data name="RequiredSystemManufacturer" xml:space="preserve"><value>System manufacturer is required.</value></data>
+  <data name="RequiredSystemModel" xml:space="preserve"><value>System model is required.</value></data>
+  <data name="RequiredFuelType" xml:space="preserve"><value>Fuel type is required.</value></data>
+  <data name="InvalidFuelType" xml:space="preserve"><value>Fuel type must be one of HYDROGEN, KEROSENE, NATURAL_GAS or PROPANE.</value></data>
+  <data name="DuplicateHvofSystemCode" xml:space="preserve"><value>An HVOF system with this code already exists in the organization.</value></data>
 </root>

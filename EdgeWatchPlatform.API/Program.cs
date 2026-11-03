@@ -1,4 +1,8 @@
 using System.Globalization;
+using EdgeWatchPlatform.API.Equipment.Application.Internal.CommandServices;
+using EdgeWatchPlatform.API.Equipment.Application.Services;
+using EdgeWatchPlatform.API.Equipment.Domain.Repositories;
+using EdgeWatchPlatform.API.Equipment.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using EdgeWatchPlatform.API.Shared.Domain.Repositories;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
@@ -80,6 +84,10 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Dependency injection — bounded contexts (one block per context)
 
 var app = builder.Build();
+
+// Dependency injection — Equipment
+builder.Services.AddScoped<IHvofSystemRepository, HvofSystemRepository>();
+builder.Services.AddScoped<IHvofSystemCommandService, HvofSystemCommandService>();
 
 // Apply pending migrations on startup (ADR-008)
 using (var scope = app.Services.CreateScope())
