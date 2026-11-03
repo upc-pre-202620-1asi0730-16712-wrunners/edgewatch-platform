@@ -1,0 +1,432 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EdgeWatchPlatform.API</name>
+    </assembly>
+    <members>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Domain.Model.Aggregates.HvofSystem">
+            <summary>An HVOF thermal spray system owned by a recuperation supplier organization.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Domain.Model.ValueObjects.HvofSystemCode">
+            <summary>Short identifier of an HVOF system inside an organization (e.g. HVOF-01).</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Domain.Model.ValueObjects.HvofSystemCode.CodeRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^[A-Z0-9-]{3,20}$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match a character in the set [\-0-9A-Z] atomically at least 3 and at most 20 times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController">
+            <summary>HVOF system endpoints.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.#ctor(EdgeWatchPlatform.API.Equipment.Application.Services.IHvofSystemCommandService,Microsoft.Extensions.Localization.IStringLocalizer{EdgeWatchPlatform.API.Shared.Interfaces.ASP.Localization.SharedResource})">
+            <summary>HVOF system endpoints.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.RegisterHvofSystem(EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.RegisterHvofSystemResource,System.Threading.CancellationToken)">
+            <summary>Registers an HVOF system for an organization.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.HvofSystemResource">
+            <summary>Representation of an HVOF system.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.HvofSystemResource.#ctor(System.Int32,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>Representation of an HVOF system.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.RegisterHvofSystemResource">
+            <summary>Request body to register an HVOF system.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.RegisterHvofSystemResource.#ctor(System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>Request body to register an HVOF system.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2">
+            <summary>
+            Represents the outcome of an operation that can succeed with a value or fail with an error.
+            </summary>
+            <typeparam name="TValue">The type of the successful result value.</typeparam>
+            <typeparam name="TError">The type of the error information.</typeparam>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Success">
+            <summary>
+            Represents a successful operation outcome.
+            </summary>
+            <param name="Value">The resulting value from the successful operation.</param>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Success.#ctor(`0)">
+            <summary>
+            Represents a successful operation outcome.
+            </summary>
+            <param name="Value">The resulting value from the successful operation.</param>
+        </member>
+        <member name="P:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Success.Value">
+            <summary>The resulting value from the successful operation.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Failure">
+            <summary>
+            Represents a failed operation outcome.
+            </summary>
+            <param name="Error">The error information from the failed operation.</param>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Failure.#ctor(`1)">
+            <summary>
+            Represents a failed operation outcome.
+            </summary>
+            <param name="Error">The error information from the failed operation.</param>
+        </member>
+        <member name="P:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Failure.Error">
+            <summary>The error information from the failed operation.</summary>
+        </member>
+        <member name="P:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.IsSuccess">
+            <summary>
+            Determines whether the result represents a successful outcome.
+            </summary>
+        </member>
+        <member name="P:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.IsFailure">
+            <summary>
+            Determines whether the result represents a failed outcome.
+            </summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Map``1(System.Func{`0,``0})">
+            <summary>
+            Applies a transformation function to the success value if the result is successful.
+            </summary>
+            <typeparam name="TNext">The type of the next result value.</typeparam>
+            <param name="onSuccess">Function to apply if successful.</param>
+            <returns>A new Result with the transformed value, or the current Failure.</returns>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Fold``1(System.Func{`0,``0},System.Func{`1,``0})">
+            <summary>
+            Applies a function to either the success or failure case.
+            </summary>
+            <typeparam name="TResult">The type of the final result.</typeparam>
+            <param name="onSuccess">Function to apply if successful.</param>
+            <param name="onFailure">Function to apply if failed.</param>
+            <returns>The result of applying the appropriate function.</returns>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2.Match(System.Action{`0},System.Action{`1})">
+            <summary>
+            Executes an action based on the result type without transforming the value.
+            </summary>
+            <param name="onSuccess">Action to execute if successful.</param>
+            <param name="onFailure">Action to execute if failed.</param>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions.ModelBuilderExtensions">
+            <summary>
+                Model builder extensions
+            </summary>
+            <remarks>
+                This class contains extension methods for the model builder.
+                It includes a method to use the snake case and/or plural naming convention according to an object type.
+                It also pluralizes the table names.
+            </remarks>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions.ModelBuilderExtensions.UseSnakeCaseNamingConvention(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+                Use snake case naming convention
+            </summary>
+            <remarks>
+                This method sets the naming convention for the database tables, columns, keys, foreign keys and indexes to snake
+                case.
+            </remarks>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions.StringExtensions">
+            <summary>
+                String extensions
+            </summary>
+            <remarks>
+                This class contains extension methods for strings.
+                It includes methods to convert strings to snake case and pluralize them.
+            </remarks>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions.StringExtensions.ToSnakeCase(System.String)">
+            <summary>
+                Convert a string to snake case
+            </summary>
+            <param name="text">The string to convert</param>
+            <returns>The string converted to snake case</returns>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions.StringExtensions.ToPlural(System.String)">
+            <summary>
+                Pluralize a string
+            </summary>
+            <param name="text">The string to convert</param>
+            <returns>The string converted to plural</returns>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors.AuditableEntityInterceptor">
+            <summary>
+                EF Core interceptor that automatically populates audit timestamps on any entity
+                that implements <see cref="T:EdgeWatchPlatform.API.Shared.Domain.Model.IAuditableEntity"/>.
+            </summary>
+            <remarks>
+                <list type="bullet">
+                    <item><description><c>CreatedDate</c> — set once when the entity is first added.</description></item>
+                    <item><description><c>UpdatedDate</c> — refreshed on every add or update.</description></item>
+                </list>
+                Register this interceptor in <c>AppDbContext.OnConfiguring</c> so it applies to all
+                bounded contexts sharing the same <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/>.
+            </remarks>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1">
+            <summary>
+                Generic base repository providing CRUD operations for all entity types.
+            </summary>
+            <remarks>
+                This generic repository implements the IBaseRepository contract and provides
+                common CRUD operations against an EF Core DbContext. Derived repositories
+                can extend this class to add entity-specific query methods.
+            </remarks>
+            <typeparam name="TEntity">The entity type that this repository manages.</typeparam>
+            <param name="context">The EF Core database context.</param>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1.#ctor(EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.AppDbContext)">
+            <summary>
+                Generic base repository providing CRUD operations for all entity types.
+            </summary>
+            <remarks>
+                This generic repository implements the IBaseRepository contract and provides
+                common CRUD operations against an EF Core DbContext. Derived repositories
+                can extend this class to add entity-specific query methods.
+            </remarks>
+            <typeparam name="TEntity">The entity type that this repository manages.</typeparam>
+            <param name="context">The EF Core database context.</param>
+        </member>
+        <member name="F:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1.Context">
+            <summary>
+                The EF Core <see cref="T:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.AppDbContext"/> instance available to derived repositories.
+            </summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1.AddAsync(`0,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1.FindByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1.Update(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1.Remove(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1.ListAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.UnitOfWork">
+            <summary>
+                Unit of work implementation for coordinating database transactions.
+            </summary>
+            <remarks>
+                This class implements the IUnitOfWork contract and encapsulates EF Core's
+                SaveChangesAsync method. It represents a single database transaction scope,
+                ensuring that all pending entity changes are persisted atomically.
+            </remarks>
+            <param name="context">The EF Core database context.</param>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.UnitOfWork.#ctor(EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.AppDbContext)">
+            <summary>
+                Unit of work implementation for coordinating database transactions.
+            </summary>
+            <remarks>
+                This class implements the IUnitOfWork contract and encapsulates EF Core's
+                SaveChangesAsync method. It represents a single database transaction scope,
+                ensuring that all pending entity changes are persisted atomically.
+            </remarks>
+            <param name="context">The EF Core database context.</param>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.UnitOfWork.CompleteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+            <remarks>
+                Persists all pending entity changes (Add, Modify, Remove) to the database
+                in a single atomic transaction.
+            </remarks>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Interfaces.ASP.Configuration.Extensions.StringExtensions">
+            <summary>
+                String utility extensions used by the ASP.NET Core infrastructure layer.
+            </summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Interfaces.ASP.Configuration.Extensions.StringExtensions.ToKebabCase(System.String)">
+            <summary>
+                Converts a PascalCase or camelCase string to kebab-case.
+            </summary>
+            <param name="text">The string to convert.</param>
+            <returns>The kebab-case representation of <paramref name="text"/>.</returns>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Interfaces.ASP.Configuration.Extensions.StringExtensions.KebabCaseRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>(?&lt;!^)([A-Z][a-z]|(?&lt;=[a-z])[A-Z])</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Zero-width negative lookbehind.<br/>
+                ○ Match if at the beginning of the string.<br/>
+            ○ 1st capture group.<br/>
+                ○ Match with 2 alternative expressions, atomically.<br/>
+                    ○ Match a sequence of expressions.<br/>
+                        ○ Match a character in the set [A-Z].<br/>
+                        ○ Match a character in the set [a-z].<br/>
+                    ○ Match a sequence of expressions.<br/>
+                        ○ Zero-width positive lookbehind.<br/>
+                            ○ Match a character in the set [a-z] right-to-left.<br/>
+                        ○ Match a character in the set [A-Z].<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Interfaces.ASP.Configuration.KebabCaseRouteNamingConvention">
+            <summary>
+                An MVC controller-model convention that rewrites <c>[controller]</c> route tokens
+                to their kebab-case equivalents (e.g. <c>FavoriteSources</c> → <c>favorite-sources</c>).
+            </summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Interfaces.ASP.Configuration.KebabCaseRouteNamingConvention.Apply(Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerModel)">
+            <summary>
+                Applies the kebab-case naming transformation to all selectors on the controller and its actions.
+            </summary>
+            <param name="controller">The controller model to transform.</param>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Interfaces.ASP.Configuration.LocalizedProblemDetails">
+            <summary>Builds localized <see cref="T:Microsoft.AspNetCore.Mvc.ProblemDetails"/> responses for expected failures.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Interfaces.ASP.Localization.SharedResource">
+            <summary>Marker class used to locate the shared localization resources (.resx).</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Domain.Model.IAuditableEntity">
+            <summary>Marks an entity whose CreatedAt/UpdatedAt are managed by the persistence layer.</summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.CodeRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the CodeRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.CodeRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_1">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the KebabCaseRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>
