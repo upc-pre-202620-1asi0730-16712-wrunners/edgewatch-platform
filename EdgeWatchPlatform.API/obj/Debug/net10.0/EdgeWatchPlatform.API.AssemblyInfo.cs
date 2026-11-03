@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EdgeWatchPlatform.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03a5bf6f7c6123b13294e37f78600fb14e0f6580")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6181ad847f9480bd2d759f303f1c58d841e168af")]
 [assembly: System.Reflection.AssemblyProductAttribute("EdgeWatchPlatform.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EdgeWatchPlatform.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
