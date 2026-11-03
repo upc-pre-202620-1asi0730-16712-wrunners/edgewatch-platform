@@ -19,4 +19,5 @@
   <data name="RequiredFuelType" xml:space="preserve"><value>Fuel type is required.</value></data>
   <data name="InvalidFuelType" xml:space="preserve"><value>Fuel type must be one of HYDROGEN, KEROSENE, NATURAL_GAS or PROPANE.</value></data>
   <data name="DuplicateHvofSystemCode" xml:space="preserve"><value>An HVOF system with this code already exists in the organization.</value></data>
+  <data name="HvofSystemNotFound" xml:space="preserve"><value>HVOF system not found.</value></data>
 </root>

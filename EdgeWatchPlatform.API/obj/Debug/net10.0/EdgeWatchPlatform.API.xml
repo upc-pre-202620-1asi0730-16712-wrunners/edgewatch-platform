@@ -27,11 +27,17 @@
         <member name="T:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController">
             <summary>HVOF system endpoints.</summary>
         </member>
-        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.#ctor(EdgeWatchPlatform.API.Equipment.Application.Services.IHvofSystemCommandService,Microsoft.Extensions.Localization.IStringLocalizer{EdgeWatchPlatform.API.Shared.Interfaces.ASP.Localization.SharedResource})">
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.#ctor(EdgeWatchPlatform.API.Equipment.Application.Services.IHvofSystemCommandService,EdgeWatchPlatform.API.Equipment.Application.Services.IHvofSystemQueryService,Microsoft.Extensions.Localization.IStringLocalizer{EdgeWatchPlatform.API.Shared.Interfaces.ASP.Localization.SharedResource})">
             <summary>HVOF system endpoints.</summary>
         </member>
         <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.RegisterHvofSystem(EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.RegisterHvofSystemResource,System.Threading.CancellationToken)">
             <summary>Registers an HVOF system for an organization.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.GetHvofSystemById(System.Int32,System.Threading.CancellationToken)">
+            <summary>Gets an HVOF system by id.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.GetAllHvofSystemsByOrganizationId(System.Int32,System.Threading.CancellationToken)">
+            <summary>Lists the HVOF systems of an organization.</summary>
         </member>
         <member name="T:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.HvofSystemResource">
             <summary>Representation of an HVOF system.</summary>
@@ -176,6 +182,18 @@
             <inheritdoc />
         </member>
         <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Migrations.AddHvofSystems">
+            <inheritdoc />
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Migrations.AddHvofSystems.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Migrations.AddHvofSystems.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Migrations.AddHvofSystems.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories.BaseRepository`1">
