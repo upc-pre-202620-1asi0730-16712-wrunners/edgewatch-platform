@@ -4,10 +4,46 @@
         <name>EdgeWatchPlatform.API</name>
     </assembly>
     <members>
-        <member name="T:Program">
-            <summary>
-            Auto-generated public partial Program class for top-level statement apps.
-            </summary>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Domain.Model.Aggregates.HvofSystem">
+            <summary>An HVOF thermal spray system owned by a recuperation supplier organization.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Domain.Model.ValueObjects.HvofSystemCode">
+            <summary>Short identifier of an HVOF system inside an organization (e.g. HVOF-01).</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Domain.Model.ValueObjects.HvofSystemCode.CodeRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^[A-Z0-9-]{3,20}$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match a character in the set [\-0-9A-Z] atomically at least 3 and at most 20 times.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController">
+            <summary>HVOF system endpoints.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.#ctor(EdgeWatchPlatform.API.Equipment.Application.Services.IHvofSystemCommandService,Microsoft.Extensions.Localization.IStringLocalizer{EdgeWatchPlatform.API.Shared.Interfaces.ASP.Localization.SharedResource})">
+            <summary>HVOF system endpoints.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.HvofSystemsController.RegisterHvofSystem(EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.RegisterHvofSystemResource,System.Threading.CancellationToken)">
+            <summary>Registers an HVOF system for an organization.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.HvofSystemResource">
+            <summary>Representation of an HVOF system.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.HvofSystemResource.#ctor(System.Int32,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>Representation of an HVOF system.</summary>
+        </member>
+        <member name="T:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.RegisterHvofSystemResource">
+            <summary>Request body to register an HVOF system.</summary>
+        </member>
+        <member name="M:EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources.RegisterHvofSystemResource.#ctor(System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>Request body to register an HVOF system.</summary>
         </member>
         <member name="T:EdgeWatchPlatform.API.Shared.Application.Patterns.Result`2">
             <summary>
@@ -270,34 +306,71 @@
         <member name="T:EdgeWatchPlatform.API.Shared.Domain.Model.IAuditableEntity">
             <summary>Marks an entity whose CreatedAt/UpdatedAt are managed by the persistence layer.</summary>
         </member>
-        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_0">
-            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the KebabCaseRegex method.</summary>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
         </member>
-        <member name="F:System.Text.RegularExpressions.Generated.KebabCaseRegex_0.Instance">
+        <member name="T:System.Text.RegularExpressions.Generated.CodeRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the CodeRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.CodeRegex_0.Instance">
             <summary>Cached, thread-safe singleton instance.</summary>
         </member>
-        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_0.#ctor">
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.#ctor">
             <summary>Initializes the instance.</summary>
         </member>
-        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_0.RunnerFactory">
+        <member name="T:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory">
             <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
         </member>
-        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_0.RunnerFactory.CreateInstance">
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.CreateInstance">
             <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
         </member>
-        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_0.RunnerFactory.Runner">
+        <member name="T:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.Runner">
             <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
         </member>
-        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
             <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
             <param name="inputSpan">The text being scanned by the regular expression.</param>
         </member>
-        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
             <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
             <param name="inputSpan">The text being scanned by the regular expression.</param>
             <returns>true if a possible match was found; false if no more matches are possible.</returns>
         </member>
-        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+        <member name="M:System.Text.RegularExpressions.Generated.CodeRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_1">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the KebabCaseRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.KebabCaseRegex_1.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
             <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
             <param name="inputSpan">The text being scanned by the regular expression.</param>
             <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
