@@ -27,4 +27,16 @@
   <data name="RequiredMineSite" xml:space="preserve"><value>Mine site is required.</value></data>
   <data name="DuplicateCustomerRuc" xml:space="preserve"><value>A customer with this RUC already exists for the organization.</value></data>
   <data name="CustomerNotFound" xml:space="preserve"><value>Customer not found.</value></data>
+  <data name="RequiredCustomerId" xml:space="preserve"><value>Customer id is required.</value></data>
+  <data name="InvalidCustomerId" xml:space="preserve"><value>Customer id must be a positive integer.</value></data>
+  <data name="RequiredPartNumber" xml:space="preserve"><value>Part number is required.</value></data>
+  <data name="RequiredComponentType" xml:space="preserve"><value>Component type is required.</value></data>
+  <data name="InvalidComponentType" xml:space="preserve"><value>Component type must be one of HYDRAULIC_ROD, CYLINDER_BLOCK, SHAFT, IMPELLER or OTHER.</value></data>
+  <data name="RequiredMachineManufacturer" xml:space="preserve"><value>Machine manufacturer is required.</value></data>
+  <data name="RequiredMachineModel" xml:space="preserve"><value>Machine model is required.</value></data>
+  <data name="InvalidPcrTargetHours" xml:space="preserve"><value>PCR target hours must be between 1 and 100000.</value></data>
+  <data name="RequiredStatus" xml:space="preserve"><value>Status is required.</value></data>
+  <data name="InvalidComponentStatus" xml:space="preserve"><value>Component status must be one of RECEIVED, IN_RECUPERATION, IN_SERVICE, RETURNED or SCRAPPED.</value></data>
+  <data name="DuplicateComponentSerialNumber" xml:space="preserve"><value>A component with this serial number already exists for the customer.</value></data>
+  <data name="ComponentNotFound" xml:space="preserve"><value>Component not found.</value></data>
 </root>
