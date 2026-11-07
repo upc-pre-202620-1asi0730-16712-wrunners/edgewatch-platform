@@ -17,8 +17,8 @@ public static class EquipmentModelConfiguration
         hvofSystem.Property(s => s.SerialNumber).HasMaxLength(60).IsRequired();
         hvofSystem.Property(s => s.SystemManufacturer).HasMaxLength(80).IsRequired();
         hvofSystem.Property(s => s.SystemModel).HasMaxLength(80).IsRequired();
-        hvofSystem.Property(s => s.FuelType).HasConversion(f => f.ToString().ToSnakeCase().ToUpperInvariant(), v => Enum.Parse<FuelType>(v.Replace("_", ""), true)).HasMaxLength(20).IsRequired();
-        hvofSystem.Property(s => s.Status).HasConversion(st => st.ToString().ToUpperInvariant(), v => Enum.Parse<HvofSystemStatus>(v, true)).HasMaxLength(20).IsRequired();
+        hvofSystem.Property(s => s.FuelType).HasUpperSnakeCaseConversion(20).IsRequired();
+        hvofSystem.Property(s => s.Status).HasUpperSnakeCaseConversion(20).IsRequired();
         hvofSystem.HasIndex(s => new { s.OrganizationId, s.Code }).IsUnique();
     }
 }
