@@ -9,6 +9,11 @@ using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCor
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using EdgeWatchPlatform.API.Shared.Interfaces.ASP.Configuration;
 using EdgeWatchPlatform.API.Shared.Interfaces.ASP.Localization;
+using EdgeWatchPlatform.API.Traceability.Application.Internal.CommandServices;
+using EdgeWatchPlatform.API.Traceability.Application.Internal.QueryServices;
+using EdgeWatchPlatform.API.Traceability.Application.Services;
+using EdgeWatchPlatform.API.Traceability.Domain.Repositories;
+using EdgeWatchPlatform.API.Traceability.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -89,6 +94,12 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IHvofSystemRepository, HvofSystemRepository>();
 builder.Services.AddScoped<IHvofSystemCommandService, HvofSystemCommandService>();
 builder.Services.AddScoped<IHvofSystemQueryService, HvofSystemQueryService>();
+
+// Dependency injection — Traceability
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerCommandService, CustomerCommandService>();
+builder.Services.AddScoped<ICustomerQueryService, CustomerQueryService>();
+
 var app = builder.Build();
 
 
