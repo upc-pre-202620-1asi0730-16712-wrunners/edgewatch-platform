@@ -1,6 +1,7 @@
 using EdgeWatchPlatform.API.Equipment.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors;
+using EdgeWatchPlatform.API.Traceability.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
@@ -19,6 +20,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
 
         // Bounded context configurations are applied here, one call per context.
         builder.ApplyEquipmentConfiguration();
+        builder.ApplyTraceabilityConfiguration();
 
         builder.UseSnakeCaseNamingConvention();
     }

@@ -83,6 +83,57 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
 
                     b.ToTable("hvof_systems");
                 });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("LegalName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("legal_name");
+
+                    b.Property<int?>("LinkedAssetOwnerOrganizationId")
+                        .HasColumnType("int")
+                        .HasColumnName("linked_asset_owner_organization_id");
+
+                    b.Property<string>("MineSite")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
+                        .HasColumnName("mine_site");
+
+                    b.Property<string>("Ruc")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)")
+                        .HasColumnName("ruc");
+
+                    b.Property<int>("SupplierOrganizationId")
+                        .HasColumnType("int")
+                        .HasColumnName("supplier_organization_id");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_customers");
+
+                    b.HasIndex("SupplierOrganizationId", "Ruc")
+                        .IsUnique()
+                        .HasDatabaseName("i_x_customers_supplier_organization_id_ruc");
+
+                    b.ToTable("customers");
+                });
 #pragma warning restore 612, 618
         }
     }
