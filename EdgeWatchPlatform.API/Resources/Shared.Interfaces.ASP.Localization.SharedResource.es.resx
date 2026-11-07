@@ -20,4 +20,11 @@
   <data name="InvalidFuelType" xml:space="preserve"><value>El tipo de combustible debe ser HYDROGEN, KEROSENE, NATURAL_GAS o PROPANE.</value></data>
   <data name="DuplicateHvofSystemCode" xml:space="preserve"><value>Ya existe un sistema HVOF con este código en la organización.</value></data>
   <data name="HvofSystemNotFound" xml:space="preserve"><value>Sistema HVOF no encontrado.</value></data>
+  <data name="RequiredSupplierOrganizationId" xml:space="preserve"><value>El id de la organización proveedora es obligatorio.</value></data>
+  <data name="RequiredLegalName" xml:space="preserve"><value>La razón social es obligatoria.</value></data>
+  <data name="RequiredRuc" xml:space="preserve"><value>El RUC es obligatorio.</value></data>
+  <data name="InvalidRuc" xml:space="preserve"><value>El RUC debe tener exactamente 11 dígitos.</value></data>
+  <data name="RequiredMineSite" xml:space="preserve"><value>La unidad minera es obligatoria.</value></data>
+  <data name="DuplicateCustomerRuc" xml:space="preserve"><value>Ya existe un cliente con este RUC para la organización.</value></data>
+  <data name="CustomerNotFound" xml:space="preserve"><value>Cliente no encontrado.</value></data>
 </root>
