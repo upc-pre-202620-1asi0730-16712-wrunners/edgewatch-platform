@@ -32,5 +32,37 @@ public static class TraceabilityModelConfiguration
         component.Property(c => c.Status).HasUpperSnakeCaseConversion().IsRequired();
         component.HasIndex(c => new { c.CustomerId, c.SerialNumber }).IsUnique();
         component.HasOne<Customer>().WithMany().HasForeignKey(c => c.CustomerId).OnDelete(DeleteBehavior.Restrict);
+
+        var recuperation = builder.Entity<Recuperation>();
+        recuperation.HasKey(r => r.Id);
+        recuperation.Property(r => r.Id).IsRequired().ValueGeneratedOnAdd();
+        recuperation.Property(r => r.SupplierOrganizationId).IsRequired();
+        recuperation.Property(r => r.WorkOrderNumber).HasConversion(w => w.Value, v => new WorkOrderNumber(v)).HasMaxLength(30).IsRequired();
+        recuperation.Property(r => r.ManufacturingOrderNumber).HasMaxLength(30).IsRequired();
+        recuperation.Property(r => r.ComponentId).IsRequired();
+        recuperation.Property(r => r.CustomerId).IsRequired();
+        recuperation.Property(r => r.Segment).HasMaxLength(40).IsRequired();
+        recuperation.Property(r => r.Operation).HasMaxLength(120).IsRequired();
+        recuperation.Property(r => r.WeightValue).HasPrecision(10, 3).IsRequired();
+        recuperation.Property(r => r.WeightUnitSymbol).HasMaxLength(10).IsRequired();
+        recuperation.Property(r => r.HourmeterAtEntry).IsRequired();
+        recuperation.Property(r => r.PowderSupplier).HasMaxLength(80).IsRequired();
+        recuperation.Property(r => r.PowderLotNumber).HasMaxLength(40).IsRequired();
+        recuperation.Property(r => r.PowderChemicalComposition).HasMaxLength(40).IsRequired();
+        recuperation.Property(r => r.Status).HasUpperSnakeCaseConversion().IsRequired();
+        recuperation.Property(r => r.ReceivedAt).IsRequired();
+        recuperation.HasIndex(r => new { r.SupplierOrganizationId, r.WorkOrderNumber }).IsUnique();
+        recuperation.HasOne<Customer>().WithMany().HasForeignKey(r => r.CustomerId).OnDelete(DeleteBehavior.Restrict);
+        recuperation.HasOne<RecoveredComponent>().WithMany().HasForeignKey(r => r.ComponentId).OnDelete(DeleteBehavior.Restrict);
+        recuperation.OwnsMany(r => r.LinkedSessions, linkedSession =>
+        {
+            linkedSession.ToTable("recuperation_linked_sessions");
+            linkedSession.WithOwner().HasForeignKey("RecuperationId");
+            linkedSession.Property<int>("Id").ValueGeneratedOnAdd();
+            linkedSession.HasKey("Id");
+            linkedSession.Property(s => s.SessionId).IsRequired();
+            linkedSession.HasIndex("RecuperationId", nameof(LinkedSession.SessionId)).IsUnique();
+        });
+        recuperation.Navigation(r => r.LinkedSessions).UsePropertyAccessMode(PropertyAccessMode.Field);
     }
 }
