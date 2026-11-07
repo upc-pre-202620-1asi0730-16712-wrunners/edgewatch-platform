@@ -134,6 +134,85 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
 
                     b.ToTable("customers");
                 });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.RecoveredComponent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<string>("ComponentType")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
+                        .HasColumnName("component_type");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("created_at");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int")
+                        .HasColumnName("customer_id");
+
+                    b.Property<string>("MachineManufacturer")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)")
+                        .HasColumnName("machine_manufacturer");
+
+                    b.Property<string>("MachineModel")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)")
+                        .HasColumnName("machine_model");
+
+                    b.Property<string>("PartNumber")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("part_number");
+
+                    b.Property<int>("PcrTargetHours")
+                        .HasColumnType("int")
+                        .HasColumnName("pcr_target_hours");
+
+                    b.Property<string>("SerialNumber")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("varchar(60)")
+                        .HasColumnName("serial_number");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
+                        .HasColumnName("status");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_components");
+
+                    b.HasIndex("CustomerId", "SerialNumber")
+                        .IsUnique()
+                        .HasDatabaseName("i_x_components_customer_id_serial_number");
+
+                    b.ToTable("components", (string)null);
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.RecoveredComponent", b =>
+                {
+                    b.HasOne("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("f_k_components_customers_customer_id");
+                });
 #pragma warning restore 612, 618
         }
     }
