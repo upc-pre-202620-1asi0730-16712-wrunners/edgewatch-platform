@@ -7,6 +7,6 @@ namespace EdgeWatchPlatform.API.Equipment.Interfaces.REST.Transform;
 public static class HvofSystemResourceFromEntityAssembler
 {
     public static HvofSystemResource ToResourceFromEntity(HvofSystem entity) =>
-        new(entity.Id, entity.Code.Value, entity.OrganizationId, entity.SerialNumber, entity.Status.ToString().ToUpperInvariant(),
-            entity.SystemManufacturer, entity.SystemModel, entity.FuelType.ToString().ToSnakeCase().ToUpperInvariant());
+        new(entity.Id, entity.Code.Value, entity.OrganizationId, entity.SerialNumber, entity.Status.ToUpperSnakeCase(),
+            entity.SystemManufacturer, entity.SystemModel, entity.FuelType.ToUpperSnakeCase());
 }
