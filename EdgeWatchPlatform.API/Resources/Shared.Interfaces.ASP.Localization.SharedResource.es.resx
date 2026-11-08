@@ -39,4 +39,20 @@
   <data name="InvalidComponentStatus" xml:space="preserve"><value>El estado del componente debe ser RECEIVED, IN_RECUPERATION, IN_SERVICE, RETURNED o SCRAPPED.</value></data>
   <data name="DuplicateComponentSerialNumber" xml:space="preserve"><value>Ya existe un componente con este número de serie para el cliente.</value></data>
   <data name="ComponentNotFound" xml:space="preserve"><value>Componente no encontrado.</value></data>
+  <data name="RequiredWorkOrderNumber" xml:space="preserve"><value>El número de orden de trabajo es obligatorio.</value></data>
+  <data name="InvalidWorkOrderNumber" xml:space="preserve"><value>El número de orden de trabajo debe tener de 4 a 30 letras mayúsculas, dígitos o guiones.</value></data>
+  <data name="RequiredManufacturingOrderNumber" xml:space="preserve"><value>El número de orden de fabricación es obligatorio.</value></data>
+  <data name="InvalidComponentId" xml:space="preserve"><value>El id del componente debe ser un entero positivo.</value></data>
+  <data name="RequiredOperation" xml:space="preserve"><value>La operación es obligatoria.</value></data>
+  <data name="InvalidWeight" xml:space="preserve"><value>El peso debe estar entre 0.001 y 100000.</value></data>
+  <data name="InvalidHourmeter" xml:space="preserve"><value>El horómetro de ingreso debe ser cero o un entero positivo.</value></data>
+  <data name="RequiredPowderSupplier" xml:space="preserve"><value>El proveedor del polvo es obligatorio.</value></data>
+  <data name="RequiredPowderLotNumber" xml:space="preserve"><value>El número de lote del polvo es obligatorio.</value></data>
+  <data name="RequiredPowderChemicalComposition" xml:space="preserve"><value>La composición química del polvo es obligatoria.</value></data>
+  <data name="InvalidRecuperationStatus" xml:space="preserve"><value>El estado de la recuperación debe ser RECEIVED, IN_PROGRESS, COMPLETED, DELIVERED o REWORK.</value></data>
+  <data name="DuplicateWorkOrderNumber" xml:space="preserve"><value>Ya existe una recuperación con este número de orden de trabajo.</value></data>
+  <data name="ComponentNotOfCustomer" xml:space="preserve"><value>El componente no pertenece al cliente indicado.</value></data>
+  <data name="RecuperationNotFound" xml:space="preserve"><value>Recuperación no encontrada.</value></data>
+  <data name="InvalidRecuperationTransition" xml:space="preserve"><value>La recuperación no puede pasar de {0} a {1}.</value></data>
+  <data name="UnprocessableTitle" xml:space="preserve"><value>Solicitud no procesable</value></data>
 </root>
