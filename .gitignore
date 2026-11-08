@@ -1,13 +1,13 @@
-   bin/
-   obj/
-   /packages/
-   riderModule.iml
-   /_ReSharper.Caches/
-   .idea
-   .vs/
-   .vscode/
-   *.user
-   appsettings.Local.json
-   .env
-   CLAUDE.md
-   .claude/
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.idea
+.vs/
+.vscode/
+*.user
+appsettings.Local.json
+.env
+CLAUDE.md
+.claude/
