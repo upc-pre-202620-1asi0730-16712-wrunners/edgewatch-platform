@@ -102,6 +102,9 @@ builder.Services.AddScoped<ICustomerQueryService, CustomerQueryService>();
 builder.Services.AddScoped<IRecoveredComponentRepository, RecoveredComponentRepository>();
 builder.Services.AddScoped<IRecoveredComponentCommandService, RecoveredComponentCommandService>();
 builder.Services.AddScoped<IRecoveredComponentQueryService, RecoveredComponentQueryService>();
+builder.Services.AddScoped<IRecuperationRepository, RecuperationRepository>();
+builder.Services.AddScoped<IRecuperationCommandService, RecuperationCommandService>();
+builder.Services.AddScoped<IRecuperationQueryService, RecuperationQueryService>();
 
 var app = builder.Build();
 
