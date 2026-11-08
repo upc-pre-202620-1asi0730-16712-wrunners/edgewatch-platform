@@ -39,4 +39,20 @@
   <data name="InvalidComponentStatus" xml:space="preserve"><value>Component status must be one of RECEIVED, IN_RECUPERATION, IN_SERVICE, RETURNED or SCRAPPED.</value></data>
   <data name="DuplicateComponentSerialNumber" xml:space="preserve"><value>A component with this serial number already exists for the customer.</value></data>
   <data name="ComponentNotFound" xml:space="preserve"><value>Component not found.</value></data>
+  <data name="RequiredWorkOrderNumber" xml:space="preserve"><value>Work order number is required.</value></data>
+  <data name="InvalidWorkOrderNumber" xml:space="preserve"><value>Work order number must be 4 to 30 upper case letters, digits or hyphens.</value></data>
+  <data name="RequiredManufacturingOrderNumber" xml:space="preserve"><value>Manufacturing order number is required.</value></data>
+  <data name="InvalidComponentId" xml:space="preserve"><value>Component id must be a positive integer.</value></data>
+  <data name="RequiredOperation" xml:space="preserve"><value>Operation is required.</value></data>
+  <data name="InvalidWeight" xml:space="preserve"><value>Weight must be between 0.001 and 100000.</value></data>
+  <data name="InvalidHourmeter" xml:space="preserve"><value>Hourmeter at entry must be zero or a positive integer.</value></data>
+  <data name="RequiredPowderSupplier" xml:space="preserve"><value>Powder supplier is required.</value></data>
+  <data name="RequiredPowderLotNumber" xml:space="preserve"><value>Powder lot number is required.</value></data>
+  <data name="RequiredPowderChemicalComposition" xml:space="preserve"><value>Powder chemical composition is required.</value></data>
+  <data name="InvalidRecuperationStatus" xml:space="preserve"><value>Recuperation status must be one of RECEIVED, IN_PROGRESS, COMPLETED, DELIVERED or REWORK.</value></data>
+  <data name="DuplicateWorkOrderNumber" xml:space="preserve"><value>A recuperation with this work order number already exists.</value></data>
+  <data name="ComponentNotOfCustomer" xml:space="preserve"><value>The component does not belong to the given customer.</value></data>
+  <data name="RecuperationNotFound" xml:space="preserve"><value>Recuperation not found.</value></data>
+  <data name="InvalidRecuperationTransition" xml:space="preserve"><value>The recuperation cannot change from {0} to {1}.</value></data>
+  <data name="UnprocessableTitle" xml:space="preserve"><value>Unprocessable request</value></data>
 </root>

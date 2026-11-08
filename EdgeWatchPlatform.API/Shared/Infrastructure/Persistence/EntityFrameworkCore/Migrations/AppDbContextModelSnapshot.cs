@@ -204,6 +204,120 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
                     b.ToTable("components", (string)null);
                 });
 
+            modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Recuperation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<DateOnly?>("CompletedAt")
+                        .HasColumnType("date")
+                        .HasColumnName("completed_at");
+
+                    b.Property<int>("ComponentId")
+                        .HasColumnType("int")
+                        .HasColumnName("component_id");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("created_at");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int")
+                        .HasColumnName("customer_id");
+
+                    b.Property<int>("HourmeterAtEntry")
+                        .HasColumnType("int")
+                        .HasColumnName("hourmeter_at_entry");
+
+                    b.Property<string>("ManufacturingOrderNumber")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
+                        .HasColumnName("manufacturing_order_number");
+
+                    b.Property<string>("Operation")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
+                        .HasColumnName("operation");
+
+                    b.Property<string>("PowderChemicalComposition")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("powder_chemical_composition");
+
+                    b.Property<string>("PowderLotNumber")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("powder_lot_number");
+
+                    b.Property<string>("PowderSupplier")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)")
+                        .HasColumnName("powder_supplier");
+
+                    b.Property<DateOnly>("ReceivedAt")
+                        .HasColumnType("date")
+                        .HasColumnName("received_at");
+
+                    b.Property<string>("Segment")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("segment");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
+                        .HasColumnName("status");
+
+                    b.Property<int>("SupplierOrganizationId")
+                        .HasColumnType("int")
+                        .HasColumnName("supplier_organization_id");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("WeightUnitSymbol")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("weight_unit_symbol");
+
+                    b.Property<decimal>("WeightValue")
+                        .HasPrecision(10, 3)
+                        .HasColumnType("decimal(10,3)")
+                        .HasColumnName("weight_value");
+
+                    b.Property<string>("WorkOrderNumber")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
+                        .HasColumnName("work_order_number");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_recuperations");
+
+                    b.HasIndex("ComponentId")
+                        .HasDatabaseName("i_x_recuperations_component_id");
+
+                    b.HasIndex("CustomerId")
+                        .HasDatabaseName("i_x_recuperations_customer_id");
+
+                    b.HasIndex("SupplierOrganizationId", "WorkOrderNumber")
+                        .IsUnique()
+                        .HasDatabaseName("i_x_recuperations_supplier_organization_id_work_order_number");
+
+                    b.ToTable("recuperations");
+                });
+
             modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.RecoveredComponent", b =>
                 {
                     b.HasOne("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Customer", null)
@@ -212,6 +326,54 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("f_k_components_customers_customer_id");
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Recuperation", b =>
+                {
+                    b.HasOne("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.RecoveredComponent", null)
+                        .WithMany()
+                        .HasForeignKey("ComponentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("f_k_recuperations_components_component_id");
+
+                    b.HasOne("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("f_k_recuperations_customers_customer_id");
+
+                    b.OwnsMany("EdgeWatchPlatform.API.Traceability.Domain.Model.ValueObjects.LinkedSession", "LinkedSessions", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasColumnName("id");
+
+                            b1.Property<int>("RecuperationId")
+                                .HasColumnType("int")
+                                .HasColumnName("recuperation_id");
+
+                            b1.Property<int>("SessionId")
+                                .HasColumnType("int")
+                                .HasColumnName("session_id");
+
+                            b1.HasKey("Id")
+                                .HasName("p_k_recuperation_linked_sessions");
+
+                            b1.HasIndex("RecuperationId", "SessionId")
+                                .IsUnique()
+                                .HasDatabaseName("i_x_recuperation_linked_sessions_recuperation_id_session_id");
+
+                            b1.ToTable("recuperation_linked_sessions", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("RecuperationId")
+                                .HasConstraintName("f_k_recuperation_linked_sessions_recuperations_recuperation_id");
+                        });
+
+                    b.Navigation("LinkedSessions");
                 });
 #pragma warning restore 612, 618
         }
