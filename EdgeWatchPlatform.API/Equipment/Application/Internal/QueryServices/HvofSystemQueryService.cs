@@ -1,5 +1,6 @@
 using EdgeWatchPlatform.API.Equipment.Application.Services;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Aggregates;
+using EdgeWatchPlatform.API.Equipment.Domain.Model.Entities;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Queries;
 using EdgeWatchPlatform.API.Equipment.Domain.Repositories;
 
@@ -12,4 +13,10 @@ public class HvofSystemQueryService(IHvofSystemRepository hvofSystemRepository) 
 
     public async Task<IEnumerable<HvofSystem>> Handle(GetAllHvofSystemsByOrganizationIdQuery query, CancellationToken cancellationToken = default) =>
         await hvofSystemRepository.FindByOrganizationIdAsync(query.OrganizationId, cancellationToken);
+
+    public async Task<IEnumerable<HvofSubsystem>?> Handle(GetAllSubsystemsByHvofSystemIdQuery query, CancellationToken cancellationToken = default) =>
+        (await hvofSystemRepository.FindByIdWithCompositionAsync(query.HvofSystemId, cancellationToken))?.Subsystems;
+
+    public async Task<IEnumerable<Controller>?> Handle(GetAllControllersByHvofSystemIdQuery query, CancellationToken cancellationToken = default) =>
+        (await hvofSystemRepository.FindByIdWithCompositionAsync(query.HvofSystemId, cancellationToken))?.Controllers;
 }
