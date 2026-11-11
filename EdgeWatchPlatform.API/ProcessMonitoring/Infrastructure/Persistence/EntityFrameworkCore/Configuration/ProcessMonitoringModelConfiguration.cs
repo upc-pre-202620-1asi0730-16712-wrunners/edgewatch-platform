@@ -1,5 +1,6 @@
 using EdgeWatchPlatform.API.ProcessMonitoring.Domain.Model.Aggregates;
 using EdgeWatchPlatform.API.ProcessMonitoring.Domain.Model.Entities;
+using EdgeWatchPlatform.API.ProcessMonitoring.Domain.Model.ValueObjects;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +22,7 @@ public static class ProcessMonitoringModelConfiguration
         session.Property(s => s.StartedAt).IsRequired();
         session.Property(s => s.TimeZone).HasMaxLength(60).IsRequired();
         session.Property(s => s.Status).HasUpperSnakeCaseConversion(20).IsRequired();
-        session.Property(s => s.AbortReason).HasConversion(r => r == null ? null : r.Value.ToUpperSnakeCase(), v => v == null ? null : v.ToEnum<Domain.Model.ValueObjects.AbortReason>()).HasMaxLength(30);
+        session.Property(s => s.AbortReason).HasConversion<string?>(r => r.HasValue ? r.Value.ToUpperSnakeCase() : null, v => v == null ? (AbortReason?)null : v.ToEnum<AbortReason>()).HasMaxLength(30);
         session.HasIndex(s => new { s.OrganizationId, s.Status });
         session.HasIndex(s => s.RecuperationId);
         session.Ignore(s => s.IsActive);

@@ -71,4 +71,18 @@
   <data name="ProcessMonitoring.InvalidReadings" xml:space="preserve"><value>{0}</value></data>
   <data name="ProcessMonitoring.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de monitoreo.</value></data>
   <data name="ProcessMonitoring.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Monitoreo de Proceso.</value></data>
+  <data name="FaultDiagnosisError.FaultRuleNotFound" xml:space="preserve"><value>Regla de falla no encontrada</value></data>
+  <data name="FaultDiagnosisError.FaultCaseNotFound" xml:space="preserve"><value>Caso de falla no encontrado</value></data>
+  <data name="FaultDiagnosisError.DuplicateFaultRule" xml:space="preserve"><value>Regla de falla duplicada</value></data>
+  <data name="FaultDiagnosisError.InvalidFaultCaseTransition" xml:space="preserve"><value>Transición de caso inválida</value></data>
+  <data name="FaultDiagnosisError.Forbidden" xml:space="preserve"><value>Prohibido</value></data>
+  <data name="FaultDiagnosisError.DatabaseError" xml:space="preserve"><value>Error de base de datos en diagnóstico</value></data>
+  <data name="FaultDiagnosisError.InternalServerError" xml:space="preserve"><value>Error inesperado en diagnóstico</value></data>
+  <data name="FaultDiagnosis.FaultRuleNotFound" xml:space="preserve"><value>La regla de falla {0} no fue encontrada.</value></data>
+  <data name="FaultDiagnosis.FaultCaseNotFound" xml:space="preserve"><value>El caso de falla {0} no fue encontrado.</value></data>
+  <data name="FaultDiagnosis.DuplicateFaultRule" xml:space="preserve"><value>Ya existe una regla para {0}.</value></data>
+  <data name="FaultDiagnosis.InvalidFaultCaseTransition" xml:space="preserve"><value>El caso de falla {0} no puede cambiar al estado solicitado.</value></data>
+  <data name="FaultDiagnosis.Forbidden" xml:space="preserve"><value>Solo los administradores de la organización gestionan reglas de falla.</value></data>
+  <data name="FaultDiagnosis.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de diagnóstico.</value></data>
+  <data name="FaultDiagnosis.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Diagnóstico de Fallas.</value></data>
 </root>

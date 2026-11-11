@@ -8,6 +8,12 @@ using EdgeWatchPlatform.API.Equipment.Application.Services;
 using EdgeWatchPlatform.API.Equipment.Domain.Repositories;
 using EdgeWatchPlatform.API.Equipment.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using EdgeWatchPlatform.API.Equipment.Interfaces.Acl;
+using EdgeWatchPlatform.API.FaultDiagnosis.Application.CommandServices;
+using EdgeWatchPlatform.API.FaultDiagnosis.Application.Internal.CommandServices;
+using EdgeWatchPlatform.API.FaultDiagnosis.Application.Internal.QueryServices;
+using EdgeWatchPlatform.API.FaultDiagnosis.Application.QueryServices;
+using EdgeWatchPlatform.API.FaultDiagnosis.Domain.Repositories;
+using EdgeWatchPlatform.API.FaultDiagnosis.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using EdgeWatchPlatform.API.Iam.Application.Acl;
 using EdgeWatchPlatform.API.Iam.Application.CommandServices;
 using EdgeWatchPlatform.API.Iam.Application.Internal.CommandServices;
@@ -172,6 +178,14 @@ builder.Services.AddScoped<ExternalEquipmentService>();
 builder.Services.AddScoped<ExternalTraceabilityService>();
 builder.Services.AddScoped<ISpraySessionCommandService, SpraySessionCommandService>();
 builder.Services.AddScoped<ISpraySessionQueryService, SpraySessionQueryService>();
+
+// Dependency injection — Fault Diagnosis
+builder.Services.AddScoped<IFaultRuleRepository, FaultRuleRepository>();
+builder.Services.AddScoped<IFaultCaseRepository, FaultCaseRepository>();
+builder.Services.AddScoped<IFaultRuleCommandService, FaultRuleCommandService>();
+builder.Services.AddScoped<IFaultRuleQueryService, FaultRuleQueryService>();
+builder.Services.AddScoped<IFaultCaseCommandService, FaultCaseCommandService>();
+builder.Services.AddScoped<IFaultCaseQueryService, FaultCaseQueryService>();
 
 // Mediator: command pipeline behaviors and domain event handlers discovered in this assembly
 builder.Services.AddScoped(typeof(ICommandPipelineBehavior<>), typeof(LoggingCommandBehavior<>));

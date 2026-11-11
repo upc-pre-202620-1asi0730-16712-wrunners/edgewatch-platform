@@ -94,4 +94,10 @@
   <data name="InvalidAbortReason" xml:space="preserve"><value>The abort reason is not valid.</value></data>
   <data name="InvalidEpochMillis" xml:space="preserve"><value>The epoch millis must be positive.</value></data>
   <data name="RequiredReadings" xml:space="preserve"><value>At least one reading is required.</value></data>
+  <data name="RequiredBand" xml:space="preserve"><value>The band is required.</value></data>
+  <data name="InvalidBand" xml:space="preserve"><value>The band must be warning or shutdown.</value></data>
+  <data name="RequiredProbableCause" xml:space="preserve"><value>The probable cause is required.</value></data>
+  <data name="RequiredRecommendedAction" xml:space="preserve"><value>The recommended action is required.</value></data>
+  <data name="InvalidCooldown" xml:space="preserve"><value>The cooldown must be between 0 and 86400 seconds.</value></data>
+  <data name="InvalidFaultCaseStatus" xml:space="preserve"><value>The status must be acknowledged or resolved.</value></data>
 </root>
