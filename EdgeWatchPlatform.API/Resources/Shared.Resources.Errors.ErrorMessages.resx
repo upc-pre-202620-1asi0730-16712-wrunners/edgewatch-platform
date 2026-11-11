@@ -89,4 +89,21 @@
   <data name="EquipmentError.PartNotFound" xml:space="preserve"><value>Part not found</value></data>
   <data name="Equipment.ControllerNotFound" xml:space="preserve"><value>The controller {0} was not found in the HVOF system.</value></data>
   <data name="Equipment.PartNotFound" xml:space="preserve"><value>The part {0} was not found in the subsystem.</value></data>
+  <data name="ReportingError.ReportTemplateNotFound" xml:space="preserve"><value>Report template not found</value></data>
+  <data name="ReportingError.GeneratedReportNotFound" xml:space="preserve"><value>Generated report not found</value></data>
+  <data name="ReportingError.DuplicateReportTemplate" xml:space="preserve"><value>Duplicate report template</value></data>
+  <data name="ReportingError.ReportTemplateArchived" xml:space="preserve"><value>Report template archived</value></data>
+  <data name="ReportingError.InvalidTemplateTransition" xml:space="preserve"><value>Invalid template transition</value></data>
+  <data name="ReportingError.InvalidTemplateLayout" xml:space="preserve"><value>Invalid template layout</value></data>
+  <data name="ReportingError.Forbidden" xml:space="preserve"><value>Forbidden</value></data>
+  <data name="ReportingError.DatabaseError" xml:space="preserve"><value>Reporting database error</value></data>
+  <data name="ReportingError.InternalServerError" xml:space="preserve"><value>Unexpected reporting error</value></data>
+  <data name="Reporting.ReportTemplateNotFound" xml:space="preserve"><value>The report template {0} was not found.</value></data>
+  <data name="Reporting.GeneratedReportNotFound" xml:space="preserve"><value>The generated report {0} was not found.</value></data>
+  <data name="Reporting.DuplicateReportTemplate" xml:space="preserve"><value>A template named {0} already exists in the organization.</value></data>
+  <data name="Reporting.ReportTemplateArchived" xml:space="preserve"><value>The report template {0} is archived and cannot be edited or used.</value></data>
+  <data name="Reporting.InvalidTemplateTransition" xml:space="preserve"><value>The report template {0} is already in the requested status.</value></data>
+  <data name="Reporting.Forbidden" xml:space="preserve"><value>Only organization administrators and quality engineers manage report templates.</value></data>
+  <data name="Reporting.DatabaseError" xml:space="preserve"><value>A database error occurred during the reporting operation.</value></data>
+  <data name="Reporting.InternalServerError" xml:space="preserve"><value>An unexpected error occurred in Reporting.</value></data>
 </root>

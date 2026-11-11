@@ -89,4 +89,21 @@
   <data name="EquipmentError.PartNotFound" xml:space="preserve"><value>Parte no encontrada</value></data>
   <data name="Equipment.ControllerNotFound" xml:space="preserve"><value>El controlador {0} no fue encontrado en el sistema HVOF.</value></data>
   <data name="Equipment.PartNotFound" xml:space="preserve"><value>La parte {0} no fue encontrada en el subsistema.</value></data>
+  <data name="ReportingError.ReportTemplateNotFound" xml:space="preserve"><value>Plantilla de reporte no encontrada</value></data>
+  <data name="ReportingError.GeneratedReportNotFound" xml:space="preserve"><value>Reporte generado no encontrado</value></data>
+  <data name="ReportingError.DuplicateReportTemplate" xml:space="preserve"><value>Plantilla de reporte duplicada</value></data>
+  <data name="ReportingError.ReportTemplateArchived" xml:space="preserve"><value>Plantilla de reporte archivada</value></data>
+  <data name="ReportingError.InvalidTemplateTransition" xml:space="preserve"><value>Transición de plantilla inválida</value></data>
+  <data name="ReportingError.InvalidTemplateLayout" xml:space="preserve"><value>Diseño de plantilla inválido</value></data>
+  <data name="ReportingError.Forbidden" xml:space="preserve"><value>Prohibido</value></data>
+  <data name="ReportingError.DatabaseError" xml:space="preserve"><value>Error de base de datos en reportes</value></data>
+  <data name="ReportingError.InternalServerError" xml:space="preserve"><value>Error inesperado en reportes</value></data>
+  <data name="Reporting.ReportTemplateNotFound" xml:space="preserve"><value>La plantilla de reporte {0} no fue encontrada.</value></data>
+  <data name="Reporting.GeneratedReportNotFound" xml:space="preserve"><value>El reporte generado {0} no fue encontrado.</value></data>
+  <data name="Reporting.DuplicateReportTemplate" xml:space="preserve"><value>Ya existe una plantilla llamada {0} en la organización.</value></data>
+  <data name="Reporting.ReportTemplateArchived" xml:space="preserve"><value>La plantilla de reporte {0} está archivada y no puede editarse ni usarse.</value></data>
+  <data name="Reporting.InvalidTemplateTransition" xml:space="preserve"><value>La plantilla de reporte {0} ya está en el estado solicitado.</value></data>
+  <data name="Reporting.Forbidden" xml:space="preserve"><value>Solo los administradores y los ingenieros de calidad gestionan plantillas de reporte.</value></data>
+  <data name="Reporting.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de reportes.</value></data>
+  <data name="Reporting.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Reportes.</value></data>
 </root>
