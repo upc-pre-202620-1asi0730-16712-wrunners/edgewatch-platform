@@ -939,7 +939,7 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<DateOnly?>("CompletedAt")
+                    b.Property<DateTime?>("CompletedAt")
                         .HasColumnType("date")
                         .HasColumnName("completed_at");
 
@@ -989,7 +989,7 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
                         .HasColumnType("varchar(80)")
                         .HasColumnName("powder_supplier");
 
-                    b.Property<DateOnly>("ReceivedAt")
+                    b.Property<DateTime>("ReceivedAt")
                         .HasColumnType("date")
                         .HasColumnName("received_at");
 
