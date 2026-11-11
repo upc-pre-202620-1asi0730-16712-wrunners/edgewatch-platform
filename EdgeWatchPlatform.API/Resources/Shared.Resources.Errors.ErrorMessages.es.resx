@@ -43,4 +43,12 @@
   <data name="Equipment.DuplicateSubsystemAlias" xml:space="preserve"><value>Ya existe un subsistema con el alias {0} en el sistema HVOF.</value></data>
   <data name="Equipment.DuplicatePartSerialNumber" xml:space="preserve"><value>Ya existe una parte con el número de serie {0} en el subsistema.</value></data>
   <data name="Equipment.DuplicateControllerNumber" xml:space="preserve"><value>El número de controlador {0} ya existe en el sistema HVOF.</value></data>
+  <data name="EquipmentError.RecipeNotFound" xml:space="preserve"><value>Receta no encontrada</value></data>
+  <data name="EquipmentError.DuplicateRecipeNumber" xml:space="preserve"><value>Número de receta duplicado</value></data>
+  <data name="EquipmentError.InvalidRecipeTransition" xml:space="preserve"><value>Transición de receta inválida</value></data>
+  <data name="EquipmentError.InvalidRecipeParameters" xml:space="preserve"><value>Parámetros de receta inválidos</value></data>
+  <data name="Equipment.RecipeNotFound" xml:space="preserve"><value>La receta {0} no fue encontrada.</value></data>
+  <data name="Equipment.DuplicateRecipeNumber" xml:space="preserve"><value>Ya existe una receta en borrador con el número {0} para el sistema HVOF.</value></data>
+  <data name="Equipment.InvalidRecipeTransition" xml:space="preserve"><value>La receta {0} no puede cambiar al estado solicitado.</value></data>
+  <data name="Equipment.InvalidRecipeParameters" xml:space="preserve"><value>{0}</value></data>
 </root>

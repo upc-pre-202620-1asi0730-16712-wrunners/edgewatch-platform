@@ -77,4 +77,16 @@
   <data name="RequiredModel" xml:space="preserve"><value>El modelo es obligatorio.</value></data>
   <data name="RequiredIpAddress" xml:space="preserve"><value>La dirección IP es obligatoria.</value></data>
   <data name="InvalidPort" xml:space="preserve"><value>El puerto debe estar entre 1 y 65535.</value></data>
+  <data name="InvalidHvofSystemId" xml:space="preserve"><value>El id del sistema HVOF debe ser positivo.</value></data>
+  <data name="InvalidRecipeNumber" xml:space="preserve"><value>El número de receta debe estar entre 1 y 9999.</value></data>
+  <data name="RequiredPowderSpecification" xml:space="preserve"><value>La especificación del polvo es obligatoria.</value></data>
+  <data name="RequiredParameters" xml:space="preserve"><value>Se requiere al menos un parámetro.</value></data>
+  <data name="RequiredParameter" xml:space="preserve"><value>El nombre del parámetro es obligatorio.</value></data>
+  <data name="InvalidParameter" xml:space="preserve"><value>El nombre del parámetro debe estar en snake_case.</value></data>
+  <data name="RequiredUnitSymbol" xml:space="preserve"><value>El símbolo de unidad es obligatorio.</value></data>
+  <data name="RequiredUnitCategory" xml:space="preserve"><value>La categoría de unidad es obligatoria.</value></data>
+  <data name="InvalidUnitCategory" xml:space="preserve"><value>La categoría de unidad no es válida.</value></data>
+  <data name="RequiredMachineModel" xml:space="preserve"><value>El modelo de máquina es obligatorio.</value></data>
+  <data name="RequiredPosition" xml:space="preserve"><value>La posición es obligatoria.</value></data>
+  <data name="InvalidRecipeStatus" xml:space="preserve"><value>El estado debe ser ACTIVE o RETIRED.</value></data>
 </root>

@@ -77,4 +77,16 @@
   <data name="RequiredModel" xml:space="preserve"><value>The model is required.</value></data>
   <data name="RequiredIpAddress" xml:space="preserve"><value>The IP address is required.</value></data>
   <data name="InvalidPort" xml:space="preserve"><value>The port must be between 1 and 65535.</value></data>
+  <data name="InvalidHvofSystemId" xml:space="preserve"><value>The HVOF system id must be positive.</value></data>
+  <data name="InvalidRecipeNumber" xml:space="preserve"><value>The recipe number must be between 1 and 9999.</value></data>
+  <data name="RequiredPowderSpecification" xml:space="preserve"><value>The powder specification is required.</value></data>
+  <data name="RequiredParameters" xml:space="preserve"><value>At least one parameter is required.</value></data>
+  <data name="RequiredParameter" xml:space="preserve"><value>The parameter name is required.</value></data>
+  <data name="InvalidParameter" xml:space="preserve"><value>The parameter name must be snake_case.</value></data>
+  <data name="RequiredUnitSymbol" xml:space="preserve"><value>The unit symbol is required.</value></data>
+  <data name="RequiredUnitCategory" xml:space="preserve"><value>The unit category is required.</value></data>
+  <data name="InvalidUnitCategory" xml:space="preserve"><value>The unit category is not valid.</value></data>
+  <data name="RequiredMachineModel" xml:space="preserve"><value>The machine model is required.</value></data>
+  <data name="RequiredPosition" xml:space="preserve"><value>The position is required.</value></data>
+  <data name="InvalidRecipeStatus" xml:space="preserve"><value>The status must be ACTIVE or RETIRED.</value></data>
 </root>
