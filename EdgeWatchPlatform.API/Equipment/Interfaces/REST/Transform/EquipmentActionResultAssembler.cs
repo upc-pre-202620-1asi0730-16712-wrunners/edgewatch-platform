@@ -2,6 +2,7 @@ using EdgeWatchPlatform.API.Equipment.Domain.Model;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Aggregates;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Errors;
 using EdgeWatchPlatform.API.Shared.Application.Model;
+using EdgeWatchPlatform.API.Shared.Domain.Model.Errors;
 using EdgeWatchPlatform.API.Shared.Interfaces.Rest.ProblemDetails;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,11 @@ public static class EquipmentActionResultAssembler
     public static int ToStatusCodeFromEquipmentError(EquipmentError error) => error switch
     {
         EquipmentError.HvofSystemNotFound => StatusCodes.Status404NotFound,
+        EquipmentError.SubsystemNotFound => StatusCodes.Status404NotFound,
         EquipmentError.DuplicateHvofSystemCode => StatusCodes.Status409Conflict,
+        EquipmentError.DuplicateSubsystemAlias => StatusCodes.Status409Conflict,
+        EquipmentError.DuplicatePartSerialNumber => StatusCodes.Status409Conflict,
+        EquipmentError.DuplicateControllerNumber => StatusCodes.Status409Conflict,
         EquipmentError.OperationCancelled => StatusCodes.Status409Conflict,
         EquipmentError.DatabaseError => StatusCodes.Status500InternalServerError,
         EquipmentError.InternalServerError => StatusCodes.Status500InternalServerError,
@@ -28,15 +33,24 @@ public static class EquipmentActionResultAssembler
         return problemDetailsFactory.CreateProblemDetails(controller, ToStatusCodeFromEquipmentError(error), error, result.DomainError, detailArguments);
     }
 
+    public static IActionResult ToActionResultFromError(ControllerBase controller, EquipmentError error, Error domainError,
+        ProblemDetailsFactory problemDetailsFactory, params object[] detailArguments) =>
+        problemDetailsFactory.CreateProblemDetails(controller, ToStatusCodeFromEquipmentError(error), error, domainError, detailArguments);
+
     public static IActionResult ToActionResultFromRegisterHvofSystemResult(ControllerBase controller, Result<HvofSystem> result,
         ProblemDetailsFactory problemDetailsFactory, Func<HvofSystem, IActionResult> successAction, string code) =>
         ToActionResultFromResult(controller, result, problemDetailsFactory, successAction, code);
 
     public static IActionResult ToActionResultFromGetHvofSystemByIdResult(ControllerBase controller, HvofSystem? hvofSystem,
-        ProblemDetailsFactory problemDetailsFactory, Func<HvofSystem, IActionResult> successAction, int hvofSystemId)
-    {
-        if (hvofSystem is not null) return successAction(hvofSystem);
-        return problemDetailsFactory.CreateProblemDetails(controller, StatusCodes.Status404NotFound, EquipmentError.HvofSystemNotFound,
-            EquipmentErrors.HvofSystemNotFound, hvofSystemId);
-    }
+        ProblemDetailsFactory problemDetailsFactory, Func<HvofSystem, IActionResult> successAction, int hvofSystemId) =>
+        hvofSystem is null
+            ? ToActionResultFromError(controller, EquipmentError.HvofSystemNotFound, EquipmentErrors.HvofSystemNotFound, problemDetailsFactory, hvofSystemId)
+            : successAction(hvofSystem);
+
+    /// <summary>Answers 404 when a system-scoped collection is null (the system does not exist).</summary>
+    public static IActionResult ToActionResultFromSystemCollection<T>(ControllerBase controller, IEnumerable<T>? items,
+        ProblemDetailsFactory problemDetailsFactory, Func<IEnumerable<T>, IActionResult> successAction, int hvofSystemId) =>
+        items is null
+            ? ToActionResultFromError(controller, EquipmentError.HvofSystemNotFound, EquipmentErrors.HvofSystemNotFound, problemDetailsFactory, hvofSystemId)
+            : successAction(items);
 }
