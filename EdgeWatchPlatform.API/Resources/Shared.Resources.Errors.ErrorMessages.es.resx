@@ -51,4 +51,24 @@
   <data name="Equipment.DuplicateRecipeNumber" xml:space="preserve"><value>Ya existe una receta en borrador con el número {0} para el sistema HVOF.</value></data>
   <data name="Equipment.InvalidRecipeTransition" xml:space="preserve"><value>La receta {0} no puede cambiar al estado solicitado.</value></data>
   <data name="Equipment.InvalidRecipeParameters" xml:space="preserve"><value>{0}</value></data>
+  <data name="ProcessMonitoringError.SpraySessionNotFound" xml:space="preserve"><value>Sesión de spray no encontrada</value></data>
+  <data name="ProcessMonitoringError.HvofSystemNotFound" xml:space="preserve"><value>Sistema HVOF no encontrado</value></data>
+  <data name="ProcessMonitoringError.ActiveRecipeNotFound" xml:space="preserve"><value>Receta activa no encontrada</value></data>
+  <data name="ProcessMonitoringError.RecuperationNotFound" xml:space="preserve"><value>Recuperación no encontrada</value></data>
+  <data name="ProcessMonitoringError.RecuperationOfAnotherOrganization" xml:space="preserve"><value>Recuperación de otra organización</value></data>
+  <data name="ProcessMonitoringError.SessionNotActive" xml:space="preserve"><value>Sesión de spray no activa</value></data>
+  <data name="ProcessMonitoringError.InvalidSessionTransition" xml:space="preserve"><value>Transición de sesión inválida</value></data>
+  <data name="ProcessMonitoringError.InvalidReadings" xml:space="preserve"><value>Lecturas inválidas</value></data>
+  <data name="ProcessMonitoringError.DatabaseError" xml:space="preserve"><value>Error de base de datos en monitoreo</value></data>
+  <data name="ProcessMonitoringError.InternalServerError" xml:space="preserve"><value>Error inesperado en monitoreo</value></data>
+  <data name="ProcessMonitoring.SpraySessionNotFound" xml:space="preserve"><value>La sesión de spray {0} no fue encontrada.</value></data>
+  <data name="ProcessMonitoring.HvofSystemNotFound" xml:space="preserve"><value>El sistema HVOF {0} no fue encontrado.</value></data>
+  <data name="ProcessMonitoring.ActiveRecipeNotFound" xml:space="preserve"><value>El sistema HVOF no tiene una receta activa con el número {0}.</value></data>
+  <data name="ProcessMonitoring.RecuperationNotFound" xml:space="preserve"><value>La recuperación {0} no fue encontrada.</value></data>
+  <data name="ProcessMonitoring.RecuperationOfAnotherOrganization" xml:space="preserve"><value>La recuperación {0} pertenece a otra organización que el sistema HVOF.</value></data>
+  <data name="ProcessMonitoring.SessionNotActive" xml:space="preserve"><value>La sesión de spray {0} no está activa.</value></data>
+  <data name="ProcessMonitoring.InvalidSessionTransition" xml:space="preserve"><value>La sesión de spray {0} no puede cambiar al estado solicitado.</value></data>
+  <data name="ProcessMonitoring.InvalidReadings" xml:space="preserve"><value>{0}</value></data>
+  <data name="ProcessMonitoring.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de monitoreo.</value></data>
+  <data name="ProcessMonitoring.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Monitoreo de Proceso.</value></data>
 </root>

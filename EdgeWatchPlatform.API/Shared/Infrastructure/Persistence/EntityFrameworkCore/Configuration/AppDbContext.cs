@@ -1,5 +1,6 @@
 using EdgeWatchPlatform.API.Equipment.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
 using EdgeWatchPlatform.API.Iam.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
+using EdgeWatchPlatform.API.ProcessMonitoring.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors;
 using EdgeWatchPlatform.API.Traceability.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
@@ -24,6 +25,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.ApplyEquipmentConfiguration();
         builder.ApplyRecipeConfiguration();
         builder.ApplyTraceabilityConfiguration();
+        builder.ApplyProcessMonitoringConfiguration();
 
         builder.UseSnakeCaseNamingConvention();
     }
