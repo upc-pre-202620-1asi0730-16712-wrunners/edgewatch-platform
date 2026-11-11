@@ -67,6 +67,28 @@ public class RecipeCommandService(
         }
     }
 
+    public async Task<Result<Recipe>> Handle(UpdateRecipeCommand command, CancellationToken cancellationToken = default)
+    {
+        var recipe = await recipeRepository.FindByIdWithParametersAsync(command.RecipeId, cancellationToken);
+        if (recipe is null) return Result<Recipe>.Failure(EquipmentErrors.RecipeNotFound, EquipmentError.RecipeNotFound);
+        try
+        {
+            if (!recipe.TryUpdate(command)) return Result<Recipe>.Failure(EquipmentErrors.InvalidRecipeTransition, EquipmentError.InvalidRecipeTransition);
+            recipeRepository.Update(recipe);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<Recipe>.Success(recipe);
+        }
+        catch (ArgumentException ex)
+        {
+            return Result<Recipe>.Failure(EquipmentErrors.InvalidRecipeParameters(ex.Message), EquipmentError.InvalidRecipeParameters);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error updating recipe {RecipeId}", command.RecipeId);
+            return Result<Recipe>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
+        }
+    }
+
     public async Task<Result<Recipe>> Handle(RetireRecipeCommand command, CancellationToken cancellationToken = default)
     {
         var recipe = await recipeRepository.FindByIdWithParametersAsync(command.RecipeId, cancellationToken);
