@@ -85,4 +85,8 @@
   <data name="FaultDiagnosis.Forbidden" xml:space="preserve"><value>Only organization administrators manage fault rules.</value></data>
   <data name="FaultDiagnosis.DatabaseError" xml:space="preserve"><value>A database error occurred during the fault diagnosis operation.</value></data>
   <data name="FaultDiagnosis.InternalServerError" xml:space="preserve"><value>An unexpected error occurred in Fault Diagnosis.</value></data>
+  <data name="EquipmentError.ControllerNotFound" xml:space="preserve"><value>Controller not found</value></data>
+  <data name="EquipmentError.PartNotFound" xml:space="preserve"><value>Part not found</value></data>
+  <data name="Equipment.ControllerNotFound" xml:space="preserve"><value>The controller {0} was not found in the HVOF system.</value></data>
+  <data name="Equipment.PartNotFound" xml:space="preserve"><value>The part {0} was not found in the subsystem.</value></data>
 </root>
