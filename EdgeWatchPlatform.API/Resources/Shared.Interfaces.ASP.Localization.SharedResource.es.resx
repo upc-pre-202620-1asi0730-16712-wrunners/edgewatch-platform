@@ -86,7 +86,6 @@
   <data name="RequiredUnitSymbol" xml:space="preserve"><value>El símbolo de unidad es obligatorio.</value></data>
   <data name="RequiredUnitCategory" xml:space="preserve"><value>La categoría de unidad es obligatoria.</value></data>
   <data name="InvalidUnitCategory" xml:space="preserve"><value>La categoría de unidad no es válida.</value></data>
-  <data name="RequiredMachineModel" xml:space="preserve"><value>El modelo de máquina es obligatorio.</value></data>
   <data name="RequiredPosition" xml:space="preserve"><value>La posición es obligatoria.</value></data>
   <data name="InvalidRecipeStatus" xml:space="preserve"><value>El estado debe ser ACTIVE o RETIRED.</value></data>
   <data name="InvalidRecuperationId" xml:space="preserve"><value>El id de la recuperación debe ser positivo.</value></data>
@@ -100,4 +99,5 @@
   <data name="RequiredRecommendedAction" xml:space="preserve"><value>La acción recomendada es obligatoria.</value></data>
   <data name="InvalidCooldown" xml:space="preserve"><value>El cooldown debe estar entre 0 y 86400 segundos.</value></data>
   <data name="InvalidFaultCaseStatus" xml:space="preserve"><value>El estado debe ser acknowledged o resolved.</value></data>
+  <data name="InvalidHvofSystemStatus" xml:space="preserve"><value>El estado debe ser ACTIVE, MAINTENANCE u OUT_OF_SERVICE.</value></data>
 </root>
