@@ -35,4 +35,12 @@
   <data name="Iam.Forbidden" xml:space="preserve"><value>The current user is not allowed to perform this operation.</value></data>
   <data name="Iam.DatabaseError" xml:space="preserve"><value>A database error occurred during the IAM operation.</value></data>
   <data name="Iam.InternalServerError" xml:space="preserve"><value>An unexpected error occurred in IAM.</value></data>
+  <data name="EquipmentError.SubsystemNotFound" xml:space="preserve"><value>Subsystem not found</value></data>
+  <data name="EquipmentError.DuplicateSubsystemAlias" xml:space="preserve"><value>Duplicate subsystem alias</value></data>
+  <data name="EquipmentError.DuplicatePartSerialNumber" xml:space="preserve"><value>Duplicate part serial number</value></data>
+  <data name="EquipmentError.DuplicateControllerNumber" xml:space="preserve"><value>Duplicate controller number</value></data>
+  <data name="Equipment.SubsystemNotFound" xml:space="preserve"><value>The subsystem {0} was not found in the HVOF system.</value></data>
+  <data name="Equipment.DuplicateSubsystemAlias" xml:space="preserve"><value>A subsystem with alias {0} already exists in the HVOF system.</value></data>
+  <data name="Equipment.DuplicatePartSerialNumber" xml:space="preserve"><value>A part with serial number {0} already exists in the subsystem.</value></data>
+  <data name="Equipment.DuplicateControllerNumber" xml:space="preserve"><value>Controller number {0} already exists in the HVOF system.</value></data>
 </root>
