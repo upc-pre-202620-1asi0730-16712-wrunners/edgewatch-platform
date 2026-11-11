@@ -50,7 +50,11 @@ public static class TraceabilityModelConfiguration
         recuperation.Property(r => r.PowderLotNumber).HasMaxLength(40).IsRequired();
         recuperation.Property(r => r.PowderChemicalComposition).HasMaxLength(40).IsRequired();
         recuperation.Property(r => r.Status).HasUpperSnakeCaseConversion().IsRequired();
-        recuperation.Property(r => r.ReceivedAt).IsRequired();
+        // The MySQL provider reads DATE columns as DateTime, so DateOnly is stored through an explicit conversion.
+        recuperation.Property(r => r.ReceivedAt).HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d))
+            .HasColumnType("date").IsRequired();
+        recuperation.Property(r => r.CompletedAt).HasConversion(d => d.HasValue ? d.Value.ToDateTime(TimeOnly.MinValue) : (DateTime?)null,
+            d => d.HasValue ? DateOnly.FromDateTime(d.Value) : (DateOnly?)null).HasColumnType("date");
         recuperation.HasIndex(r => new { r.SupplierOrganizationId, r.WorkOrderNumber }).IsUnique();
         recuperation.HasOne<Customer>().WithMany().HasForeignKey(r => r.CustomerId).OnDelete(DeleteBehavior.Restrict);
         recuperation.HasOne<RecoveredComponent>().WithMany().HasForeignKey(r => r.ComponentId).OnDelete(DeleteBehavior.Restrict);
