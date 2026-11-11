@@ -11,4 +11,8 @@ public interface IHvofSystemCommandService
     Task<Result<HvofSubsystem>> Handle(AddSubsystemToHvofSystemCommand command, CancellationToken cancellationToken = default);
     Task<Result<HvofPart>> Handle(AddPartToSubsystemCommand command, CancellationToken cancellationToken = default);
     Task<Result<Controller>> Handle(AddControllerToHvofSystemCommand command, CancellationToken cancellationToken = default);
+    Task<Result<HvofSystem>> Handle(UpdateHvofSystemCommand command, CancellationToken cancellationToken = default);
+    Task<Result<HvofSubsystem>> Handle(UpdateSubsystemCommand command, CancellationToken cancellationToken = default);
+    Task<Result<Controller>> Handle(UpdateControllerCommand command, CancellationToken cancellationToken = default);
+    Task<Result<HvofSystem>> Handle(RemovePartFromSubsystemCommand command, CancellationToken cancellationToken = default);
 }

@@ -20,6 +20,11 @@ public partial class HvofSystem
 
     public HvofSubsystem? FindSubsystemById(int subsystemId) => _subsystems.FirstOrDefault(s => s.Id == subsystemId);
 
+    public Controller? FindControllerById(int controllerId) => _controllers.FirstOrDefault(c => c.Id == controllerId);
+
+    public bool HasOtherSubsystemWithAlias(int subsystemId, string alias) =>
+        _subsystems.Any(s => s.Id != subsystemId && string.Equals(s.Alias, alias.Trim(), StringComparison.OrdinalIgnoreCase));
+
     /// <summary>Adds a subsystem. Returns false when the alias is already used in this system.</summary>
     public bool TryAddSubsystem(HvofSubsystem subsystem)
     {

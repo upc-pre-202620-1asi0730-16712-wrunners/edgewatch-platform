@@ -37,6 +37,26 @@ public class HvofSubsystem
     public bool HasPartWithSerialNumber(string serialNumber) =>
         _parts.Any(p => string.Equals(p.SerialNumber, serialNumber.Trim(), StringComparison.OrdinalIgnoreCase));
 
+    public HvofSubsystem Update(SubsystemType subsystemType, string name, string alias, IEnumerable<ParameterName> parameters)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+        ArgumentException.ThrowIfNullOrWhiteSpace(alias);
+        SubsystemType = subsystemType;
+        Name = name.Trim();
+        Alias = alias.Trim();
+        _parameters.Clear();
+        foreach (var parameter in parameters.DistinctBy(p => p.Value)) _parameters.Add(new SubsystemParameter(parameter.Value));
+        return this;
+    }
+
+    public bool TryRemovePart(int partId)
+    {
+        var part = _parts.FirstOrDefault(p => p.Id == partId);
+        if (part is null) return false;
+        _parts.Remove(part);
+        return true;
+    }
+
     /// <summary>Adds a part. Returns false when a part with the same serial number already exists.</summary>
     public bool TryAddPart(HvofPart part)
     {

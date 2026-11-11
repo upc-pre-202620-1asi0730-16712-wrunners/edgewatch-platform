@@ -37,6 +37,27 @@ public class Controller
         foreach (var protocol in protocols.Distinct()) _supportedProtocols.Add(new SupportedProtocol(protocol));
     }
 
+    public Controller Update(DeviceType deviceType, string serialNumber, string manufacturer, string model, string partNumber, string ipAddress, int port,
+        int rack, int slot, string? endpointUrl, IEnumerable<Protocol> protocols)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(serialNumber);
+        ArgumentException.ThrowIfNullOrWhiteSpace(ipAddress);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(port);
+        DeviceType = deviceType;
+        SerialNumber = serialNumber.Trim();
+        Manufacturer = manufacturer.Trim();
+        Model = model.Trim();
+        PartNumber = partNumber.Trim();
+        IpAddress = ipAddress.Trim();
+        Port = port;
+        Rack = rack;
+        Slot = slot;
+        EndpointUrl = string.IsNullOrWhiteSpace(endpointUrl) ? null : endpointUrl.Trim();
+        _supportedProtocols.Clear();
+        foreach (var protocol in protocols.Distinct()) _supportedProtocols.Add(new SupportedProtocol(protocol));
+        return this;
+    }
+
     public int Id { get; private set; }
     public int HvofSystemId { get; private set; }
     public int ControllerNumber { get; private set; }

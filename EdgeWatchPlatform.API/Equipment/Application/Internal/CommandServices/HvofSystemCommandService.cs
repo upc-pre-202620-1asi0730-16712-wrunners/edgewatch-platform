@@ -86,6 +86,85 @@ public class HvofSystemCommandService(
         }
     }
 
+    public async Task<Result<HvofSystem>> Handle(UpdateHvofSystemCommand command, CancellationToken cancellationToken = default)
+    {
+        var hvofSystem = await hvofSystemRepository.FindByIdAsync(command.HvofSystemId, cancellationToken);
+        if (hvofSystem is null) return Result<HvofSystem>.Failure(EquipmentErrors.HvofSystemNotFound, EquipmentError.HvofSystemNotFound);
+        try
+        {
+            hvofSystem.Update(command);
+            hvofSystemRepository.Update(hvofSystem);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<HvofSystem>.Success(hvofSystem);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error updating HVOF system {HvofSystemId}", command.HvofSystemId);
+            return Result<HvofSystem>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
+        }
+    }
+
+    public async Task<Result<HvofSubsystem>> Handle(UpdateSubsystemCommand command, CancellationToken cancellationToken = default)
+    {
+        var hvofSystem = await hvofSystemRepository.FindByIdWithCompositionAsync(command.HvofSystemId, cancellationToken);
+        if (hvofSystem is null) return Result<HvofSubsystem>.Failure(EquipmentErrors.HvofSystemNotFound, EquipmentError.HvofSystemNotFound);
+        var subsystem = hvofSystem.FindSubsystemById(command.SubsystemId);
+        if (subsystem is null) return Result<HvofSubsystem>.Failure(EquipmentErrors.SubsystemNotFound, EquipmentError.SubsystemNotFound);
+        if (hvofSystem.HasOtherSubsystemWithAlias(command.SubsystemId, command.Alias))
+            return Result<HvofSubsystem>.Failure(EquipmentErrors.DuplicateSubsystemAlias, EquipmentError.DuplicateSubsystemAlias);
+        try
+        {
+            subsystem.Update(command.SubsystemType, command.Name, command.Alias, command.Parameters);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<HvofSubsystem>.Success(subsystem);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error updating subsystem {SubsystemId}", command.SubsystemId);
+            return Result<HvofSubsystem>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
+        }
+    }
+
+    public async Task<Result<Controller>> Handle(UpdateControllerCommand command, CancellationToken cancellationToken = default)
+    {
+        var hvofSystem = await hvofSystemRepository.FindByIdWithCompositionAsync(command.HvofSystemId, cancellationToken);
+        if (hvofSystem is null) return Result<Controller>.Failure(EquipmentErrors.HvofSystemNotFound, EquipmentError.HvofSystemNotFound);
+        var controller = hvofSystem.FindControllerById(command.ControllerId);
+        if (controller is null) return Result<Controller>.Failure(EquipmentErrors.ControllerNotFound, EquipmentError.ControllerNotFound);
+        try
+        {
+            controller.Update(command.DeviceType, command.SerialNumber, command.Manufacturer, command.Model, command.PartNumber, command.IpAddress,
+                command.Port, command.Rack, command.Slot, command.EndpointUrl, command.Protocols);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<Controller>.Success(controller);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error updating controller {ControllerId}", command.ControllerId);
+            return Result<Controller>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
+        }
+    }
+
+    public async Task<Result<HvofSystem>> Handle(RemovePartFromSubsystemCommand command, CancellationToken cancellationToken = default)
+    {
+        var hvofSystem = await hvofSystemRepository.FindByIdWithCompositionAsync(command.HvofSystemId, cancellationToken);
+        if (hvofSystem is null) return Result<HvofSystem>.Failure(EquipmentErrors.HvofSystemNotFound, EquipmentError.HvofSystemNotFound);
+        if (hvofSystem.FindSubsystemById(command.SubsystemId) is null)
+            return Result<HvofSystem>.Failure(EquipmentErrors.SubsystemNotFound, EquipmentError.SubsystemNotFound);
+        if (!hvofSystem.TryRemovePart(command.SubsystemId, command.PartId))
+            return Result<HvofSystem>.Failure(EquipmentErrors.PartNotFound, EquipmentError.PartNotFound);
+        try
+        {
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<HvofSystem>.Success(hvofSystem);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error removing part {PartId}", command.PartId);
+            return Result<HvofSystem>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
+        }
+    }
+
     public async Task<Result<Controller>> Handle(AddControllerToHvofSystemCommand command, CancellationToken cancellationToken = default)
     {
         var hvofSystem = await hvofSystemRepository.FindByIdWithCompositionAsync(command.HvofSystemId, cancellationToken);

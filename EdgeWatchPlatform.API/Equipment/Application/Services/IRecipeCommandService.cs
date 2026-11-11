@@ -9,4 +9,5 @@ public interface IRecipeCommandService
     Task<Result<Recipe>> Handle(CreateRecipeCommand command, CancellationToken cancellationToken = default);
     Task<Result<Recipe>> Handle(PublishRecipeCommand command, CancellationToken cancellationToken = default);
     Task<Result<Recipe>> Handle(RetireRecipeCommand command, CancellationToken cancellationToken = default);
+    Task<Result<Recipe>> Handle(UpdateRecipeCommand command, CancellationToken cancellationToken = default);
 }

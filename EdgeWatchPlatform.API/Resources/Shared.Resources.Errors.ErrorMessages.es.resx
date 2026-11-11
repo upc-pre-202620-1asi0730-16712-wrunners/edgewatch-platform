@@ -85,4 +85,8 @@
   <data name="FaultDiagnosis.Forbidden" xml:space="preserve"><value>Solo los administradores de la organización gestionan reglas de falla.</value></data>
   <data name="FaultDiagnosis.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de diagnóstico.</value></data>
   <data name="FaultDiagnosis.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Diagnóstico de Fallas.</value></data>
+  <data name="EquipmentError.ControllerNotFound" xml:space="preserve"><value>Controlador no encontrado</value></data>
+  <data name="EquipmentError.PartNotFound" xml:space="preserve"><value>Parte no encontrada</value></data>
+  <data name="Equipment.ControllerNotFound" xml:space="preserve"><value>El controlador {0} no fue encontrado en el sistema HVOF.</value></data>
+  <data name="Equipment.PartNotFound" xml:space="preserve"><value>La parte {0} no fue encontrada en el subsistema.</value></data>
 </root>

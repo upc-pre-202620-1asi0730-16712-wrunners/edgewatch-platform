@@ -15,6 +15,8 @@ public static class EquipmentActionResultAssembler
     {
         EquipmentError.HvofSystemNotFound => StatusCodes.Status404NotFound,
         EquipmentError.SubsystemNotFound => StatusCodes.Status404NotFound,
+        EquipmentError.ControllerNotFound => StatusCodes.Status404NotFound,
+        EquipmentError.PartNotFound => StatusCodes.Status404NotFound,
         EquipmentError.DuplicateHvofSystemCode => StatusCodes.Status409Conflict,
         EquipmentError.DuplicateSubsystemAlias => StatusCodes.Status409Conflict,
         EquipmentError.DuplicatePartSerialNumber => StatusCodes.Status409Conflict,

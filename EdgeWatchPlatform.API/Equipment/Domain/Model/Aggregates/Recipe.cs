@@ -48,6 +48,24 @@ public partial class Recipe : AggregateRoot
 
     public RecipeParameter? ParameterFor(string parameter) => _parameters.FirstOrDefault(p => p.Parameter == parameter);
 
+    /// <summary>Replaces the editable data; only a DRAFT recipe can change. Returns false otherwise.</summary>
+    public bool TryUpdate(UpdateRecipeCommand command)
+    {
+        ArgumentNullException.ThrowIfNull(command);
+        if (Status != RecipeStatus.Draft) return false;
+        ArgumentException.ThrowIfNullOrWhiteSpace(command.Name);
+        if (command.Parameters.Count == 0) throw new ArgumentException("A recipe needs at least one parameter.", nameof(command));
+        if (command.Parameters.Select(p => p.Parameter.Value).Distinct().Count() != command.Parameters.Count)
+            throw new ArgumentException("Recipe parameters must be unique.", nameof(command));
+        Name = command.Name.Trim();
+        PowderSpecification = command.PowderSpecification.Trim();
+        _applicabilities.Clear();
+        foreach (var applicability in command.Applicabilities) _applicabilities.Add(applicability);
+        _parameters.Clear();
+        foreach (var item in command.Parameters) _parameters.Add(new RecipeParameter(item.Parameter, item.Bands, item.UnitSymbol, item.UnitCategory));
+        return true;
+    }
+
     /// <summary>DRAFT → ACTIVE. Returns false for any other status.</summary>
     public bool TryPublish()
     {

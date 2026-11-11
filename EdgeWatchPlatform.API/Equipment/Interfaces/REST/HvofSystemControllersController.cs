@@ -32,6 +32,19 @@ public class HvofSystemControllersController(
             items => Ok(items.Select(ControllerResourceFromEntityAssembler.ToResourceFromEntity)), hvofSystemId);
     }
 
+    /// <summary>Updates a controller.</summary>
+    [HttpPut("{controllerId:int}")]
+    [EndpointSummary("Update a controller")]
+    [ProducesResponseType(typeof(ControllerResource), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> UpdateController(int hvofSystemId, int controllerId, [FromBody] AddControllerResource resource, CancellationToken cancellationToken)
+    {
+        var result = await commandService.Handle(UpdateCommandsFromResourceAssembler.ToCommandFromResource(hvofSystemId, controllerId, resource), cancellationToken);
+        return EquipmentActionResultAssembler.ToActionResultFromResult(this, result, problemDetailsFactory,
+            controller => Ok(ControllerResourceFromEntityAssembler.ToResourceFromEntity(controller)), controllerId);
+    }
+
     /// <summary>Adds a controller to an HVOF system.</summary>
     [HttpPost]
     [EndpointSummary("Add a controller to an HVOF system")]
