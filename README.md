@@ -11,6 +11,7 @@ REST API of **EdgeWatch**, the platform by **WebRunners** for the traceability a
 | **Traceability** | `Customer`, `RecoveredComponent`, `Recuperation` | `/customers`, `/components`, `/recuperations`, `PATCH /recuperations/{id}` |
 | **Process Monitoring** | `SpraySession` (frozen recipe bands), `ProcessReading` | `/spray-sessions`, `PATCH /spray-sessions/{id}`, `/spray-sessions/{id}/readings`, `/spray-sessions/{id}/deviations` |
 | **Fault Diagnosis** | `FaultRule`, `FaultCase` | `/fault-rules`, `/fault-cases`, `PATCH /fault-cases/{id}` |
+| **Reporting** | `ReportTemplate` (sections, widgets), `GeneratedReport` | `/report-templates`, `PATCH /report-templates/{id}/status`, `/generated-reports` |
 
 All routes live under `/api/v1` in kebab-case. Every endpoint except sign-up, sign-in and roles requires `Authorization: Bearer <token>`.
 
@@ -20,6 +21,7 @@ Each bounded context has the layers `Domain` (aggregates, entities, value object
 
 - **Results and errors:** command services return `Result<T>` with a domain `Error` and the context error enum; `ProblemDetailsFactory` turns failures into RFC 9457 problem details localized in English and Spanish (`Accept-Language`).
 - **Domain events:** aggregates extend `AggregateRoot` and record `IEvent`s; `DispatchDomainEventsInterceptor` publishes them through Cortex.Mediator when the unit of work is saved. Fault Diagnosis opens cases by handling Process Monitoring's `OutOfBandReadingDetectedEvent`.
+- **Reporting:** templates describe branding, page setup and ordered sections of widgets (variable, aggregation, view); the web application renders the PDF from them and registers each generated report. Standard templates are seeded per organization on the first request.
 - **Context integration:** Process Monitoring talks to Equipment and Traceability only through `IEquipmentContextFacade` and `ITraceabilityContextFacade`.
 - **Persistence:** snake_case pluralized tables, audit timestamps by interceptor, migrations applied on startup.
 

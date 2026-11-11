@@ -100,4 +100,34 @@
   <data name="InvalidCooldown" xml:space="preserve"><value>El cooldown debe estar entre 0 y 86400 segundos.</value></data>
   <data name="InvalidFaultCaseStatus" xml:space="preserve"><value>El estado debe ser acknowledged o resolved.</value></data>
   <data name="InvalidHvofSystemStatus" xml:space="preserve"><value>El estado debe ser ACTIVE, MAINTENANCE u OUT_OF_SERVICE.</value></data>
+  <data name="RequiredReportKind" xml:space="preserve"><value>El tipo de reporte es obligatorio.</value></data>
+  <data name="InvalidReportKind" xml:space="preserve"><value>El tipo de reporte debe ser QUALITY_CERTIFICATE, SESSION_REPORT o FAULT_SUMMARY.</value></data>
+  <data name="RequiredColor" xml:space="preserve"><value>El color es obligatorio.</value></data>
+  <data name="InvalidColor" xml:space="preserve"><value>El color debe tener el formato #RRGGBB.</value></data>
+  <data name="RequiredPageSize" xml:space="preserve"><value>El tamaño de página es obligatorio.</value></data>
+  <data name="InvalidPageSize" xml:space="preserve"><value>El tamaño de página debe ser A4 o LETTER.</value></data>
+  <data name="RequiredOrientation" xml:space="preserve"><value>La orientación es obligatoria.</value></data>
+  <data name="InvalidOrientation" xml:space="preserve"><value>La orientación debe ser PORTRAIT o LANDSCAPE.</value></data>
+  <data name="RequiredSections" xml:space="preserve"><value>Se requiere al menos una sección.</value></data>
+  <data name="RequiredSectionTitle" xml:space="preserve"><value>El título de la sección es obligatorio.</value></data>
+  <data name="InvalidSectionOrder" xml:space="preserve"><value>El orden de la sección debe estar entre 1 y 50.</value></data>
+  <data name="RequiredWidgets" xml:space="preserve"><value>Cada sección necesita al menos un widget.</value></data>
+  <data name="InvalidWidgetPosition" xml:space="preserve"><value>La posición del widget debe estar entre 1 y 50.</value></data>
+  <data name="RequiredVariableSource" xml:space="preserve"><value>La fuente de la variable es obligatoria.</value></data>
+  <data name="InvalidVariableSource" xml:space="preserve"><value>La fuente debe ser PROCESS, SESSION, RECUPERATION o FAULT_CASES.</value></data>
+  <data name="RequiredVariableCode" xml:space="preserve"><value>El código de la variable es obligatorio.</value></data>
+  <data name="InvalidVariableCode" xml:space="preserve"><value>El código de la variable debe ser snake_case en minúsculas (3 a 40 caracteres).</value></data>
+  <data name="RequiredVariableLabel" xml:space="preserve"><value>La etiqueta de la variable es obligatoria.</value></data>
+  <data name="RequiredViewType" xml:space="preserve"><value>El tipo de vista es obligatorio.</value></data>
+  <data name="InvalidViewType" xml:space="preserve"><value>El tipo de vista debe ser VALUE, MIN_MAX, TREND, TABLE o TEXT.</value></data>
+  <data name="RequiredAggregation" xml:space="preserve"><value>La agregación es obligatoria.</value></data>
+  <data name="InvalidAggregation" xml:space="preserve"><value>La agregación debe ser AVG, MIN, MAX, RANGE, LAST o COUNT.</value></data>
+  <data name="RequiredWidth" xml:space="preserve"><value>El ancho es obligatorio.</value></data>
+  <data name="InvalidWidth" xml:space="preserve"><value>El ancho debe ser HALF o FULL.</value></data>
+  <data name="InvalidTemplateStatus" xml:space="preserve"><value>El estado debe ser ACTIVE o ARCHIVED.</value></data>
+  <data name="InvalidReportTemplateId" xml:space="preserve"><value>El id de la plantilla de reporte es inválido.</value></data>
+  <data name="RequiredSubjectType" xml:space="preserve"><value>El tipo de sujeto es obligatorio.</value></data>
+  <data name="InvalidSubjectType" xml:space="preserve"><value>El tipo de sujeto debe ser SPRAY_SESSION o RECUPERATION.</value></data>
+  <data name="InvalidSubjectId" xml:space="preserve"><value>El id del sujeto es inválido.</value></data>
+  <data name="RequiredFileName" xml:space="preserve"><value>El nombre del archivo es obligatorio.</value></data>
 </root>
