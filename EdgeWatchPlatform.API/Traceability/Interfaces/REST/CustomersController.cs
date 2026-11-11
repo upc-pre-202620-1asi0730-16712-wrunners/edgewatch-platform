@@ -6,12 +6,14 @@ using EdgeWatchPlatform.API.Traceability.Application.Services;
 using EdgeWatchPlatform.API.Traceability.Domain.Model.Queries;
 using EdgeWatchPlatform.API.Traceability.Interfaces.REST.Resources;
 using EdgeWatchPlatform.API.Traceability.Interfaces.REST.Transform;
+using EdgeWatchPlatform.API.Iam.Infrastructure.Pipeline.Middleware.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
 namespace EdgeWatchPlatform.API.Traceability.Interfaces.REST;
 
 /// <summary>Customer endpoints.</summary>
+[Authorize]
 [ApiController]
 [Route("api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
