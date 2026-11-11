@@ -89,4 +89,9 @@
   <data name="RequiredMachineModel" xml:space="preserve"><value>The machine model is required.</value></data>
   <data name="RequiredPosition" xml:space="preserve"><value>The position is required.</value></data>
   <data name="InvalidRecipeStatus" xml:space="preserve"><value>The status must be ACTIVE or RETIRED.</value></data>
+  <data name="InvalidRecuperationId" xml:space="preserve"><value>The recuperation id must be positive.</value></data>
+  <data name="InvalidSessionStatus" xml:space="preserve"><value>The status must be completed or aborted.</value></data>
+  <data name="InvalidAbortReason" xml:space="preserve"><value>The abort reason is not valid.</value></data>
+  <data name="InvalidEpochMillis" xml:space="preserve"><value>The epoch millis must be positive.</value></data>
+  <data name="RequiredReadings" xml:space="preserve"><value>At least one reading is required.</value></data>
 </root>
