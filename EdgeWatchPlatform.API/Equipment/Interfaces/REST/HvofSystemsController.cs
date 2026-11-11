@@ -48,6 +48,19 @@ public class HvofSystemsController(
             found => Ok(HvofSystemResourceFromEntityAssembler.ToResourceFromEntity(found)), id);
     }
 
+    /// <summary>Updates the editable data of an HVOF system.</summary>
+    [HttpPut("{id:int}")]
+    [EndpointSummary("Update an HVOF system")]
+    [ProducesResponseType(typeof(HvofSystemResource), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> UpdateHvofSystem(int id, [FromBody] UpdateHvofSystemResource resource, CancellationToken cancellationToken)
+    {
+        var result = await commandService.Handle(UpdateCommandsFromResourceAssembler.ToCommandFromResource(id, resource), cancellationToken);
+        return EquipmentActionResultAssembler.ToActionResultFromResult(this, result, problemDetailsFactory,
+            system => Ok(HvofSystemResourceFromEntityAssembler.ToResourceFromEntity(system)), id);
+    }
+
     /// <summary>Lists the HVOF systems of an organization.</summary>
     [HttpGet]
     [EndpointSummary("Get the HVOF systems of an organization")]

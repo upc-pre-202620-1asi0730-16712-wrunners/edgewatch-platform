@@ -48,6 +48,32 @@ public class HvofSystemSubsystemsController(
             result.Error is Domain.Model.EquipmentError.HvofSystemNotFound ? (object)hvofSystemId : resource.Alias);
     }
 
+    /// <summary>Updates a subsystem.</summary>
+    [HttpPut("{subsystemId:int}")]
+    [EndpointSummary("Update a subsystem")]
+    [ProducesResponseType(typeof(HvofSubsystemResource), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
+    public async Task<IActionResult> UpdateSubsystem(int hvofSystemId, int subsystemId, [FromBody] AddSubsystemResource resource, CancellationToken cancellationToken)
+    {
+        var result = await commandService.Handle(UpdateCommandsFromResourceAssembler.ToCommandFromResource(hvofSystemId, subsystemId, resource), cancellationToken);
+        return EquipmentActionResultAssembler.ToActionResultFromResult(this, result, problemDetailsFactory,
+            subsystem => Ok(HvofSubsystemResourceFromEntityAssembler.ToResourceFromEntity(subsystem)),
+            result.Error is Domain.Model.EquipmentError.DuplicateSubsystemAlias ? resource.Alias : subsystemId);
+    }
+
+    /// <summary>Removes a part from a subsystem.</summary>
+    [HttpDelete("{subsystemId:int}/parts/{partId:int}")]
+    [EndpointSummary("Remove a part from a subsystem")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> RemovePart(int hvofSystemId, int subsystemId, int partId, CancellationToken cancellationToken)
+    {
+        var result = await commandService.Handle(new Domain.Model.Commands.RemovePartFromSubsystemCommand(hvofSystemId, subsystemId, partId), cancellationToken);
+        return EquipmentActionResultAssembler.ToActionResultFromResult(this, result, problemDetailsFactory, _ => NoContent(), partId);
+    }
+
     /// <summary>Adds a part to a subsystem.</summary>
     [HttpPost("{subsystemId:int}/parts")]
     [EndpointSummary("Add a part to a subsystem")]

@@ -80,6 +80,32 @@ public class RecipesController(
         return Ok(recipes.Select(RecipeResourceFromEntityAssembler.ToResourceFromEntity));
     }
 
+    /// <summary>Replaces the data of a DRAFT recipe.</summary>
+    [HttpPut("{id:int}")]
+    [EndpointSummary("Update a draft recipe")]
+    [ProducesResponseType(typeof(RecipeResource), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status422UnprocessableEntity)]
+    public async Task<IActionResult> UpdateRecipe(int id, [FromBody] UpdateRecipeResource resource, CancellationToken cancellationToken)
+    {
+        UpdateRecipeCommand command;
+        try
+        {
+            command = UpdateCommandsFromResourceAssembler.ToCommandFromResource(id, resource);
+        }
+        catch (ArgumentException ex)
+        {
+            return EquipmentActionResultAssembler.ToActionResultFromError(this, EquipmentError.InvalidRecipeParameters,
+                EquipmentErrors.InvalidRecipeParameters(ex.Message), problemDetailsFactory, ex.Message);
+        }
+
+        var result = await commandService.Handle(command, cancellationToken);
+        return EquipmentActionResultAssembler.ToActionResultFromResult(this, result, problemDetailsFactory,
+            recipe => Ok(RecipeResourceFromEntityAssembler.ToResourceFromEntity(recipe)),
+            result.Error is EquipmentError.InvalidRecipeParameters ? result.DomainError.Message : id);
+    }
+
     /// <summary>Changes the recipe status: ACTIVE publishes a draft (retiring the previous active one), RETIRED retires an active recipe.</summary>
     [HttpPatch("{id:int}/status")]
     [EndpointSummary("Publish or retire a recipe")]
