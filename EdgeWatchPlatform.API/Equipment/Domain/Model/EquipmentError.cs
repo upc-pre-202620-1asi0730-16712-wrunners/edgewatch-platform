@@ -10,6 +10,10 @@ public enum EquipmentError
     DuplicateSubsystemAlias,
     DuplicatePartSerialNumber,
     DuplicateControllerNumber,
+    RecipeNotFound,
+    DuplicateRecipeNumber,
+    InvalidRecipeTransition,
+    InvalidRecipeParameters,
     OperationCancelled,
     DatabaseError,
     InternalServerError
