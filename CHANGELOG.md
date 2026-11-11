@@ -2,6 +2,10 @@
 
 All notable changes to the EdgeWatch Platform are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-11-11
+### Added
+- `.gitattributes` normalizing line endings to LF.
+
 ## [1.0.0] - 2026-11-11
 ### Added
 - Shared kernel: `AggregateRoot` with domain events dispatched through Cortex.Mediator, `Result<T>` and `Error`, RFC 9457 problem details localized in English and Spanish, global exception handler, auditing interceptor and command pipeline behaviors.
