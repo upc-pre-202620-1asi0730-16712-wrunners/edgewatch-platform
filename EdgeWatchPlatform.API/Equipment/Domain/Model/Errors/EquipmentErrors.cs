@@ -23,6 +23,18 @@ public static class EquipmentErrors
     public static readonly Error DuplicateControllerNumber =
         Error.Conflict("Equipment.DuplicateControllerNumber", "Controller number {0} already exists in the HVOF system.");
 
+    public static readonly Error RecipeNotFound =
+        Error.NotFound("Equipment.RecipeNotFound", "The recipe {0} was not found.");
+
+    public static readonly Error DuplicateRecipeNumber =
+        Error.Conflict("Equipment.DuplicateRecipeNumber", "A draft recipe with number {0} already exists for the HVOF system.");
+
+    public static readonly Error InvalidRecipeTransition =
+        Error.Failure("Equipment.InvalidRecipeTransition", "The recipe {0} cannot change to the requested status.");
+
+    public static Error InvalidRecipeParameters(string reason) =>
+        Error.Validation("Equipment.InvalidRecipeParameters", reason);
+
     public static readonly Error DatabaseError =
         Error.Unexpected("Equipment.DatabaseError", "A database error occurred during the equipment operation.");
 

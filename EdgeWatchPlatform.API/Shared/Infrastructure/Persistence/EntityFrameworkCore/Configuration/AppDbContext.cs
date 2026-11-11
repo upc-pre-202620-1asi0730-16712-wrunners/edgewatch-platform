@@ -22,6 +22,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         // Bounded context configurations are applied here, one call per context.
         builder.ApplyIamConfiguration();
         builder.ApplyEquipmentConfiguration();
+        builder.ApplyRecipeConfiguration();
         builder.ApplyTraceabilityConfiguration();
 
         builder.UseSnakeCaseNamingConvention();

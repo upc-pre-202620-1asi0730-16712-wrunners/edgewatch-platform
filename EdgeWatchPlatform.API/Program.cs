@@ -1,11 +1,13 @@
 using System.Globalization;
 using Cortex.Mediator.Commands;
 using Cortex.Mediator.DependencyInjection;
+using EdgeWatchPlatform.API.Equipment.Application.Acl;
 using EdgeWatchPlatform.API.Equipment.Application.Internal.CommandServices;
 using EdgeWatchPlatform.API.Equipment.Application.Internal.QueryServices;
 using EdgeWatchPlatform.API.Equipment.Application.Services;
 using EdgeWatchPlatform.API.Equipment.Domain.Repositories;
 using EdgeWatchPlatform.API.Equipment.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using EdgeWatchPlatform.API.Equipment.Interfaces.Acl;
 using EdgeWatchPlatform.API.Iam.Application.Acl;
 using EdgeWatchPlatform.API.Iam.Application.CommandServices;
 using EdgeWatchPlatform.API.Iam.Application.Internal.CommandServices;
@@ -137,6 +139,10 @@ builder.Services.AddScoped<IIamContextFacade, IamContextFacade>();
 builder.Services.AddScoped<IHvofSystemRepository, HvofSystemRepository>();
 builder.Services.AddScoped<IHvofSystemCommandService, HvofSystemCommandService>();
 builder.Services.AddScoped<IHvofSystemQueryService, HvofSystemQueryService>();
+builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<IRecipeCommandService, RecipeCommandService>();
+builder.Services.AddScoped<IRecipeQueryService, RecipeQueryService>();
+builder.Services.AddScoped<IEquipmentContextFacade, EquipmentContextFacade>();
 
 // Dependency injection — Traceability
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
