@@ -22,7 +22,16 @@ using EdgeWatchPlatform.API.Iam.Infrastructure.Pipeline.Middleware.Extensions;
 using EdgeWatchPlatform.API.Iam.Infrastructure.Tokens.Jwt.Configuration;
 using EdgeWatchPlatform.API.Iam.Infrastructure.Tokens.Jwt.Services;
 using EdgeWatchPlatform.API.Iam.Interfaces.Acl;
+using EdgeWatchPlatform.API.ProcessMonitoring.Application.CommandServices;
+using EdgeWatchPlatform.API.ProcessMonitoring.Application.Internal.CommandServices;
+using EdgeWatchPlatform.API.ProcessMonitoring.Application.Internal.OutboundServices.Acl;
+using EdgeWatchPlatform.API.ProcessMonitoring.Application.Internal.QueryServices;
+using EdgeWatchPlatform.API.ProcessMonitoring.Application.QueryServices;
+using EdgeWatchPlatform.API.ProcessMonitoring.Domain.Repositories;
+using EdgeWatchPlatform.API.ProcessMonitoring.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using EdgeWatchPlatform.API.Shared.Domain.Repositories;
+using EdgeWatchPlatform.API.Traceability.Application.Acl;
+using EdgeWatchPlatform.API.Traceability.Interfaces.Acl;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Interfaces.AspNetCore.OpenApi;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Mediator.Cortex.Configuration;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
@@ -154,6 +163,15 @@ builder.Services.AddScoped<IRecoveredComponentQueryService, RecoveredComponentQu
 builder.Services.AddScoped<IRecuperationRepository, RecuperationRepository>();
 builder.Services.AddScoped<IRecuperationCommandService, RecuperationCommandService>();
 builder.Services.AddScoped<IRecuperationQueryService, RecuperationQueryService>();
+builder.Services.AddScoped<ITraceabilityContextFacade, TraceabilityContextFacade>();
+
+// Dependency injection — Process Monitoring
+builder.Services.AddScoped<ISpraySessionRepository, SpraySessionRepository>();
+builder.Services.AddScoped<IProcessReadingRepository, ProcessReadingRepository>();
+builder.Services.AddScoped<ExternalEquipmentService>();
+builder.Services.AddScoped<ExternalTraceabilityService>();
+builder.Services.AddScoped<ISpraySessionCommandService, SpraySessionCommandService>();
+builder.Services.AddScoped<ISpraySessionQueryService, SpraySessionQueryService>();
 
 // Mediator: command pipeline behaviors and domain event handlers discovered in this assembly
 builder.Services.AddScoped(typeof(ICommandPipelineBehavior<>), typeof(LoggingCommandBehavior<>));
