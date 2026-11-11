@@ -1,14 +1,22 @@
 using System.Globalization;
-using EdgeWatchPlatform.API.Equipment.Application.Internal.QueryServices;
+using Cortex.Mediator.Commands;
+using Cortex.Mediator.DependencyInjection;
 using EdgeWatchPlatform.API.Equipment.Application.Internal.CommandServices;
+using EdgeWatchPlatform.API.Equipment.Application.Internal.QueryServices;
 using EdgeWatchPlatform.API.Equipment.Application.Services;
 using EdgeWatchPlatform.API.Equipment.Domain.Repositories;
 using EdgeWatchPlatform.API.Equipment.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using EdgeWatchPlatform.API.Shared.Domain.Repositories;
+using EdgeWatchPlatform.API.Shared.Infrastructure.Interfaces.AspNetCore.OpenApi;
+using EdgeWatchPlatform.API.Shared.Infrastructure.Mediator.Cortex.Configuration;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
+using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using EdgeWatchPlatform.API.Shared.Infrastructure.Pipeline.Middleware.Components;
 using EdgeWatchPlatform.API.Shared.Interfaces.ASP.Configuration;
 using EdgeWatchPlatform.API.Shared.Interfaces.ASP.Localization;
+using EdgeWatchPlatform.API.Shared.Resources;
+using EdgeWatchPlatform.API.Shared.Resources.Errors;
 using EdgeWatchPlatform.API.Traceability.Application.Internal.CommandServices;
 using EdgeWatchPlatform.API.Traceability.Application.Internal.QueryServices;
 using EdgeWatchPlatform.API.Traceability.Application.Services;
@@ -19,6 +27,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Scalar.AspNetCore;
+using ProblemDetailsFactory = EdgeWatchPlatform.API.Shared.Interfaces.Rest.ProblemDetails.ProblemDetailsFactory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,7 +50,10 @@ builder.Services.AddControllers(options => options.Conventions.Add(new KebabCase
             return new BadRequestObjectResult(problem) { ContentTypes = { "application/problem+json" } };
         };
     });
+
+// ProblemDetails for unexpected errors (RFC 9457)
 builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 // Localization (en default, es)
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
@@ -53,6 +65,9 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedUICultures = supportedCultures;
     options.ApplyCurrentCultureToResponseHeaders = true;
 });
+builder.Services.AddSingleton<IStringLocalizer<ErrorMessages>, StringLocalizer<ErrorMessages>>();
+builder.Services.AddSingleton<IStringLocalizer<CommonMessages>, StringLocalizer<CommonMessages>>();
+builder.Services.AddSingleton<ProblemDetailsFactory>();
 
 // CORS for the web application
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()?
@@ -70,6 +85,7 @@ builder.Services.AddOpenApi(options =>
         document.Info.Description = "REST API for monitoring and tracing HVOF thermal-spray recuperation processes.";
         return Task.CompletedTask;
     });
+    options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
 });
 
 // Database
@@ -80,15 +96,14 @@ builder.Services.AddDbContext<AppDbContext>((serviceProvider, options) =>
     var connectionString = Environment.ExpandEnvironmentVariables(template);
     options.UseMySQL(connectionString)
         .UseLoggerFactory(serviceProvider.GetRequiredService<ILoggerFactory>())
+        .AddInterceptors(serviceProvider.GetRequiredService<DispatchDomainEventsInterceptor>())
         .EnableDetailedErrors();
     if (builder.Environment.IsDevelopment()) options.EnableSensitiveDataLogging();
 });
 
 // Dependency injection — Shared
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-// Dependency injection — bounded contexts (one block per context)
-
+builder.Services.AddScoped<DispatchDomainEventsInterceptor>();
 
 // Dependency injection — Equipment
 builder.Services.AddScoped<IHvofSystemRepository, HvofSystemRepository>();
@@ -106,8 +121,13 @@ builder.Services.AddScoped<IRecuperationRepository, RecuperationRepository>();
 builder.Services.AddScoped<IRecuperationCommandService, RecuperationCommandService>();
 builder.Services.AddScoped<IRecuperationQueryService, RecuperationQueryService>();
 
-var app = builder.Build();
+// Mediator: command pipeline behaviors and domain event handlers discovered in this assembly
+builder.Services.AddScoped(typeof(ICommandPipelineBehavior<>), typeof(LoggingCommandBehavior<>));
+builder.Services.AddScoped(typeof(ICommandPipelineBehavior<>), typeof(ExceptionHandlingCommandBehavior<>));
+builder.Services.AddScoped(typeof(ICommandPipelineBehavior<>), typeof(TransactionCommandBehavior<>));
+builder.Services.AddCortexMediator([typeof(Program)]);
 
+var app = builder.Build();
 
 // Apply pending migrations on startup (ADR-008)
 using (var scope = app.Services.CreateScope())
@@ -117,11 +137,8 @@ app.UseExceptionHandler();
 app.UseStatusCodePages();
 app.UseRequestLocalization();
 app.UseCors("EdgeWatchWebApp");
-
 app.MapOpenApi();
 app.MapScalarApiReference(options => options.WithTitle("EdgeWatch Platform API").WithTheme(ScalarTheme.Mars));
-
 app.MapGet("/health", () => Results.Ok(new { status = "UP" })).ExcludeFromDescription();
 app.MapControllers();
-
 app.Run();

@@ -1,11 +1,10 @@
-using EdgeWatchPlatform.API.Equipment.Application.Errors;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Aggregates;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Commands;
-using EdgeWatchPlatform.API.Shared.Application.Patterns;
+using EdgeWatchPlatform.API.Shared.Application.Model;
 
 namespace EdgeWatchPlatform.API.Equipment.Application.Services;
 
 public interface IHvofSystemCommandService
 {
-    Task<Result<HvofSystem, RegisterHvofSystemError>> Handle(RegisterHvofSystemCommand command, CancellationToken cancellationToken = default);
+    Task<Result<HvofSystem>> Handle(RegisterHvofSystemCommand command, CancellationToken cancellationToken = default);
 }

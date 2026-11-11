@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="GenericError" xml:space="preserve"><value>Ocurrió un error.</value></data>
+  <data name="OperationCancelled" xml:space="preserve"><value>La operación fue cancelada.</value></data>
+  <data name="EquipmentError.HvofSystemNotFound" xml:space="preserve"><value>Sistema HVOF no encontrado</value></data>
+  <data name="EquipmentError.DuplicateHvofSystemCode" xml:space="preserve"><value>Código de sistema HVOF duplicado</value></data>
+  <data name="EquipmentError.OperationCancelled" xml:space="preserve"><value>Operación de equipos cancelada</value></data>
+  <data name="EquipmentError.DatabaseError" xml:space="preserve"><value>Error de base de datos en equipos</value></data>
+  <data name="EquipmentError.InternalServerError" xml:space="preserve"><value>Error inesperado en equipos</value></data>
+  <data name="Equipment.HvofSystemNotFound" xml:space="preserve"><value>El sistema HVOF {0} no fue encontrado.</value></data>
+  <data name="Equipment.DuplicateHvofSystemCode" xml:space="preserve"><value>Ya existe un sistema HVOF con el código {0} en la organización.</value></data>
+  <data name="Equipment.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de equipos.</value></data>
+  <data name="Equipment.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Equipos.</value></data>
+</root>

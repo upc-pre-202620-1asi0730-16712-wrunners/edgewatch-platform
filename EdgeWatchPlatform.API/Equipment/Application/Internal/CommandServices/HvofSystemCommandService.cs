@@ -1,9 +1,10 @@
-using EdgeWatchPlatform.API.Equipment.Application.Errors;
 using EdgeWatchPlatform.API.Equipment.Application.Services;
+using EdgeWatchPlatform.API.Equipment.Domain.Model;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Aggregates;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Commands;
+using EdgeWatchPlatform.API.Equipment.Domain.Model.Errors;
 using EdgeWatchPlatform.API.Equipment.Domain.Repositories;
-using EdgeWatchPlatform.API.Shared.Application.Patterns;
+using EdgeWatchPlatform.API.Shared.Application.Model;
 using EdgeWatchPlatform.API.Shared.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,12 +15,12 @@ public class HvofSystemCommandService(
     IUnitOfWork unitOfWork,
     ILogger<HvofSystemCommandService> logger) : IHvofSystemCommandService
 {
-    public async Task<Result<HvofSystem, RegisterHvofSystemError>> Handle(RegisterHvofSystemCommand command, CancellationToken cancellationToken = default)
+    public async Task<Result<HvofSystem>> Handle(RegisterHvofSystemCommand command, CancellationToken cancellationToken = default)
     {
         if (await hvofSystemRepository.ExistsByOrganizationIdAndCodeAsync(command.OrganizationId, command.Code, cancellationToken))
         {
             logger.LogWarning("Duplicate HVOF system code {Code} for organization {OrganizationId}", command.Code, command.OrganizationId);
-            return new Result<HvofSystem, RegisterHvofSystemError>.Failure(RegisterHvofSystemError.DuplicateCode);
+            return Result<HvofSystem>.Failure(EquipmentErrors.DuplicateHvofSystemCode, EquipmentError.DuplicateHvofSystemCode);
         }
 
         try
@@ -27,17 +28,17 @@ public class HvofSystemCommandService(
             var hvofSystem = new HvofSystem(command);
             await hvofSystemRepository.AddAsync(hvofSystem, cancellationToken);
             await unitOfWork.CompleteAsync(cancellationToken);
-            return new Result<HvofSystem, RegisterHvofSystemError>.Success(hvofSystem);
+            return Result<HvofSystem>.Success(hvofSystem);
         }
         catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database error registering HVOF system {Code} for organization {OrganizationId}", command.Code, command.OrganizationId);
-            return new Result<HvofSystem, RegisterHvofSystemError>.Failure(RegisterHvofSystemError.UnexpectedError);
+            return Result<HvofSystem>.Failure(EquipmentErrors.DatabaseError, EquipmentError.DatabaseError);
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Unexpected error registering HVOF system {Code}", command.Code);
-            return new Result<HvofSystem, RegisterHvofSystemError>.Failure(RegisterHvofSystemError.UnexpectedError);
+            return Result<HvofSystem>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
         }
     }
 }

@@ -1,10 +1,12 @@
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Commands;
+using EdgeWatchPlatform.API.Equipment.Domain.Model.Events;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.ValueObjects;
+using EdgeWatchPlatform.API.Shared.Domain.Model.Aggregates.Internal;
 
 namespace EdgeWatchPlatform.API.Equipment.Domain.Model.Aggregates;
 
 /// <summary>An HVOF thermal spray system owned by a recuperation supplier organization.</summary>
-public partial class HvofSystem
+public partial class HvofSystem : AggregateRoot
 {
     protected HvofSystem()
     {
@@ -14,7 +16,7 @@ public partial class HvofSystem
         SystemModel = string.Empty;
     }
 
-    public HvofSystem(RegisterHvofSystemCommand command)
+    public HvofSystem(RegisterHvofSystemCommand command) : this()
     {
         ArgumentNullException.ThrowIfNull(command);
         OrganizationId = command.OrganizationId;
@@ -24,6 +26,7 @@ public partial class HvofSystem
         SystemModel = command.SystemModel.Trim();
         FuelType = command.FuelType;
         Status = HvofSystemStatus.Active;
+        AddDomainEvent(new HvofSystemRegisteredEvent(OrganizationId, Code.Value, SerialNumber));
     }
 
     public int Id { get; private set; }
