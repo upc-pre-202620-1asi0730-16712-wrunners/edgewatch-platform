@@ -55,4 +55,13 @@
   <data name="RecuperationNotFound" xml:space="preserve"><value>Recuperación no encontrada.</value></data>
   <data name="InvalidRecuperationTransition" xml:space="preserve"><value>La recuperación no puede pasar de {0} a {1}.</value></data>
   <data name="UnprocessableTitle" xml:space="preserve"><value>Solicitud no procesable</value></data>
+  <data name="RequiredOrganizationName" xml:space="preserve"><value>El nombre de la organización es obligatorio.</value></data>
+  <data name="RequiredOrganizationType" xml:space="preserve"><value>El tipo de organización es obligatorio.</value></data>
+  <data name="InvalidOrganizationType" xml:space="preserve"><value>El tipo de organización debe ser RECUPERATION_SUPPLIER o ASSET_OWNER.</value></data>
+  <data name="RequiredFullName" xml:space="preserve"><value>El nombre completo es obligatorio.</value></data>
+  <data name="RequiredEmail" xml:space="preserve"><value>El correo es obligatorio.</value></data>
+  <data name="InvalidEmail" xml:space="preserve"><value>El correo no es válido.</value></data>
+  <data name="RequiredPassword" xml:space="preserve"><value>La contraseña es obligatoria.</value></data>
+  <data name="InvalidPassword" xml:space="preserve"><value>La contraseña debe tener al menos 8 caracteres.</value></data>
+  <data name="RequiredRoleIds" xml:space="preserve"><value>Se requiere al menos un rol.</value></data>
 </root>

@@ -6,6 +6,20 @@ using EdgeWatchPlatform.API.Equipment.Application.Internal.QueryServices;
 using EdgeWatchPlatform.API.Equipment.Application.Services;
 using EdgeWatchPlatform.API.Equipment.Domain.Repositories;
 using EdgeWatchPlatform.API.Equipment.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using EdgeWatchPlatform.API.Iam.Application.Acl;
+using EdgeWatchPlatform.API.Iam.Application.CommandServices;
+using EdgeWatchPlatform.API.Iam.Application.Internal.CommandServices;
+using EdgeWatchPlatform.API.Iam.Application.Internal.OutboundServices;
+using EdgeWatchPlatform.API.Iam.Application.Internal.QueryServices;
+using EdgeWatchPlatform.API.Iam.Application.QueryServices;
+using EdgeWatchPlatform.API.Iam.Domain.Model.Commands;
+using EdgeWatchPlatform.API.Iam.Domain.Repositories;
+using EdgeWatchPlatform.API.Iam.Infrastructure.Hashing.BCrypt.Services;
+using EdgeWatchPlatform.API.Iam.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using EdgeWatchPlatform.API.Iam.Infrastructure.Pipeline.Middleware.Extensions;
+using EdgeWatchPlatform.API.Iam.Infrastructure.Tokens.Jwt.Configuration;
+using EdgeWatchPlatform.API.Iam.Infrastructure.Tokens.Jwt.Services;
+using EdgeWatchPlatform.API.Iam.Interfaces.Acl;
 using EdgeWatchPlatform.API.Shared.Domain.Repositories;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Interfaces.AspNetCore.OpenApi;
 using EdgeWatchPlatform.API.Shared.Infrastructure.Mediator.Cortex.Configuration;
@@ -105,6 +119,20 @@ builder.Services.AddDbContext<AppDbContext>((serviceProvider, options) =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<DispatchDomainEventsInterceptor>();
 
+// Dependency injection — IAM
+builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IUserCommandService, UserCommandService>();
+builder.Services.AddScoped<IUserQueryService, UserQueryService>();
+builder.Services.AddScoped<IRoleCommandService, RoleCommandService>();
+builder.Services.AddScoped<IRoleQueryService, RoleQueryService>();
+builder.Services.AddScoped<IOrganizationQueryService, OrganizationQueryService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IHashingService, HashingService>();
+builder.Services.AddScoped<IIamContextFacade, IamContextFacade>();
+
 // Dependency injection — Equipment
 builder.Services.AddScoped<IHvofSystemRepository, HvofSystemRepository>();
 builder.Services.AddScoped<IHvofSystemCommandService, HvofSystemCommandService>();
@@ -129,14 +157,18 @@ builder.Services.AddCortexMediator([typeof(Program)]);
 
 var app = builder.Build();
 
-// Apply pending migrations on startup (ADR-008)
+// Apply pending migrations on startup (ADR-008) and seed the roles
 using (var scope = app.Services.CreateScope())
+{
     scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.Migrate();
+    await scope.ServiceProvider.GetRequiredService<IRoleCommandService>().Handle(new SeedRolesCommand());
+}
 
 app.UseExceptionHandler();
 app.UseStatusCodePages();
 app.UseRequestLocalization();
 app.UseCors("EdgeWatchWebApp");
+app.UseRequestAuthorization();
 app.MapOpenApi();
 app.MapScalarApiReference(options => options.WithTitle("EdgeWatch Platform API").WithTheme(ScalarTheme.Mars));
 app.MapGet("/health", () => Results.Ok(new { status = "UP" })).ExcludeFromDescription();

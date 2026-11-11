@@ -5,11 +5,13 @@ using EdgeWatchPlatform.API.Equipment.Domain.Model.Queries;
 using EdgeWatchPlatform.API.Equipment.Interfaces.REST.Resources;
 using EdgeWatchPlatform.API.Equipment.Interfaces.REST.Transform;
 using EdgeWatchPlatform.API.Shared.Interfaces.Rest.ProblemDetails;
+using EdgeWatchPlatform.API.Iam.Infrastructure.Pipeline.Middleware.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EdgeWatchPlatform.API.Equipment.Interfaces.REST;
 
 /// <summary>HVOF system endpoints.</summary>
+[Authorize]
 [ApiController]
 [Route("api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
