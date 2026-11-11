@@ -84,6 +84,140 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
                     b.ToTable("hvof_systems");
                 });
 
+            modelBuilder.Entity("EdgeWatchPlatform.API.Iam.Domain.Model.Aggregates.Organization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("OrganizationType")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
+                        .HasColumnName("organization_type");
+
+                    b.Property<string>("Ruc")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)")
+                        .HasColumnName("ruc");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("status");
+
+                    b.Property<string>("TimeZone")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("varchar(60)")
+                        .HasColumnName("time_zone");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_organizations");
+
+                    b.HasIndex("Ruc")
+                        .IsUnique()
+                        .HasDatabaseName("i_x_organizations_ruc");
+
+                    b.ToTable("organizations");
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Iam.Domain.Model.Aggregates.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
+                        .HasColumnName("email");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
+                        .HasColumnName("full_name");
+
+                    b.Property<int>("OrganizationId")
+                        .HasColumnType("int")
+                        .HasColumnName("organization_id");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("password_hash");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("status");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_users");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasDatabaseName("i_x_users_email");
+
+                    b.HasIndex("OrganizationId")
+                        .HasDatabaseName("i_x_users_organization_id");
+
+                    b.ToTable("users");
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Iam.Domain.Model.Entities.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_roles");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasDatabaseName("i_x_roles_name");
+
+                    b.ToTable("roles");
+                });
+
             modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -316,6 +450,57 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
                         .HasDatabaseName("i_x_recuperations_supplier_organization_id_work_order_number");
 
                     b.ToTable("recuperations");
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Iam.Domain.Model.Aggregates.User", b =>
+                {
+                    b.HasOne("EdgeWatchPlatform.API.Iam.Domain.Model.Aggregates.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("f_k_users_organizations_organization_id");
+
+                    b.OwnsMany("EdgeWatchPlatform.API.Iam.Domain.Model.ValueObjects.UserRole", "Roles", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasColumnName("id");
+
+                            b1.Property<int>("RoleId")
+                                .HasColumnType("int")
+                                .HasColumnName("role_id");
+
+                            b1.Property<int>("UserId")
+                                .HasColumnType("int")
+                                .HasColumnName("user_id");
+
+                            b1.HasKey("Id")
+                                .HasName("p_k_user_roles");
+
+                            b1.HasIndex("RoleId")
+                                .HasDatabaseName("i_x_user_roles_role_id");
+
+                            b1.HasIndex("UserId", "RoleId")
+                                .IsUnique()
+                                .HasDatabaseName("i_x_user_roles_user_id_role_id");
+
+                            b1.ToTable("user_roles", (string)null);
+
+                            b1.HasOne("EdgeWatchPlatform.API.Iam.Domain.Model.Entities.Role", null)
+                                .WithMany()
+                                .HasForeignKey("RoleId")
+                                .OnDelete(DeleteBehavior.Restrict)
+                                .IsRequired()
+                                .HasConstraintName("f_k_user_roles_roles_role_id");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UserId")
+                                .HasConstraintName("f_k_user_roles_users_user_id");
+                        });
+
+                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.RecoveredComponent", b =>
