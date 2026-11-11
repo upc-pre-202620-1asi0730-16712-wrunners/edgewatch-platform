@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="GenericError" xml:space="preserve"><value>Ocurrió un error.</value></data>
+  <data name="OperationCancelled" xml:space="preserve"><value>La operación fue cancelada.</value></data>
+  <data name="EquipmentError.HvofSystemNotFound" xml:space="preserve"><value>Sistema HVOF no encontrado</value></data>
+  <data name="EquipmentError.DuplicateHvofSystemCode" xml:space="preserve"><value>Código de sistema HVOF duplicado</value></data>
+  <data name="EquipmentError.OperationCancelled" xml:space="preserve"><value>Operación de equipos cancelada</value></data>
+  <data name="EquipmentError.DatabaseError" xml:space="preserve"><value>Error de base de datos en equipos</value></data>
+  <data name="EquipmentError.InternalServerError" xml:space="preserve"><value>Error inesperado en equipos</value></data>
+  <data name="Equipment.HvofSystemNotFound" xml:space="preserve"><value>El sistema HVOF {0} no fue encontrado.</value></data>
+  <data name="Equipment.DuplicateHvofSystemCode" xml:space="preserve"><value>Ya existe un sistema HVOF con el código {0} en la organización.</value></data>
+  <data name="Equipment.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de equipos.</value></data>
+  <data name="Equipment.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Equipos.</value></data>
+  <data name="IamError.UserNotFound" xml:space="preserve"><value>Usuario no encontrado</value></data>
+  <data name="IamError.OrganizationNotFound" xml:space="preserve"><value>Organización no encontrada</value></data>
+  <data name="IamError.RoleNotFound" xml:space="preserve"><value>Rol no encontrado</value></data>
+  <data name="IamError.EmailAlreadyTaken" xml:space="preserve"><value>Correo ya registrado</value></data>
+  <data name="IamError.RucAlreadyTaken" xml:space="preserve"><value>RUC ya registrado</value></data>
+  <data name="IamError.InvalidCredentials" xml:space="preserve"><value>Credenciales inválidas</value></data>
+  <data name="IamError.Unauthorized" xml:space="preserve"><value>No autorizado</value></data>
+  <data name="IamError.Forbidden" xml:space="preserve"><value>Prohibido</value></data>
+  <data name="IamError.DatabaseError" xml:space="preserve"><value>Error de base de datos en IAM</value></data>
+  <data name="IamError.InternalServerError" xml:space="preserve"><value>Error inesperado en IAM</value></data>
+  <data name="Iam.UserNotFound" xml:space="preserve"><value>El usuario {0} no fue encontrado.</value></data>
+  <data name="Iam.OrganizationNotFound" xml:space="preserve"><value>La organización {0} no fue encontrada.</value></data>
+  <data name="Iam.RoleNotFound" xml:space="preserve"><value>Uno de los roles solicitados no existe.</value></data>
+  <data name="Iam.EmailAlreadyTaken" xml:space="preserve"><value>El correo {0} ya está registrado.</value></data>
+  <data name="Iam.RucAlreadyTaken" xml:space="preserve"><value>Ya existe una organización con el RUC {0}.</value></data>
+  <data name="Iam.InvalidCredentials" xml:space="preserve"><value>Correo o contraseña inválidos.</value></data>
+  <data name="Iam.Unauthorized" xml:space="preserve"><value>Se requiere un token bearer válido.</value></data>
+  <data name="Iam.Forbidden" xml:space="preserve"><value>El usuario actual no tiene permiso para esta operación.</value></data>
+  <data name="Iam.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de IAM.</value></data>
+  <data name="Iam.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en IAM.</value></data>
+  <data name="EquipmentError.SubsystemNotFound" xml:space="preserve"><value>Subsistema no encontrado</value></data>
+  <data name="EquipmentError.DuplicateSubsystemAlias" xml:space="preserve"><value>Alias de subsistema duplicado</value></data>
+  <data name="EquipmentError.DuplicatePartSerialNumber" xml:space="preserve"><value>Número de serie de parte duplicado</value></data>
+  <data name="EquipmentError.DuplicateControllerNumber" xml:space="preserve"><value>Número de controlador duplicado</value></data>
+  <data name="Equipment.SubsystemNotFound" xml:space="preserve"><value>El subsistema {0} no fue encontrado en el sistema HVOF.</value></data>
+  <data name="Equipment.DuplicateSubsystemAlias" xml:space="preserve"><value>Ya existe un subsistema con el alias {0} en el sistema HVOF.</value></data>
+  <data name="Equipment.DuplicatePartSerialNumber" xml:space="preserve"><value>Ya existe una parte con el número de serie {0} en el subsistema.</value></data>
+  <data name="Equipment.DuplicateControllerNumber" xml:space="preserve"><value>El número de controlador {0} ya existe en el sistema HVOF.</value></data>
+  <data name="EquipmentError.RecipeNotFound" xml:space="preserve"><value>Receta no encontrada</value></data>
+  <data name="EquipmentError.DuplicateRecipeNumber" xml:space="preserve"><value>Número de receta duplicado</value></data>
+  <data name="EquipmentError.InvalidRecipeTransition" xml:space="preserve"><value>Transición de receta inválida</value></data>
+  <data name="EquipmentError.InvalidRecipeParameters" xml:space="preserve"><value>Parámetros de receta inválidos</value></data>
+  <data name="Equipment.RecipeNotFound" xml:space="preserve"><value>La receta {0} no fue encontrada.</value></data>
+  <data name="Equipment.DuplicateRecipeNumber" xml:space="preserve"><value>Ya existe una receta en borrador con el número {0} para el sistema HVOF.</value></data>
+  <data name="Equipment.InvalidRecipeTransition" xml:space="preserve"><value>La receta {0} no puede cambiar al estado solicitado.</value></data>
+  <data name="Equipment.InvalidRecipeParameters" xml:space="preserve"><value>{0}</value></data>
+  <data name="ProcessMonitoringError.SpraySessionNotFound" xml:space="preserve"><value>Sesión de spray no encontrada</value></data>
+  <data name="ProcessMonitoringError.HvofSystemNotFound" xml:space="preserve"><value>Sistema HVOF no encontrado</value></data>
+  <data name="ProcessMonitoringError.ActiveRecipeNotFound" xml:space="preserve"><value>Receta activa no encontrada</value></data>
+  <data name="ProcessMonitoringError.RecuperationNotFound" xml:space="preserve"><value>Recuperación no encontrada</value></data>
+  <data name="ProcessMonitoringError.RecuperationOfAnotherOrganization" xml:space="preserve"><value>Recuperación de otra organización</value></data>
+  <data name="ProcessMonitoringError.SessionNotActive" xml:space="preserve"><value>Sesión de spray no activa</value></data>
+  <data name="ProcessMonitoringError.InvalidSessionTransition" xml:space="preserve"><value>Transición de sesión inválida</value></data>
+  <data name="ProcessMonitoringError.InvalidReadings" xml:space="preserve"><value>Lecturas inválidas</value></data>
+  <data name="ProcessMonitoringError.DatabaseError" xml:space="preserve"><value>Error de base de datos en monitoreo</value></data>
+  <data name="ProcessMonitoringError.InternalServerError" xml:space="preserve"><value>Error inesperado en monitoreo</value></data>
+  <data name="ProcessMonitoring.SpraySessionNotFound" xml:space="preserve"><value>La sesión de spray {0} no fue encontrada.</value></data>
+  <data name="ProcessMonitoring.HvofSystemNotFound" xml:space="preserve"><value>El sistema HVOF {0} no fue encontrado.</value></data>
+  <data name="ProcessMonitoring.ActiveRecipeNotFound" xml:space="preserve"><value>El sistema HVOF no tiene una receta activa con el número {0}.</value></data>
+  <data name="ProcessMonitoring.RecuperationNotFound" xml:space="preserve"><value>La recuperación {0} no fue encontrada.</value></data>
+  <data name="ProcessMonitoring.RecuperationOfAnotherOrganization" xml:space="preserve"><value>La recuperación {0} pertenece a otra organización que el sistema HVOF.</value></data>
+  <data name="ProcessMonitoring.SessionNotActive" xml:space="preserve"><value>La sesión de spray {0} no está activa.</value></data>
+  <data name="ProcessMonitoring.InvalidSessionTransition" xml:space="preserve"><value>La sesión de spray {0} no puede cambiar al estado solicitado.</value></data>
+  <data name="ProcessMonitoring.InvalidReadings" xml:space="preserve"><value>{0}</value></data>
+  <data name="ProcessMonitoring.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de monitoreo.</value></data>
+  <data name="ProcessMonitoring.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Monitoreo de Proceso.</value></data>
+  <data name="FaultDiagnosisError.FaultRuleNotFound" xml:space="preserve"><value>Regla de falla no encontrada</value></data>
+  <data name="FaultDiagnosisError.FaultCaseNotFound" xml:space="preserve"><value>Caso de falla no encontrado</value></data>
+  <data name="FaultDiagnosisError.DuplicateFaultRule" xml:space="preserve"><value>Regla de falla duplicada</value></data>
+  <data name="FaultDiagnosisError.InvalidFaultCaseTransition" xml:space="preserve"><value>Transición de caso inválida</value></data>
+  <data name="FaultDiagnosisError.Forbidden" xml:space="preserve"><value>Prohibido</value></data>
+  <data name="FaultDiagnosisError.DatabaseError" xml:space="preserve"><value>Error de base de datos en diagnóstico</value></data>
+  <data name="FaultDiagnosisError.InternalServerError" xml:space="preserve"><value>Error inesperado en diagnóstico</value></data>
+  <data name="FaultDiagnosis.FaultRuleNotFound" xml:space="preserve"><value>La regla de falla {0} no fue encontrada.</value></data>
+  <data name="FaultDiagnosis.FaultCaseNotFound" xml:space="preserve"><value>El caso de falla {0} no fue encontrado.</value></data>
+  <data name="FaultDiagnosis.DuplicateFaultRule" xml:space="preserve"><value>Ya existe una regla para {0}.</value></data>
+  <data name="FaultDiagnosis.InvalidFaultCaseTransition" xml:space="preserve"><value>El caso de falla {0} no puede cambiar al estado solicitado.</value></data>
+  <data name="FaultDiagnosis.Forbidden" xml:space="preserve"><value>Solo los administradores de la organización gestionan reglas de falla.</value></data>
+  <data name="FaultDiagnosis.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de diagnóstico.</value></data>
+  <data name="FaultDiagnosis.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Diagnóstico de Fallas.</value></data>
+  <data name="EquipmentError.ControllerNotFound" xml:space="preserve"><value>Controlador no encontrado</value></data>
+  <data name="EquipmentError.PartNotFound" xml:space="preserve"><value>Parte no encontrada</value></data>
+  <data name="Equipment.ControllerNotFound" xml:space="preserve"><value>El controlador {0} no fue encontrado en el sistema HVOF.</value></data>
+  <data name="Equipment.PartNotFound" xml:space="preserve"><value>La parte {0} no fue encontrada en el subsistema.</value></data>
+  <data name="ReportingError.ReportTemplateNotFound" xml:space="preserve"><value>Plantilla de reporte no encontrada</value></data>
+  <data name="ReportingError.GeneratedReportNotFound" xml:space="preserve"><value>Reporte generado no encontrado</value></data>
+  <data name="ReportingError.DuplicateReportTemplate" xml:space="preserve"><value>Plantilla de reporte duplicada</value></data>
+  <data name="ReportingError.ReportTemplateArchived" xml:space="preserve"><value>Plantilla de reporte archivada</value></data>
+  <data name="ReportingError.InvalidTemplateTransition" xml:space="preserve"><value>Transición de plantilla inválida</value></data>
+  <data name="ReportingError.InvalidTemplateLayout" xml:space="preserve"><value>Diseño de plantilla inválido</value></data>
+  <data name="ReportingError.Forbidden" xml:space="preserve"><value>Prohibido</value></data>
+  <data name="ReportingError.DatabaseError" xml:space="preserve"><value>Error de base de datos en reportes</value></data>
+  <data name="ReportingError.InternalServerError" xml:space="preserve"><value>Error inesperado en reportes</value></data>
+  <data name="Reporting.ReportTemplateNotFound" xml:space="preserve"><value>La plantilla de reporte {0} no fue encontrada.</value></data>
+  <data name="Reporting.GeneratedReportNotFound" xml:space="preserve"><value>El reporte generado {0} no fue encontrado.</value></data>
+  <data name="Reporting.DuplicateReportTemplate" xml:space="preserve"><value>Ya existe una plantilla llamada {0} en la organización.</value></data>
+  <data name="Reporting.ReportTemplateArchived" xml:space="preserve"><value>La plantilla de reporte {0} está archivada y no puede editarse ni usarse.</value></data>
+  <data name="Reporting.InvalidTemplateTransition" xml:space="preserve"><value>La plantilla de reporte {0} ya está en el estado solicitado.</value></data>
+  <data name="Reporting.Forbidden" xml:space="preserve"><value>Solo los administradores y los ingenieros de calidad gestionan plantillas de reporte.</value></data>
+  <data name="Reporting.DatabaseError" xml:space="preserve"><value>Ocurrió un error de base de datos durante la operación de reportes.</value></data>
+  <data name="Reporting.InternalServerError" xml:space="preserve"><value>Ocurrió un error inesperado en Reportes.</value></data>
+</root>

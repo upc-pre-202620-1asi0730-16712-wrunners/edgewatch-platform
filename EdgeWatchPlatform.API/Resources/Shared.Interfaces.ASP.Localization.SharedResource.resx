@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ValidationErrorTitle" xml:space="preserve"><value>One or more validation errors occurred.</value></data>
+  <data name="ConflictTitle" xml:space="preserve"><value>Conflict</value></data>
+  <data name="NotFoundTitle" xml:space="preserve"><value>Resource not found</value></data>
+  <data name="UnexpectedErrorTitle" xml:space="preserve"><value>Unexpected error</value></data>
+  <data name="UnexpectedErrorDetail" xml:space="preserve"><value>An unexpected error occurred while processing the request.</value></data>
+  <data name="RequiredOrganizationId" xml:space="preserve"><value>Organization id is required.</value></data>
+  <data name="InvalidOrganizationId" xml:space="preserve"><value>Organization id must be a positive integer.</value></data>
+  <data name="RequiredCode" xml:space="preserve"><value>Code is required.</value></data>
+  <data name="InvalidCode" xml:space="preserve"><value>Code must be 3 to 20 upper case letters, digits or hyphens.</value></data>
+  <data name="RequiredSerialNumber" xml:space="preserve"><value>Serial number is required.</value></data>
+  <data name="RequiredSystemManufacturer" xml:space="preserve"><value>System manufacturer is required.</value></data>
+  <data name="RequiredSystemModel" xml:space="preserve"><value>System model is required.</value></data>
+  <data name="RequiredFuelType" xml:space="preserve"><value>Fuel type is required.</value></data>
+  <data name="InvalidFuelType" xml:space="preserve"><value>Fuel type must be one of HYDROGEN, KEROSENE, NATURAL_GAS or PROPANE.</value></data>
+  <data name="DuplicateHvofSystemCode" xml:space="preserve"><value>An HVOF system with this code already exists in the organization.</value></data>
+  <data name="HvofSystemNotFound" xml:space="preserve"><value>HVOF system not found.</value></data>
+  <data name="RequiredSupplierOrganizationId" xml:space="preserve"><value>Supplier organization id is required.</value></data>
+  <data name="RequiredLegalName" xml:space="preserve"><value>Legal name is required.</value></data>
+  <data name="RequiredRuc" xml:space="preserve"><value>RUC is required.</value></data>
+  <data name="InvalidRuc" xml:space="preserve"><value>RUC must be exactly 11 digits.</value></data>
+  <data name="RequiredMineSite" xml:space="preserve"><value>Mine site is required.</value></data>
+  <data name="DuplicateCustomerRuc" xml:space="preserve"><value>A customer with this RUC already exists for the organization.</value></data>
+  <data name="CustomerNotFound" xml:space="preserve"><value>Customer not found.</value></data>
+  <data name="RequiredCustomerId" xml:space="preserve"><value>Customer id is required.</value></data>
+  <data name="InvalidCustomerId" xml:space="preserve"><value>Customer id must be a positive integer.</value></data>
+  <data name="RequiredPartNumber" xml:space="preserve"><value>Part number is required.</value></data>
+  <data name="RequiredComponentType" xml:space="preserve"><value>Component type is required.</value></data>
+  <data name="InvalidComponentType" xml:space="preserve"><value>Component type must be one of HYDRAULIC_ROD, CYLINDER_BLOCK, SHAFT, IMPELLER or OTHER.</value></data>
+  <data name="RequiredMachineManufacturer" xml:space="preserve"><value>Machine manufacturer is required.</value></data>
+  <data name="RequiredMachineModel" xml:space="preserve"><value>Machine model is required.</value></data>
+  <data name="InvalidPcrTargetHours" xml:space="preserve"><value>PCR target hours must be between 1 and 100000.</value></data>
+  <data name="RequiredStatus" xml:space="preserve"><value>Status is required.</value></data>
+  <data name="InvalidComponentStatus" xml:space="preserve"><value>Component status must be one of RECEIVED, IN_RECUPERATION, IN_SERVICE, RETURNED or SCRAPPED.</value></data>
+  <data name="DuplicateComponentSerialNumber" xml:space="preserve"><value>A component with this serial number already exists for the customer.</value></data>
+  <data name="ComponentNotFound" xml:space="preserve"><value>Component not found.</value></data>
+  <data name="RequiredWorkOrderNumber" xml:space="preserve"><value>Work order number is required.</value></data>
+  <data name="InvalidWorkOrderNumber" xml:space="preserve"><value>Work order number must be 4 to 30 upper case letters, digits or hyphens.</value></data>
+  <data name="RequiredManufacturingOrderNumber" xml:space="preserve"><value>Manufacturing order number is required.</value></data>
+  <data name="InvalidComponentId" xml:space="preserve"><value>Component id must be a positive integer.</value></data>
+  <data name="RequiredOperation" xml:space="preserve"><value>Operation is required.</value></data>
+  <data name="InvalidWeight" xml:space="preserve"><value>Weight must be between 0.001 and 100000.</value></data>
+  <data name="InvalidHourmeter" xml:space="preserve"><value>Hourmeter at entry must be zero or a positive integer.</value></data>
+  <data name="RequiredPowderSupplier" xml:space="preserve"><value>Powder supplier is required.</value></data>
+  <data name="RequiredPowderLotNumber" xml:space="preserve"><value>Powder lot number is required.</value></data>
+  <data name="RequiredPowderChemicalComposition" xml:space="preserve"><value>Powder chemical composition is required.</value></data>
+  <data name="InvalidRecuperationStatus" xml:space="preserve"><value>Recuperation status must be one of RECEIVED, IN_PROGRESS, COMPLETED, DELIVERED or REWORK.</value></data>
+  <data name="DuplicateWorkOrderNumber" xml:space="preserve"><value>A recuperation with this work order number already exists.</value></data>
+  <data name="ComponentNotOfCustomer" xml:space="preserve"><value>The component does not belong to the given customer.</value></data>
+  <data name="RecuperationNotFound" xml:space="preserve"><value>Recuperation not found.</value></data>
+  <data name="InvalidRecuperationTransition" xml:space="preserve"><value>The recuperation cannot change from {0} to {1}.</value></data>
+  <data name="UnprocessableTitle" xml:space="preserve"><value>Unprocessable request</value></data>
+  <data name="RequiredOrganizationName" xml:space="preserve"><value>The organization name is required.</value></data>
+  <data name="RequiredOrganizationType" xml:space="preserve"><value>The organization type is required.</value></data>
+  <data name="InvalidOrganizationType" xml:space="preserve"><value>The organization type must be RECUPERATION_SUPPLIER or ASSET_OWNER.</value></data>
+  <data name="RequiredFullName" xml:space="preserve"><value>The full name is required.</value></data>
+  <data name="RequiredEmail" xml:space="preserve"><value>The email is required.</value></data>
+  <data name="InvalidEmail" xml:space="preserve"><value>The email is not valid.</value></data>
+  <data name="RequiredPassword" xml:space="preserve"><value>The password is required.</value></data>
+  <data name="InvalidPassword" xml:space="preserve"><value>The password must have at least 8 characters.</value></data>
+  <data name="RequiredRoleIds" xml:space="preserve"><value>At least one role is required.</value></data>
+  <data name="RequiredSubsystemType" xml:space="preserve"><value>The subsystem type is required.</value></data>
+  <data name="InvalidSubsystemType" xml:space="preserve"><value>The subsystem type is not valid.</value></data>
+  <data name="RequiredName" xml:space="preserve"><value>The name is required.</value></data>
+  <data name="RequiredAlias" xml:space="preserve"><value>The alias is required.</value></data>
+  <data name="RequiredPartType" xml:space="preserve"><value>The part type is required.</value></data>
+  <data name="InvalidPartType" xml:space="preserve"><value>The part type is not valid.</value></data>
+  <data name="RequiredManufacturer" xml:space="preserve"><value>The manufacturer is required.</value></data>
+  <data name="InvalidControllerNumber" xml:space="preserve"><value>The controller number must be between 1 and 99.</value></data>
+  <data name="RequiredDeviceType" xml:space="preserve"><value>The device type is required.</value></data>
+  <data name="InvalidDeviceType" xml:space="preserve"><value>The device type is not valid.</value></data>
+  <data name="RequiredModel" xml:space="preserve"><value>The model is required.</value></data>
+  <data name="RequiredIpAddress" xml:space="preserve"><value>The IP address is required.</value></data>
+  <data name="InvalidPort" xml:space="preserve"><value>The port must be between 1 and 65535.</value></data>
+  <data name="InvalidHvofSystemId" xml:space="preserve"><value>The HVOF system id must be positive.</value></data>
+  <data name="InvalidRecipeNumber" xml:space="preserve"><value>The recipe number must be between 1 and 9999.</value></data>
+  <data name="RequiredPowderSpecification" xml:space="preserve"><value>The powder specification is required.</value></data>
+  <data name="RequiredParameters" xml:space="preserve"><value>At least one parameter is required.</value></data>
+  <data name="RequiredParameter" xml:space="preserve"><value>The parameter name is required.</value></data>
+  <data name="InvalidParameter" xml:space="preserve"><value>The parameter name must be snake_case.</value></data>
+  <data name="RequiredUnitSymbol" xml:space="preserve"><value>The unit symbol is required.</value></data>
+  <data name="RequiredUnitCategory" xml:space="preserve"><value>The unit category is required.</value></data>
+  <data name="InvalidUnitCategory" xml:space="preserve"><value>The unit category is not valid.</value></data>
+  <data name="RequiredPosition" xml:space="preserve"><value>The position is required.</value></data>
+  <data name="InvalidRecipeStatus" xml:space="preserve"><value>The status must be ACTIVE or RETIRED.</value></data>
+  <data name="InvalidRecuperationId" xml:space="preserve"><value>The recuperation id must be positive.</value></data>
+  <data name="InvalidSessionStatus" xml:space="preserve"><value>The status must be completed or aborted.</value></data>
+  <data name="InvalidAbortReason" xml:space="preserve"><value>The abort reason is not valid.</value></data>
+  <data name="InvalidEpochMillis" xml:space="preserve"><value>The epoch millis must be positive.</value></data>
+  <data name="RequiredReadings" xml:space="preserve"><value>At least one reading is required.</value></data>
+  <data name="RequiredBand" xml:space="preserve"><value>The band is required.</value></data>
+  <data name="InvalidBand" xml:space="preserve"><value>The band must be warning or shutdown.</value></data>
+  <data name="RequiredProbableCause" xml:space="preserve"><value>The probable cause is required.</value></data>
+  <data name="RequiredRecommendedAction" xml:space="preserve"><value>The recommended action is required.</value></data>
+  <data name="InvalidCooldown" xml:space="preserve"><value>The cooldown must be between 0 and 86400 seconds.</value></data>
+  <data name="InvalidFaultCaseStatus" xml:space="preserve"><value>The status must be acknowledged or resolved.</value></data>
+  <data name="InvalidHvofSystemStatus" xml:space="preserve"><value>The status must be ACTIVE, MAINTENANCE or OUT_OF_SERVICE.</value></data>
+  <data name="RequiredReportKind" xml:space="preserve"><value>The report kind is required.</value></data>
+  <data name="InvalidReportKind" xml:space="preserve"><value>The report kind must be QUALITY_CERTIFICATE, SESSION_REPORT or FAULT_SUMMARY.</value></data>
+  <data name="RequiredColor" xml:space="preserve"><value>The color is required.</value></data>
+  <data name="InvalidColor" xml:space="preserve"><value>The color must be a #RRGGBB value.</value></data>
+  <data name="RequiredPageSize" xml:space="preserve"><value>The page size is required.</value></data>
+  <data name="InvalidPageSize" xml:space="preserve"><value>The page size must be A4 or LETTER.</value></data>
+  <data name="RequiredOrientation" xml:space="preserve"><value>The orientation is required.</value></data>
+  <data name="InvalidOrientation" xml:space="preserve"><value>The orientation must be PORTRAIT or LANDSCAPE.</value></data>
+  <data name="RequiredSections" xml:space="preserve"><value>At least one section is required.</value></data>
+  <data name="RequiredSectionTitle" xml:space="preserve"><value>The section title is required.</value></data>
+  <data name="InvalidSectionOrder" xml:space="preserve"><value>The section order must be between 1 and 50.</value></data>
+  <data name="RequiredWidgets" xml:space="preserve"><value>Each section needs at least one widget.</value></data>
+  <data name="InvalidWidgetPosition" xml:space="preserve"><value>The widget position must be between 1 and 50.</value></data>
+  <data name="RequiredVariableSource" xml:space="preserve"><value>The variable source is required.</value></data>
+  <data name="InvalidVariableSource" xml:space="preserve"><value>The variable source must be PROCESS, SESSION, RECUPERATION or FAULT_CASES.</value></data>
+  <data name="RequiredVariableCode" xml:space="preserve"><value>The variable code is required.</value></data>
+  <data name="InvalidVariableCode" xml:space="preserve"><value>The variable code must be lowercase snake_case (3 to 40 characters).</value></data>
+  <data name="RequiredVariableLabel" xml:space="preserve"><value>The variable label is required.</value></data>
+  <data name="RequiredViewType" xml:space="preserve"><value>The view type is required.</value></data>
+  <data name="InvalidViewType" xml:space="preserve"><value>The view type must be VALUE, MIN_MAX, TREND, TABLE or TEXT.</value></data>
+  <data name="RequiredAggregation" xml:space="preserve"><value>The aggregation is required.</value></data>
+  <data name="InvalidAggregation" xml:space="preserve"><value>The aggregation must be AVG, MIN, MAX, RANGE, LAST or COUNT.</value></data>
+  <data name="RequiredWidth" xml:space="preserve"><value>The width is required.</value></data>
+  <data name="InvalidWidth" xml:space="preserve"><value>The width must be HALF or FULL.</value></data>
+  <data name="InvalidTemplateStatus" xml:space="preserve"><value>The status must be ACTIVE or ARCHIVED.</value></data>
+  <data name="InvalidReportTemplateId" xml:space="preserve"><value>The report template id is invalid.</value></data>
+  <data name="RequiredSubjectType" xml:space="preserve"><value>The subject type is required.</value></data>
+  <data name="InvalidSubjectType" xml:space="preserve"><value>The subject type must be SPRAY_SESSION or RECUPERATION.</value></data>
+  <data name="InvalidSubjectId" xml:space="preserve"><value>The subject id is invalid.</value></data>
+  <data name="RequiredFileName" xml:space="preserve"><value>The file name is required.</value></data>
+</root>

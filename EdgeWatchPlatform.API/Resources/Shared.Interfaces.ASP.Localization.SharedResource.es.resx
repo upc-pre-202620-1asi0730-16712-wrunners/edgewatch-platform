@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ValidationErrorTitle" xml:space="preserve"><value>Se produjeron uno o más errores de validación.</value></data>
+  <data name="ConflictTitle" xml:space="preserve"><value>Conflicto</value></data>
+  <data name="NotFoundTitle" xml:space="preserve"><value>Recurso no encontrado</value></data>
+  <data name="UnexpectedErrorTitle" xml:space="preserve"><value>Error inesperado</value></data>
+  <data name="UnexpectedErrorDetail" xml:space="preserve"><value>Ocurrió un error inesperado al procesar la solicitud.</value></data>
+  <data name="RequiredOrganizationId" xml:space="preserve"><value>El id de la organización es obligatorio.</value></data>
+  <data name="InvalidOrganizationId" xml:space="preserve"><value>El id de la organización debe ser un entero positivo.</value></data>
+  <data name="RequiredCode" xml:space="preserve"><value>El código es obligatorio.</value></data>
+  <data name="InvalidCode" xml:space="preserve"><value>El código debe tener de 3 a 20 letras mayúsculas, dígitos o guiones.</value></data>
+  <data name="RequiredSerialNumber" xml:space="preserve"><value>El número de serie es obligatorio.</value></data>
+  <data name="RequiredSystemManufacturer" xml:space="preserve"><value>El fabricante del sistema es obligatorio.</value></data>
+  <data name="RequiredSystemModel" xml:space="preserve"><value>El modelo del sistema es obligatorio.</value></data>
+  <data name="RequiredFuelType" xml:space="preserve"><value>El tipo de combustible es obligatorio.</value></data>
+  <data name="InvalidFuelType" xml:space="preserve"><value>El tipo de combustible debe ser HYDROGEN, KEROSENE, NATURAL_GAS o PROPANE.</value></data>
+  <data name="DuplicateHvofSystemCode" xml:space="preserve"><value>Ya existe un sistema HVOF con este código en la organización.</value></data>
+  <data name="HvofSystemNotFound" xml:space="preserve"><value>Sistema HVOF no encontrado.</value></data>
+  <data name="RequiredSupplierOrganizationId" xml:space="preserve"><value>El id de la organización proveedora es obligatorio.</value></data>
+  <data name="RequiredLegalName" xml:space="preserve"><value>La razón social es obligatoria.</value></data>
+  <data name="RequiredRuc" xml:space="preserve"><value>El RUC es obligatorio.</value></data>
+  <data name="InvalidRuc" xml:space="preserve"><value>El RUC debe tener exactamente 11 dígitos.</value></data>
+  <data name="RequiredMineSite" xml:space="preserve"><value>La unidad minera es obligatoria.</value></data>
+  <data name="DuplicateCustomerRuc" xml:space="preserve"><value>Ya existe un cliente con este RUC para la organización.</value></data>
+  <data name="CustomerNotFound" xml:space="preserve"><value>Cliente no encontrado.</value></data>
+  <data name="RequiredCustomerId" xml:space="preserve"><value>El id del cliente es obligatorio.</value></data>
+  <data name="InvalidCustomerId" xml:space="preserve"><value>El id del cliente debe ser un entero positivo.</value></data>
+  <data name="RequiredPartNumber" xml:space="preserve"><value>El número de parte es obligatorio.</value></data>
+  <data name="RequiredComponentType" xml:space="preserve"><value>El tipo de componente es obligatorio.</value></data>
+  <data name="InvalidComponentType" xml:space="preserve"><value>El tipo de componente debe ser HYDRAULIC_ROD, CYLINDER_BLOCK, SHAFT, IMPELLER u OTHER.</value></data>
+  <data name="RequiredMachineManufacturer" xml:space="preserve"><value>El fabricante de la máquina es obligatorio.</value></data>
+  <data name="RequiredMachineModel" xml:space="preserve"><value>El modelo de la máquina es obligatorio.</value></data>
+  <data name="InvalidPcrTargetHours" xml:space="preserve"><value>Las horas objetivo PCR deben estar entre 1 y 100000.</value></data>
+  <data name="RequiredStatus" xml:space="preserve"><value>El estado es obligatorio.</value></data>
+  <data name="InvalidComponentStatus" xml:space="preserve"><value>El estado del componente debe ser RECEIVED, IN_RECUPERATION, IN_SERVICE, RETURNED o SCRAPPED.</value></data>
+  <data name="DuplicateComponentSerialNumber" xml:space="preserve"><value>Ya existe un componente con este número de serie para el cliente.</value></data>
+  <data name="ComponentNotFound" xml:space="preserve"><value>Componente no encontrado.</value></data>
+  <data name="RequiredWorkOrderNumber" xml:space="preserve"><value>El número de orden de trabajo es obligatorio.</value></data>
+  <data name="InvalidWorkOrderNumber" xml:space="preserve"><value>El número de orden de trabajo debe tener de 4 a 30 letras mayúsculas, dígitos o guiones.</value></data>
+  <data name="RequiredManufacturingOrderNumber" xml:space="preserve"><value>El número de orden de fabricación es obligatorio.</value></data>
+  <data name="InvalidComponentId" xml:space="preserve"><value>El id del componente debe ser un entero positivo.</value></data>
+  <data name="RequiredOperation" xml:space="preserve"><value>La operación es obligatoria.</value></data>
+  <data name="InvalidWeight" xml:space="preserve"><value>El peso debe estar entre 0.001 y 100000.</value></data>
+  <data name="InvalidHourmeter" xml:space="preserve"><value>El horómetro de ingreso debe ser cero o un entero positivo.</value></data>
+  <data name="RequiredPowderSupplier" xml:space="preserve"><value>El proveedor del polvo es obligatorio.</value></data>
+  <data name="RequiredPowderLotNumber" xml:space="preserve"><value>El número de lote del polvo es obligatorio.</value></data>
+  <data name="RequiredPowderChemicalComposition" xml:space="preserve"><value>La composición química del polvo es obligatoria.</value></data>
+  <data name="InvalidRecuperationStatus" xml:space="preserve"><value>El estado de la recuperación debe ser RECEIVED, IN_PROGRESS, COMPLETED, DELIVERED o REWORK.</value></data>
+  <data name="DuplicateWorkOrderNumber" xml:space="preserve"><value>Ya existe una recuperación con este número de orden de trabajo.</value></data>
+  <data name="ComponentNotOfCustomer" xml:space="preserve"><value>El componente no pertenece al cliente indicado.</value></data>
+  <data name="RecuperationNotFound" xml:space="preserve"><value>Recuperación no encontrada.</value></data>
+  <data name="InvalidRecuperationTransition" xml:space="preserve"><value>La recuperación no puede pasar de {0} a {1}.</value></data>
+  <data name="UnprocessableTitle" xml:space="preserve"><value>Solicitud no procesable</value></data>
+  <data name="RequiredOrganizationName" xml:space="preserve"><value>El nombre de la organización es obligatorio.</value></data>
+  <data name="RequiredOrganizationType" xml:space="preserve"><value>El tipo de organización es obligatorio.</value></data>
+  <data name="InvalidOrganizationType" xml:space="preserve"><value>El tipo de organización debe ser RECUPERATION_SUPPLIER o ASSET_OWNER.</value></data>
+  <data name="RequiredFullName" xml:space="preserve"><value>El nombre completo es obligatorio.</value></data>
+  <data name="RequiredEmail" xml:space="preserve"><value>El correo es obligatorio.</value></data>
+  <data name="InvalidEmail" xml:space="preserve"><value>El correo no es válido.</value></data>
+  <data name="RequiredPassword" xml:space="preserve"><value>La contraseña es obligatoria.</value></data>
+  <data name="InvalidPassword" xml:space="preserve"><value>La contraseña debe tener al menos 8 caracteres.</value></data>
+  <data name="RequiredRoleIds" xml:space="preserve"><value>Se requiere al menos un rol.</value></data>
+  <data name="RequiredSubsystemType" xml:space="preserve"><value>El tipo de subsistema es obligatorio.</value></data>
+  <data name="InvalidSubsystemType" xml:space="preserve"><value>El tipo de subsistema no es válido.</value></data>
+  <data name="RequiredName" xml:space="preserve"><value>El nombre es obligatorio.</value></data>
+  <data name="RequiredAlias" xml:space="preserve"><value>El alias es obligatorio.</value></data>
+  <data name="RequiredPartType" xml:space="preserve"><value>El tipo de parte es obligatorio.</value></data>
+  <data name="InvalidPartType" xml:space="preserve"><value>El tipo de parte no es válido.</value></data>
+  <data name="RequiredManufacturer" xml:space="preserve"><value>El fabricante es obligatorio.</value></data>
+  <data name="InvalidControllerNumber" xml:space="preserve"><value>El número de controlador debe estar entre 1 y 99.</value></data>
+  <data name="RequiredDeviceType" xml:space="preserve"><value>El tipo de dispositivo es obligatorio.</value></data>
+  <data name="InvalidDeviceType" xml:space="preserve"><value>El tipo de dispositivo no es válido.</value></data>
+  <data name="RequiredModel" xml:space="preserve"><value>El modelo es obligatorio.</value></data>
+  <data name="RequiredIpAddress" xml:space="preserve"><value>La dirección IP es obligatoria.</value></data>
+  <data name="InvalidPort" xml:space="preserve"><value>El puerto debe estar entre 1 y 65535.</value></data>
+  <data name="InvalidHvofSystemId" xml:space="preserve"><value>El id del sistema HVOF debe ser positivo.</value></data>
+  <data name="InvalidRecipeNumber" xml:space="preserve"><value>El número de receta debe estar entre 1 y 9999.</value></data>
+  <data name="RequiredPowderSpecification" xml:space="preserve"><value>La especificación del polvo es obligatoria.</value></data>
+  <data name="RequiredParameters" xml:space="preserve"><value>Se requiere al menos un parámetro.</value></data>
+  <data name="RequiredParameter" xml:space="preserve"><value>El nombre del parámetro es obligatorio.</value></data>
+  <data name="InvalidParameter" xml:space="preserve"><value>El nombre del parámetro debe estar en snake_case.</value></data>
+  <data name="RequiredUnitSymbol" xml:space="preserve"><value>El símbolo de unidad es obligatorio.</value></data>
+  <data name="RequiredUnitCategory" xml:space="preserve"><value>La categoría de unidad es obligatoria.</value></data>
+  <data name="InvalidUnitCategory" xml:space="preserve"><value>La categoría de unidad no es válida.</value></data>
+  <data name="RequiredPosition" xml:space="preserve"><value>La posición es obligatoria.</value></data>
+  <data name="InvalidRecipeStatus" xml:space="preserve"><value>El estado debe ser ACTIVE o RETIRED.</value></data>
+  <data name="InvalidRecuperationId" xml:space="preserve"><value>El id de la recuperación debe ser positivo.</value></data>
+  <data name="InvalidSessionStatus" xml:space="preserve"><value>El estado debe ser completed o aborted.</value></data>
+  <data name="InvalidAbortReason" xml:space="preserve"><value>El motivo de aborto no es válido.</value></data>
+  <data name="InvalidEpochMillis" xml:space="preserve"><value>Los epoch millis deben ser positivos.</value></data>
+  <data name="RequiredReadings" xml:space="preserve"><value>Se requiere al menos una lectura.</value></data>
+  <data name="RequiredBand" xml:space="preserve"><value>La banda es obligatoria.</value></data>
+  <data name="InvalidBand" xml:space="preserve"><value>La banda debe ser warning o shutdown.</value></data>
+  <data name="RequiredProbableCause" xml:space="preserve"><value>La causa probable es obligatoria.</value></data>
+  <data name="RequiredRecommendedAction" xml:space="preserve"><value>La acción recomendada es obligatoria.</value></data>
+  <data name="InvalidCooldown" xml:space="preserve"><value>El cooldown debe estar entre 0 y 86400 segundos.</value></data>
+  <data name="InvalidFaultCaseStatus" xml:space="preserve"><value>El estado debe ser acknowledged o resolved.</value></data>
+  <data name="InvalidHvofSystemStatus" xml:space="preserve"><value>El estado debe ser ACTIVE, MAINTENANCE u OUT_OF_SERVICE.</value></data>
+  <data name="RequiredReportKind" xml:space="preserve"><value>El tipo de reporte es obligatorio.</value></data>
+  <data name="InvalidReportKind" xml:space="preserve"><value>El tipo de reporte debe ser QUALITY_CERTIFICATE, SESSION_REPORT o FAULT_SUMMARY.</value></data>
+  <data name="RequiredColor" xml:space="preserve"><value>El color es obligatorio.</value></data>
+  <data name="InvalidColor" xml:space="preserve"><value>El color debe tener el formato #RRGGBB.</value></data>
+  <data name="RequiredPageSize" xml:space="preserve"><value>El tamaño de página es obligatorio.</value></data>
+  <data name="InvalidPageSize" xml:space="preserve"><value>El tamaño de página debe ser A4 o LETTER.</value></data>
+  <data name="RequiredOrientation" xml:space="preserve"><value>La orientación es obligatoria.</value></data>
+  <data name="InvalidOrientation" xml:space="preserve"><value>La orientación debe ser PORTRAIT o LANDSCAPE.</value></data>
+  <data name="RequiredSections" xml:space="preserve"><value>Se requiere al menos una sección.</value></data>
+  <data name="RequiredSectionTitle" xml:space="preserve"><value>El título de la sección es obligatorio.</value></data>
+  <data name="InvalidSectionOrder" xml:space="preserve"><value>El orden de la sección debe estar entre 1 y 50.</value></data>
+  <data name="RequiredWidgets" xml:space="preserve"><value>Cada sección necesita al menos un widget.</value></data>
+  <data name="InvalidWidgetPosition" xml:space="preserve"><value>La posición del widget debe estar entre 1 y 50.</value></data>
+  <data name="RequiredVariableSource" xml:space="preserve"><value>La fuente de la variable es obligatoria.</value></data>
+  <data name="InvalidVariableSource" xml:space="preserve"><value>La fuente debe ser PROCESS, SESSION, RECUPERATION o FAULT_CASES.</value></data>
+  <data name="RequiredVariableCode" xml:space="preserve"><value>El código de la variable es obligatorio.</value></data>
+  <data name="InvalidVariableCode" xml:space="preserve"><value>El código de la variable debe ser snake_case en minúsculas (3 a 40 caracteres).</value></data>
+  <data name="RequiredVariableLabel" xml:space="preserve"><value>La etiqueta de la variable es obligatoria.</value></data>
+  <data name="RequiredViewType" xml:space="preserve"><value>El tipo de vista es obligatorio.</value></data>
+  <data name="InvalidViewType" xml:space="preserve"><value>El tipo de vista debe ser VALUE, MIN_MAX, TREND, TABLE o TEXT.</value></data>
+  <data name="RequiredAggregation" xml:space="preserve"><value>La agregación es obligatoria.</value></data>
+  <data name="InvalidAggregation" xml:space="preserve"><value>La agregación debe ser AVG, MIN, MAX, RANGE, LAST o COUNT.</value></data>
+  <data name="RequiredWidth" xml:space="preserve"><value>El ancho es obligatorio.</value></data>
+  <data name="InvalidWidth" xml:space="preserve"><value>El ancho debe ser HALF o FULL.</value></data>
+  <data name="InvalidTemplateStatus" xml:space="preserve"><value>El estado debe ser ACTIVE o ARCHIVED.</value></data>
+  <data name="InvalidReportTemplateId" xml:space="preserve"><value>El id de la plantilla de reporte es inválido.</value></data>
+  <data name="RequiredSubjectType" xml:space="preserve"><value>El tipo de sujeto es obligatorio.</value></data>
+  <data name="InvalidSubjectType" xml:space="preserve"><value>El tipo de sujeto debe ser SPRAY_SESSION o RECUPERATION.</value></data>
+  <data name="InvalidSubjectId" xml:space="preserve"><value>El id del sujeto es inválido.</value></data>
+  <data name="RequiredFileName" xml:space="preserve"><value>El nombre del archivo es obligatorio.</value></data>
+</root>
