@@ -14,6 +14,12 @@ using EdgeWatchPlatform.API.FaultDiagnosis.Application.Internal.QueryServices;
 using EdgeWatchPlatform.API.FaultDiagnosis.Application.QueryServices;
 using EdgeWatchPlatform.API.FaultDiagnosis.Domain.Repositories;
 using EdgeWatchPlatform.API.FaultDiagnosis.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using EdgeWatchPlatform.API.Reporting.Application.CommandServices;
+using EdgeWatchPlatform.API.Reporting.Application.Internal.CommandServices;
+using EdgeWatchPlatform.API.Reporting.Application.Internal.QueryServices;
+using EdgeWatchPlatform.API.Reporting.Application.QueryServices;
+using EdgeWatchPlatform.API.Reporting.Domain.Repositories;
+using EdgeWatchPlatform.API.Reporting.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using EdgeWatchPlatform.API.Iam.Application.Acl;
 using EdgeWatchPlatform.API.Iam.Application.CommandServices;
 using EdgeWatchPlatform.API.Iam.Application.Internal.CommandServices;
@@ -186,6 +192,14 @@ builder.Services.AddScoped<IFaultRuleCommandService, FaultRuleCommandService>();
 builder.Services.AddScoped<IFaultRuleQueryService, FaultRuleQueryService>();
 builder.Services.AddScoped<IFaultCaseCommandService, FaultCaseCommandService>();
 builder.Services.AddScoped<IFaultCaseQueryService, FaultCaseQueryService>();
+
+// Dependency injection — Reporting
+builder.Services.AddScoped<IReportTemplateRepository, ReportTemplateRepository>();
+builder.Services.AddScoped<IGeneratedReportRepository, GeneratedReportRepository>();
+builder.Services.AddScoped<IReportTemplateCommandService, ReportTemplateCommandService>();
+builder.Services.AddScoped<IReportTemplateQueryService, ReportTemplateQueryService>();
+builder.Services.AddScoped<IGeneratedReportCommandService, GeneratedReportCommandService>();
+builder.Services.AddScoped<IGeneratedReportQueryService, GeneratedReportQueryService>();
 
 // Mediator: command pipeline behaviors and domain event handlers discovered in this assembly
 builder.Services.AddScoped(typeof(ICommandPipelineBehavior<>), typeof(LoggingCommandBehavior<>));
