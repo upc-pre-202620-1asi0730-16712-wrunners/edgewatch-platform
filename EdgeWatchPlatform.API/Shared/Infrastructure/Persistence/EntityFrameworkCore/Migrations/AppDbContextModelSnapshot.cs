@@ -812,6 +812,214 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
                     b.ToTable("process_readings");
                 });
 
+            modelBuilder.Entity("EdgeWatchPlatform.API.Reporting.Domain.Model.Aggregates.GeneratedReport", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(160)
+                        .HasColumnType("varchar(160)")
+                        .HasColumnName("file_name");
+
+                    b.Property<string>("Format")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("format");
+
+                    b.Property<DateTimeOffset>("GeneratedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("generated_at");
+
+                    b.Property<int>("GeneratedByUserId")
+                        .HasColumnType("int")
+                        .HasColumnName("generated_by_user_id");
+
+                    b.Property<int>("OrganizationId")
+                        .HasColumnType("int")
+                        .HasColumnName("organization_id");
+
+                    b.Property<DateTime?>("PeriodFrom")
+                        .HasColumnType("date")
+                        .HasColumnName("period_from");
+
+                    b.Property<DateTime?>("PeriodTo")
+                        .HasColumnType("date")
+                        .HasColumnName("period_to");
+
+                    b.Property<int>("ReportTemplateId")
+                        .HasColumnType("int")
+                        .HasColumnName("report_template_id");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int")
+                        .HasColumnName("subject_id");
+
+                    b.Property<string>("SubjectType")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("subject_type");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_generated_reports");
+
+                    b.HasIndex("ReportTemplateId")
+                        .HasDatabaseName("i_x_generated_reports_report_template_id");
+
+                    b.HasIndex("OrganizationId", "SubjectType", "SubjectId")
+                        .HasDatabaseName("i_x_generated_reports_organization_id_subject_type_subject_id");
+
+                    b.ToTable("generated_reports");
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Reporting.Domain.Model.Aggregates.ReportTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("DefaultForKind")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("default_for_kind");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("FooterText")
+                        .IsRequired()
+                        .HasMaxLength(160)
+                        .HasColumnType("varchar(160)")
+                        .HasColumnName("footer_text");
+
+                    b.Property<string>("HeaderText")
+                        .IsRequired()
+                        .HasMaxLength(160)
+                        .HasColumnType("varchar(160)")
+                        .HasColumnName("header_text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
+                        .HasColumnName("name");
+
+                    b.Property<int>("OrganizationId")
+                        .HasColumnType("int")
+                        .HasColumnName("organization_id");
+
+                    b.Property<string>("Orientation")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("orientation");
+
+                    b.Property<int>("OwnerUserId")
+                        .HasColumnType("int")
+                        .HasColumnName("owner_user_id");
+
+                    b.Property<string>("PageSize")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("page_size");
+
+                    b.Property<string>("PrimaryColor")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("varchar(7)")
+                        .HasColumnName("primary_color");
+
+                    b.Property<string>("ReportKind")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
+                        .HasColumnName("report_kind");
+
+                    b.Property<string>("SecondaryColor")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("varchar(7)")
+                        .HasColumnName("secondary_color");
+
+                    b.Property<bool>("ShowSignatureBlock")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("show_signature_block");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("status");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_report_templates");
+
+                    b.HasIndex("OrganizationId", "Name")
+                        .IsUnique()
+                        .HasDatabaseName("i_x_report_templates_organization_id_name");
+
+                    b.HasIndex("OrganizationId", "ReportKind", "Status")
+                        .HasDatabaseName("i_x_report_templates_organization_id_report_kind_status");
+
+                    b.ToTable("report_templates");
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Reporting.Domain.Model.Entities.ReportSection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<int>("ReportTemplateId")
+                        .HasColumnType("int")
+                        .HasColumnName("report_template_id");
+
+                    b.Property<int>("SectionOrder")
+                        .HasColumnType("int")
+                        .HasColumnName("section_order");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)")
+                        .HasColumnName("title");
+
+                    b.HasKey("Id")
+                        .HasName("p_k_report_sections");
+
+                    b.HasIndex("ReportTemplateId", "SectionOrder")
+                        .IsUnique()
+                        .HasDatabaseName("i_x_report_sections_report_template_id_section_order");
+
+                    b.ToTable("report_sections");
+                });
+
             modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -1347,6 +1555,92 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
                         .HasConstraintName("f_k_process_readings_spray_sessions_spray_session_id");
                 });
 
+            modelBuilder.Entity("EdgeWatchPlatform.API.Reporting.Domain.Model.Aggregates.GeneratedReport", b =>
+                {
+                    b.HasOne("EdgeWatchPlatform.API.Reporting.Domain.Model.Aggregates.ReportTemplate", null)
+                        .WithMany()
+                        .HasForeignKey("ReportTemplateId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("f_k_generated_reports__report_template_report_template_id");
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Reporting.Domain.Model.Entities.ReportSection", b =>
+                {
+                    b.HasOne("EdgeWatchPlatform.API.Reporting.Domain.Model.Aggregates.ReportTemplate", null)
+                        .WithMany("Sections")
+                        .HasForeignKey("ReportTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("f_k_report_sections_report_templates_report_template_id");
+
+                    b.OwnsMany("EdgeWatchPlatform.API.Reporting.Domain.Model.ValueObjects.ReportWidget", "Widgets", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasColumnName("id");
+
+                            b1.Property<string>("Aggregation")
+                                .IsRequired()
+                                .HasMaxLength(10)
+                                .HasColumnType("varchar(10)")
+                                .HasColumnName("aggregation");
+
+                            b1.Property<int>("Position")
+                                .HasColumnType("int")
+                                .HasColumnName("position");
+
+                            b1.Property<int>("ReportSectionId")
+                                .HasColumnType("int")
+                                .HasColumnName("report_section_id");
+
+                            b1.Property<string>("VariableCode")
+                                .IsRequired()
+                                .HasMaxLength(40)
+                                .HasColumnType("varchar(40)")
+                                .HasColumnName("variable_code");
+
+                            b1.Property<string>("VariableLabel")
+                                .IsRequired()
+                                .HasMaxLength(80)
+                                .HasColumnType("varchar(80)")
+                                .HasColumnName("variable_label");
+
+                            b1.Property<string>("VariableSource")
+                                .IsRequired()
+                                .HasMaxLength(20)
+                                .HasColumnType("varchar(20)")
+                                .HasColumnName("variable_source");
+
+                            b1.Property<string>("ViewType")
+                                .IsRequired()
+                                .HasMaxLength(10)
+                                .HasColumnType("varchar(10)")
+                                .HasColumnName("view_type");
+
+                            b1.Property<string>("Width")
+                                .IsRequired()
+                                .HasMaxLength(10)
+                                .HasColumnType("varchar(10)")
+                                .HasColumnName("width");
+
+                            b1.HasKey("Id")
+                                .HasName("p_k_report_widgets");
+
+                            b1.HasIndex("ReportSectionId")
+                                .HasDatabaseName("i_x_report_widgets_report_section_id");
+
+                            b1.ToTable("report_widgets", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("ReportSectionId")
+                                .HasConstraintName("f_k_report_widgets_report_sections_report_section_id");
+                        });
+
+                    b.Navigation("Widgets");
+                });
+
             modelBuilder.Entity("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.RecoveredComponent", b =>
                 {
                     b.HasOne("EdgeWatchPlatform.API.Traceability.Domain.Model.Aggregates.Customer", null)
@@ -1420,6 +1714,11 @@ namespace EdgeWatchPlatform.API.Shared.Infrastructure.Persistence.EntityFramewor
             modelBuilder.Entity("EdgeWatchPlatform.API.Equipment.Domain.Model.Entities.HvofSubsystem", b =>
                 {
                     b.Navigation("Parts");
+                });
+
+            modelBuilder.Entity("EdgeWatchPlatform.API.Reporting.Domain.Model.Aggregates.ReportTemplate", b =>
+                {
+                    b.Navigation("Sections");
                 });
 #pragma warning restore 612, 618
         }
