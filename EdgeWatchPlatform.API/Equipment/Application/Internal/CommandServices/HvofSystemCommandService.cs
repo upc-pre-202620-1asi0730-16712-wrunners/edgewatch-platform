@@ -2,6 +2,7 @@ using EdgeWatchPlatform.API.Equipment.Application.Services;
 using EdgeWatchPlatform.API.Equipment.Domain.Model;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Aggregates;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Commands;
+using EdgeWatchPlatform.API.Equipment.Domain.Model.Entities;
 using EdgeWatchPlatform.API.Equipment.Domain.Model.Errors;
 using EdgeWatchPlatform.API.Equipment.Domain.Repositories;
 using EdgeWatchPlatform.API.Shared.Application.Model;
@@ -39,6 +40,71 @@ public class HvofSystemCommandService(
         {
             logger.LogError(ex, "Unexpected error registering HVOF system {Code}", command.Code);
             return Result<HvofSystem>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
+        }
+    }
+
+    public async Task<Result<HvofSubsystem>> Handle(AddSubsystemToHvofSystemCommand command, CancellationToken cancellationToken = default)
+    {
+        var hvofSystem = await hvofSystemRepository.FindByIdWithCompositionAsync(command.HvofSystemId, cancellationToken);
+        if (hvofSystem is null) return Result<HvofSubsystem>.Failure(EquipmentErrors.HvofSystemNotFound, EquipmentError.HvofSystemNotFound);
+
+        try
+        {
+            var subsystem = new HvofSubsystem(command.SubsystemType, command.Name, command.Alias, command.Parameters);
+            if (!hvofSystem.TryAddSubsystem(subsystem))
+                return Result<HvofSubsystem>.Failure(EquipmentErrors.DuplicateSubsystemAlias, EquipmentError.DuplicateSubsystemAlias);
+            hvofSystem.RecordSubsystemAdded(subsystem);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<HvofSubsystem>.Success(subsystem);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error adding subsystem {Alias} to HVOF system {HvofSystemId}", command.Alias, command.HvofSystemId);
+            return Result<HvofSubsystem>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
+        }
+    }
+
+    public async Task<Result<HvofPart>> Handle(AddPartToSubsystemCommand command, CancellationToken cancellationToken = default)
+    {
+        var hvofSystem = await hvofSystemRepository.FindByIdWithCompositionAsync(command.HvofSystemId, cancellationToken);
+        if (hvofSystem is null) return Result<HvofPart>.Failure(EquipmentErrors.HvofSystemNotFound, EquipmentError.HvofSystemNotFound);
+        var subsystem = hvofSystem.FindSubsystemById(command.SubsystemId);
+        if (subsystem is null) return Result<HvofPart>.Failure(EquipmentErrors.SubsystemNotFound, EquipmentError.SubsystemNotFound);
+
+        try
+        {
+            var part = new HvofPart(command.PartType, command.SerialNumber, command.Manufacturer);
+            if (!subsystem.TryAddPart(part))
+                return Result<HvofPart>.Failure(EquipmentErrors.DuplicatePartSerialNumber, EquipmentError.DuplicatePartSerialNumber);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<HvofPart>.Success(part);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error adding part {SerialNumber} to subsystem {SubsystemId}", command.SerialNumber, command.SubsystemId);
+            return Result<HvofPart>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
+        }
+    }
+
+    public async Task<Result<Controller>> Handle(AddControllerToHvofSystemCommand command, CancellationToken cancellationToken = default)
+    {
+        var hvofSystem = await hvofSystemRepository.FindByIdWithCompositionAsync(command.HvofSystemId, cancellationToken);
+        if (hvofSystem is null) return Result<Controller>.Failure(EquipmentErrors.HvofSystemNotFound, EquipmentError.HvofSystemNotFound);
+
+        try
+        {
+            var controller = new Controller(command.ControllerNumber, command.DeviceType, command.SerialNumber, command.Manufacturer, command.Model,
+                command.PartNumber, command.IpAddress, command.Port, command.Rack, command.Slot, command.EndpointUrl, command.Protocols);
+            if (!hvofSystem.TryAddController(controller))
+                return Result<Controller>.Failure(EquipmentErrors.DuplicateControllerNumber, EquipmentError.DuplicateControllerNumber);
+            hvofSystem.RecordControllerAdded(controller);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<Controller>.Success(controller);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error adding controller {ControllerNumber} to HVOF system {HvofSystemId}", command.ControllerNumber, command.HvofSystemId);
+            return Result<Controller>.Failure(EquipmentErrors.InternalServerError, EquipmentError.InternalServerError);
         }
     }
 }

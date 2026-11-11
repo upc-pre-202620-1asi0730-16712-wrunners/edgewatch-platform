@@ -6,6 +6,10 @@ public enum EquipmentError
     None,
     HvofSystemNotFound,
     DuplicateHvofSystemCode,
+    SubsystemNotFound,
+    DuplicateSubsystemAlias,
+    DuplicatePartSerialNumber,
+    DuplicateControllerNumber,
     OperationCancelled,
     DatabaseError,
     InternalServerError

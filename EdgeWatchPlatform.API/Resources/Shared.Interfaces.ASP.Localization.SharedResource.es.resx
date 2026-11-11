@@ -64,4 +64,17 @@
   <data name="RequiredPassword" xml:space="preserve"><value>La contraseña es obligatoria.</value></data>
   <data name="InvalidPassword" xml:space="preserve"><value>La contraseña debe tener al menos 8 caracteres.</value></data>
   <data name="RequiredRoleIds" xml:space="preserve"><value>Se requiere al menos un rol.</value></data>
+  <data name="RequiredSubsystemType" xml:space="preserve"><value>El tipo de subsistema es obligatorio.</value></data>
+  <data name="InvalidSubsystemType" xml:space="preserve"><value>El tipo de subsistema no es válido.</value></data>
+  <data name="RequiredName" xml:space="preserve"><value>El nombre es obligatorio.</value></data>
+  <data name="RequiredAlias" xml:space="preserve"><value>El alias es obligatorio.</value></data>
+  <data name="RequiredPartType" xml:space="preserve"><value>El tipo de parte es obligatorio.</value></data>
+  <data name="InvalidPartType" xml:space="preserve"><value>El tipo de parte no es válido.</value></data>
+  <data name="RequiredManufacturer" xml:space="preserve"><value>El fabricante es obligatorio.</value></data>
+  <data name="InvalidControllerNumber" xml:space="preserve"><value>El número de controlador debe estar entre 1 y 99.</value></data>
+  <data name="RequiredDeviceType" xml:space="preserve"><value>El tipo de dispositivo es obligatorio.</value></data>
+  <data name="InvalidDeviceType" xml:space="preserve"><value>El tipo de dispositivo no es válido.</value></data>
+  <data name="RequiredModel" xml:space="preserve"><value>El modelo es obligatorio.</value></data>
+  <data name="RequiredIpAddress" xml:space="preserve"><value>La dirección IP es obligatoria.</value></data>
+  <data name="InvalidPort" xml:space="preserve"><value>El puerto debe estar entre 1 y 65535.</value></data>
 </root>
