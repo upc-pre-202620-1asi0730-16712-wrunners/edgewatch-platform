@@ -23,6 +23,12 @@ public static class EquipmentErrors
     public static readonly Error DuplicateControllerNumber =
         Error.Conflict("Equipment.DuplicateControllerNumber", "Controller number {0} already exists in the HVOF system.");
 
+    public static readonly Error ControllerNotFound =
+        Error.NotFound("Equipment.ControllerNotFound", "The controller {0} was not found in the HVOF system.");
+
+    public static readonly Error PartNotFound =
+        Error.NotFound("Equipment.PartNotFound", "The part {0} was not found in the subsystem.");
+
     public static readonly Error RecipeNotFound =
         Error.NotFound("Equipment.RecipeNotFound", "The recipe {0} was not found.");
 
