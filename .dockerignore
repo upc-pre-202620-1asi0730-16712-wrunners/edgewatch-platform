@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+publish/
+.git/
+.idea/
+.vs/
+.vscode/
+.claude/
+**/*.user
+**/appsettings.Local.json
+.env

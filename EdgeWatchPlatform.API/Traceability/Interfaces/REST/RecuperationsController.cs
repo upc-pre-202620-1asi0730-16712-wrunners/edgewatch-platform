@@ -61,6 +61,19 @@ public class RecuperationsController(
         return Ok(recuperations.Select(RecuperationResourceFromEntityAssembler.ToResourceFromEntity));
     }
 
+    /// <summary>Lists recuperations by supplier organization</summary>
+    [HttpPost("by-organization")]
+    [ProducesResponseType(typeof(IEnumerable<RecuperationResource>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetAllRecuperationsByOrganization(
+        [FromBody] RecuperationByOrganizationResource resource,
+        CancellationToken cancellationToken)
+    {
+        IEnumerable<Recuperation> recuperations = await queryService.Handle(new GetAllRecuperationsBySupplierOrganizationIdQuery(resource.SupplierOrganizationId), cancellationToken);
+
+        return Ok(recuperations.Select(RecuperationResourceFromEntityAssembler.ToResourceFromEntity));
+    }
+
     /// <summary>Gets a recuperation by id, including its linked sessions.</summary>
     [HttpGet("{id:int}", Name = "GetRecuperationById")]
     [ProducesResponseType(typeof(RecuperationResource), StatusCodes.Status200OK)]

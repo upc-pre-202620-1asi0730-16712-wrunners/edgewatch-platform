@@ -39,7 +39,7 @@ public class CustomersController(
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<CustomerResource>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetAllCustomers([FromQuery] [Range(1, int.MaxValue, ErrorMessage = "InvalidOrganizationId")] int? supplierOrganizationId, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAllCustomers([FromQuery][Range(1, int.MaxValue, ErrorMessage = "InvalidOrganizationId")] int? supplierOrganizationId, CancellationToken cancellationToken)
     {
         var customers = supplierOrganizationId is { } organizationId
             ? await queryService.Handle(new GetAllCustomersBySupplierOrganizationIdQuery(organizationId), cancellationToken)
@@ -69,5 +69,19 @@ public class CustomersController(
         var command = UpdateCustomerCommandFromResourceAssembler.ToCommandFromResource(id, resource);
         var result = await commandService.Handle(command, cancellationToken);
         return ActionResultFromUpdateCustomerResultAssembler.ToActionResult(result, localizer, Request);
+    }
+
+    /// <summary>Lists customers by supplier organization.</summary>
+    [HttpPost("by-organization")]
+    [ProducesResponseType(typeof(IEnumerable<CustomerResource>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> AllCustomersByOrganizationId(
+        [FromBody] CustomersByOrganizationResource resource,
+        CancellationToken cancellationToken
+        )
+    {
+        var customers = await queryService.Handle(new GetAllCustomersBySupplierOrganizationIdQuery(resource.SupplierOrganizationId), cancellationToken);
+
+        return Ok(customers.Select(CustomerResourceFromEntityAssembler.ToResourceFromEntity));
     }
 }

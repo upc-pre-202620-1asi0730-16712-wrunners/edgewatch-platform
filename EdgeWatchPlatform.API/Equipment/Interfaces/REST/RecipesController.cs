@@ -74,7 +74,7 @@ public class RecipesController(
     [EndpointSummary("Get the recipes of an HVOF system")]
     [ProducesResponseType(typeof(IEnumerable<RecipeResource>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetAllRecipesByHvofSystemId([FromQuery] [Range(1, int.MaxValue, ErrorMessage = "InvalidHvofSystemId")] int hvofSystemId, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAllRecipesByHvofSystemId([FromQuery][Range(1, int.MaxValue, ErrorMessage = "InvalidHvofSystemId")] int hvofSystemId, CancellationToken cancellationToken)
     {
         var recipes = await queryService.Handle(new GetAllRecipesByHvofSystemIdQuery(hvofSystemId), cancellationToken);
         return Ok(recipes.Select(RecipeResourceFromEntityAssembler.ToResourceFromEntity));
@@ -120,5 +120,19 @@ public class RecipesController(
             : await commandService.Handle(new RetireRecipeCommand(id), cancellationToken);
         return EquipmentActionResultAssembler.ToActionResultFromResult(this, result, problemDetailsFactory,
             recipe => Ok(RecipeResourceFromEntityAssembler.ToResourceFromEntity(recipe)), id);
+    }
+
+    /// <summary>Lists the recipes of an HVOF system.</summary>
+    [HttpPost("by-hvof-system")]
+    [EndpointSummary("Get the recipes of an HVOF system")]
+    [ProducesResponseType(typeof(IEnumerable<RecipeResource>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> AllRecipesByHvofSystemId(
+        [FromBody] AllRecipesByHvofSystemResource resource,
+        CancellationToken cancellationToken)
+    {
+        var recipes = await queryService.Handle(new GetAllRecipesByHvofSystemIdQuery(resource.HvofSystemId), cancellationToken);
+
+        return Ok(recipes.Select(RecipeResourceFromEntityAssembler.ToResourceFromEntity));
     }
 }

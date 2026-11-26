@@ -1,22 +1,15 @@
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
-USER $APP_UID
-WORKDIR /app
-EXPOSE 8080
-
+# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
-ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["EdgeWatchPlatform.API/EdgeWatchPlatform.API.csproj", "EdgeWatchPlatform.API/"]
-RUN dotnet restore "EdgeWatchPlatform.API/EdgeWatchPlatform.API.csproj"
+COPY EdgeWatchPlatform.API/EdgeWatchPlatform.API.csproj EdgeWatchPlatform.API/
+RUN dotnet restore EdgeWatchPlatform.API/EdgeWatchPlatform.API.csproj
 COPY . .
-WORKDIR "/src/EdgeWatchPlatform.API"
-RUN dotnet build "./EdgeWatchPlatform.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet publish EdgeWatchPlatform.API/EdgeWatchPlatform.API.csproj -c Release -o /app/publish --no-restore
 
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./EdgeWatchPlatform.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app/publish .
+ENV ASPNETCORE_HTTP_PORTS=8080
+EXPOSE 8080
 ENTRYPOINT ["dotnet", "EdgeWatchPlatform.API.dll"]

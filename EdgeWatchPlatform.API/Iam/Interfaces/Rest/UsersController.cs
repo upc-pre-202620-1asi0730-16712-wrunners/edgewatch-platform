@@ -13,6 +13,7 @@ using EdgeWatchPlatform.API.Iam.Interfaces.Rest.Transform;
 using EdgeWatchPlatform.API.Shared.Interfaces.Rest.ProblemDetails;
 using Microsoft.AspNetCore.Mvc;
 using IamUser = EdgeWatchPlatform.API.Iam.Domain.Model.Aggregates.User;
+using EdgeWatchPlatform.API.Iam.Interfaces.REST.Resources;
 
 namespace EdgeWatchPlatform.API.Iam.Interfaces.Rest;
 
@@ -74,7 +75,7 @@ public class UsersController(
     [EndpointSummary("Get the users of an organization")]
     [ProducesResponseType(typeof(IEnumerable<UserResource>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden)]
-    public async Task<IActionResult> GetAllUsersByOrganizationId([FromQuery] [Range(1, int.MaxValue, ErrorMessage = "InvalidOrganizationId")] int organizationId, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAllUsersByOrganizationId([FromQuery][Range(1, int.MaxValue, ErrorMessage = "InvalidOrganizationId")] int organizationId, CancellationToken cancellationToken)
     {
         var currentUser = (IamUser)HttpContext.Items["User"]!;
         if (currentUser.OrganizationId != organizationId)
@@ -102,5 +103,22 @@ public class UsersController(
         var result = await userCommandService.Handle(command, cancellationToken);
         return IamActionResultAssembler.ToActionResultFromResult(this, result, problemDetailsFactory,
             user => Ok(UserResourceFromEntityAssembler.ToResourceFromEntity(user)), id);
+    }
+
+    /// <summary>Lists the users of an organization (only the signed-in user's organization).</summary>
+    [HttpPost("by-organization")]
+    [EndpointSummary("Get the users of an organization")]
+    [ProducesResponseType(typeof(IEnumerable<UserResource>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden)]
+    public async Task<IActionResult> AllUsersByOrganizationId(
+        [FromBody] UsersByOrganizationResource resource,
+        CancellationToken cancellationToken)
+    {
+        var currentUser = (IamUser)HttpContext.Items["User"]!;
+        if (currentUser.OrganizationId != resource.OrganizationId)
+            return IamActionResultAssembler.ToActionResultFromError(this, IamError.Forbidden, IamErrors.Forbidden, problemDetailsFactory);
+        var users = await userQueryService.Handle(new GetAllUsersByOrganizationIdQuery(resource.OrganizationId), cancellationToken);
+
+        return Ok(users.Select(UserResourceFromEntityAssembler.ToResourceFromEntity));
     }
 }

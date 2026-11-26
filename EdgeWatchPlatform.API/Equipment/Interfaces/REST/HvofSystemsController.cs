@@ -66,9 +66,24 @@ public class HvofSystemsController(
     [EndpointSummary("Get the HVOF systems of an organization")]
     [ProducesResponseType(typeof(IEnumerable<HvofSystemResource>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetAllHvofSystemsByOrganizationId([FromQuery] [Range(1, int.MaxValue, ErrorMessage = "InvalidOrganizationId")] int organizationId, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAllHvofSystemsByOrganizationId([FromQuery][Range(1, int.MaxValue, ErrorMessage = "InvalidOrganizationId")] int organizationId, CancellationToken cancellationToken)
     {
         var systems = await queryService.Handle(new GetAllHvofSystemsByOrganizationIdQuery(organizationId), cancellationToken);
+        return Ok(systems.Select(HvofSystemResourceFromEntityAssembler.ToResourceFromEntity));
+    }
+
+    /// <summary>Lists the HVOF systems of an organization.</summary>
+    [HttpPost("by-organization")]
+    [EndpointSummary("Get the HVOF systems of an organization")]
+    [ProducesResponseType(typeof(IEnumerable<HvofSystemResource>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> AllHvofSystemsByOrganizationId(
+        HvofSystemsByOrganizationResource resource,
+        CancellationToken cancellationToken
+        )
+    {
+        var systems = await queryService.Handle(new GetAllHvofSystemsByOrganizationIdQuery(resource.OrganizationId), cancellationToken);
+
         return Ok(systems.Select(HvofSystemResourceFromEntityAssembler.ToResourceFromEntity));
     }
 }
